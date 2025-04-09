@@ -1,0 +1,42 @@
+# Config: https://not-matthias.github.io/apollo/posts/configuration/
+
+base_url = "https://pipegalera.tech"
+title = "not-matthias"
+build_search_index = true
+generate_feeds = true
+minify_html = true
+
+theme = "apollo"
+taxonomies = [{ name = "tags" }]
+
+[markdown]
+highlight_code = true
+highlight_theme = "solarized-dark"
+
+[extra]
+use_cdn = true
+theme = "toggle"
+
+menu = [
+    { name = "/posts", url = "/posts", weight = 1 },
+    { name = "/projects", url = "/projects", weight = 2 },
+    { name = "/mostly_books", url = "/mostly_books", weight = 3 },
+    { name = "/about", url = "/about", weight = 4 },
+    { name = "/tags", url = "/tags", weight = 5 },
+]
+
+socials = [
+    { name = "linkedin", url = "https://www.linkedin.com/in/pipegalera/", icon = "linkedin" },
+    { name = "github", url = "https://github.com/not-matthias/", icon = "github" },
+]
+
+# Math
+mathjax = true
+mathjax_dollar_inline_enable = true
+
+[search]
+include_title = true
+include_description = true
+include_path = true
+include_content = true
+index_format = "elasticlunr_json"
