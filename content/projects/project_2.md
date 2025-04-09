@@ -1,6 +1,7 @@
 +++
 title = "Project 2"
 description = "Example description"
+date = "2023-01-09"
 weight = 1
 
 [extra]

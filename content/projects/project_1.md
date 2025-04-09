@@ -1,6 +1,7 @@
 +++
 title = "Apollo"
 description = "Modern and minimalistic blog theme."
+date = "2023-01-09"
 weight = 1
 
 [extra]
