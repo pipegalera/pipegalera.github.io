@@ -214,7 +214,7 @@ In [an interview](https://www.headphonesty.com/2018/10/interview-kris-cables/) h
 
 You can tell that he likes what he does by the way he talks about his craft in his Discord channel, or how he interacts with his costumers. Kris is good at it because he likes it.
 
-It is also quite successful I assume, since he has literally cues of people waiting for what he does. If you want a product made by him you will have to wait a couple of months in the line:
+He is also quite successful I assume, since he has literally cues of people waiting for what he does. If you want a product made by him you will have to wait a couple of months in the line:
 
 ![](./images/kris.png)
 
