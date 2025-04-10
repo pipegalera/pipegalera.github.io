@@ -1,13 +1,12 @@
 +++
 title = "Using my desktop GPU remotely via Tailscale"
-#description = "No port routing, no gateway router config, no fail2ban, not even touching ssh config!"
+description = "Magic software to avoid port routing, gateway router config, fail2ban, and even ssh keys."
 date = "2024-03-17"
 [taxonomies]
 tags = ["cloud", "ide", "ssh"]
 [extra]
 comment = true
 +++
-
 
 In this post I’ll explain how I connect to my gaming pc via SSH with my laptop completely remotely (and securely).
 

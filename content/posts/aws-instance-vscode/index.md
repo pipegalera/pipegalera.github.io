@@ -1,13 +1,12 @@
 +++
 title = "How to set up a AWS EC2 Instance in VSCode"
-#description = "How to create a ubuntu server in AWS and connect to to it via VSCode."
+description = "How to create a ubuntu server in AWS and connect to to it via VSCode."
 date = "2024-01-05"
 [taxonomies]
 tags = ["aws", "cloud", "ssh", "ide"]
 [extra]
 comment = true
 +++
-
 
 I will explain how to connect to a remote machine to VSCode. The remote machine will be a ubuntu server in a AWS instance that, in my case, will be used to run lightweight ml models.
 
