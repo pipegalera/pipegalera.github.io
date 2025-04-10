@@ -1,6 +1,6 @@
 +++
 title = "Dockerizing a Python application"
-#description = "In very simple terms, Docker makes sure than an API, a Dashboard in Streamlit/Shiny, or a scheduled script can be public and reproducible."
+description = "Make your code deployable."
 date = "2023-01-09"
 [taxonomies]
 tags = ["docker", "python"]
@@ -10,7 +10,7 @@ comment = true
 
 ![](./images/docker.webp)
 
-In very simple terms, Docker makes sure than an API, a Dashboard in Streamlit/Shiny, or a scheduled script can be public and reproducible.
+In very simple terms, Docker makes sure than an API, a Dashboard in Streamlit/Shiny, or a scheduled script can be reproducible.
 
 It is a way to package your code - making it able to run it other hardware and systems.
 

@@ -1,14 +1,12 @@
 +++
 title = "How to set up Hydrogen in Pulsar IDE"
-#description = "Instructions on how to set up Hydrogen in Pulsar IDE."
+description = "Setting up Hydrogen in Atom's spiritual successor."
 date = "2023-08-02"
 [taxonomies]
 tags = ["ide", "python", "ipython"]
 [extra]
 comment = true
 +++
-
-
 
 ## I missed Atom 💔 (**tl;dr** skip to next section.)
 

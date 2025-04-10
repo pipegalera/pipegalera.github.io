@@ -1,6 +1,6 @@
 +++
 title = "Tidy and Declutter Jupyter Notebooks"
-#description = "Create, Delete, Rename Conda or Mamba Environments and IPython Kernels."
+description = "Create, Delete, Rename Conda or Mamba Environments and IPython Kernels."
 date = "2022-01-15"
 [taxonomies]
 tags = ["clean code", "python", "ipython"]
