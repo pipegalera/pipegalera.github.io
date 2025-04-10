@@ -1,12 +1,11 @@
 +++
-title = "Project 2"
-description = "Example description"
+title = "Example project 2"
+description = "This a description of project 2"
 date = "2023-01-09"
 weight = 1
 
 [extra]
-# You can also crop the image in the url by adjusting w=/h=
-remote_image = "https://images.unsplash.com/photo-1523821741446-edb2b68bb7a0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+local_image = "/projects/project-1.jpg"
 +++
 
 Example project page

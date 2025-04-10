@@ -1,6 +1,6 @@
 +++
-title = "Apollo"
-description = "Modern and minimalistic blog theme."
+title = "Example project 1"
+description = "This a description of project 1"
 date = "2023-01-09"
 weight = 1
 
