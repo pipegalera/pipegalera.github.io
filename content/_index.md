@@ -3,4 +3,22 @@ title = "About"
 template = "homepage.html"
 +++
 
-Economist turned into developer.
+
+Economist by training.
+
+Coding for work and fun.
+
+```
+        _________
+       / ======= \
+      / __________\
+     | ___________ |
+     | | -       | |
+     | |         | |
+     | |_________| |____________________
+     \=____________/   pipe_galera      )
+     / """"""""""" \                   /
+    / ::::::::::::: \              =D-'
+   (_________________)
+
+```
