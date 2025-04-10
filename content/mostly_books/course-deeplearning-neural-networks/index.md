@@ -1,13 +1,12 @@
 +++
 title = "Course Notes - Neural Networks and Deep Learning"
-description = "My personal notes of DeepLearning.AI deep learning course"
+description = "My personal notes of DeepLearning.AI deep learning course."
 date = "2024-05-10"
 [taxonomies]
 tags = ["courses", "machine learning", "deep learning", "python"]
 [extra]
 comment = true
 +++
-
 
 ## 1. Introduction to Deep Learning
 
