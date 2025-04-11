@@ -22,7 +22,7 @@ menu = [
     { name = "/projects", url = "/projects", weight = 2 },
     { name = "/mostly_books", url = "/mostly_books", weight = 3 },
     #    { name = "/about", url = "/about", weight = 4 },
-    { name = "/tags", url = "/tags", weight = 5 },
+    { name = "/tags", url = "/tags", weight = 4 },
 ]
 
 socials = [
