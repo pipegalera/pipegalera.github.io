@@ -8,12 +8,12 @@ tags = ["books", "quitting"]
 comment = true
 +++
 
-The book is aimed to career-oriented people that reached what it can be seen as professional success but do not feel meaning in their job. I liked it a lot.
+The book is aimed to career-oriented people that reached (what can be seen as) professional success but do not feel meaning in their job. 
 
 ![book cover](https://m.media-amazon.com/images/I/41ZCxV0jqxL._SY445_SX342_.jpg)
 
 
-It offers a great read for those considering a non-traditional career path and challenges your beliefs about a work-centered life and the default path as the one-and-only way of living.
+I liked the book a lot. It offers a great read for those considering a non-traditional career path and challenges your beliefs about a work-centered life and the default path as the one-and-only way of living.
 
 ## Personal opinion: Best and worst of the book
 

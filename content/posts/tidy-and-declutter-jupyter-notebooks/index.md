@@ -60,7 +60,7 @@ python -m ipykernel install --user --name {kernel_name_here}
 
 Your IDE will say something similar to:
 
-```bash
+```
 Installed kernelspec {kernel_name_here} in
 
 C:/Users/{windows_username_here/AppData/Roaming/jupyter/kernels/{kernel_name_here}
