@@ -1,237 +1,288 @@
-// Define base colors and fonts for light and dark themes
 :root {
-  --code-font: "Courier New", monospace;
-  --bg-primary: var(--bg-1);
-  --text-color: var(--text-0); // Color of the code text
-  --label-color: #f0f0f0; // Text color of the label
+    --code-font:
+        "JetBrains Mono", "Fira Code", Consolas, Monaco, "Courier New",
+        monospace;
+    --bg-primary: var(--bg-1);
+    --text-color: var(--text-0);
+    --label-color: #f0f0f0;
+    --hightlight-color: #f0f0f0;
+    --terminal-radius: 8px;
+    --terminal-bar-height: 25px;
+    --terminal-bar-bg: #e0e0e0;
+    --terminal-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 
-  --hightlight-color: #f0f0f0;
+    // macOS window buttons
+    --close-btn: #ff5f56;
+    --minimize-btn: #ffbd2e;
+    --maximize-btn: #27c93f;
 }
 
 :root.dark {
-  --hightlight-color: #204e8a;
+    --hightlight-color: #204e8a;
+    --terminal-bar-bg: #383838;
+    --terminal-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-// Define language colors map
+// Language colors map (keeping your existing map)
 $language-colors: (
-  "js": (
-    #f7df1e,
-    "JavaScript",
-  ),
-  "yaml": (
-    #f71e6a,
-    "YAML",
-  ),
-  "shell": (
-    #4eaa25,
-    "Shell",
-  ),
-  // Updated to a more specific green shade
-  "json": (
-      dodgerblue,
-      "JSON",
+    "js": (
+        #f7df1e,
+        "JavaScript",
     ),
-  "python": (
-    #3572a5,
-    "Python",
-  ),
-  // Using the specific Python blue
-  "css": (
-      #264de4,
-      "CSS",
+    "yaml": (
+        #f71e6a,
+        "YAML",
     ),
-  "go": (
-    #00add8,
-    "Go",
-  ),
-  // Official Go color
-  "markdown": (
-      #0000ff,
-      "Markdown",
+    "shell": (
+        #4eaa25,
+        "Shell",
     ),
-  "rust": (
-    #ff4647,
-    "Rust",
-  ),
-  // Adjusted to match Rust's branding
-  "java": (
-      #f89820,
-      "Java",
+    "json": (
+        dodgerblue,
+        "JSON",
     ),
-  // Oracle Java color
-  "csharp": (
-      #178600,
-      "C#",
+    "python": (
+        #3572a5,
+        "Python",
     ),
-  "ruby": (
-    #701516,
-    "Ruby",
-  ),
-  "swift": (
-    #f05138,
-    "Swift",
-  ),
-  "php": (
-    #777bb4,
-    "PHP",
-  ),
-  "typescript": (
-    #3178c6,
-    "TypeScript",
-  ),
-  "scala": (
-    #c22d40,
-    "Scala",
-  ),
-  "kotlin": (
-    #f18e33,
-    "Kotlin",
-  ),
-  "lua": (
-    #000080,
-    "Lua",
-  ),
-  "perl": (
-    #0298c3,
-    "Perl",
-  ),
-  "haskell": (
-    #5e5086,
-    "Haskell",
-  ),
-  "r": (
-    #198ce7,
-    "R",
-  ),
-  "dart": (
-    #00d2b8,
-    "Dart",
-  ),
-  "elixir": (
-    #6e4a7e,
-    "Elixir",
-  ),
-  "clojure": (
-    #5881d8,
-    "Clojure",
-  ),
-  "bash": (
-    #4eaa25,
-    "Bash",
-  ),
-  "default": (
-    #333,
-    "Code",
-  ),
+    "css": (
+        #264de4,
+        "CSS",
+    ),
+    "go": (
+        #00add8,
+        "Go",
+    ),
+    "markdown": (
+        #0000ff,
+        "Markdown",
+    ),
+    "rust": (
+        #ff4647,
+        "Rust",
+    ),
+    "java": (
+        #f89820,
+        "Java",
+    ),
+    "csharp": (
+        #178600,
+        "C#",
+    ),
+    "ruby": (
+        #701516,
+        "Ruby",
+    ),
+    "swift": (
+        #f05138,
+        "Swift",
+    ),
+    "php": (
+        #777bb4,
+        "PHP",
+    ),
+    "typescript": (
+        #3178c6,
+        "TypeScript",
+    ),
+    "scala": (
+        #c22d40,
+        "Scala",
+    ),
+    "kotlin": (
+        #f18e33,
+        "Kotlin",
+    ),
+    "lua": (
+        #000080,
+        "Lua",
+    ),
+    "perl": (
+        #0298c3,
+        "Perl",
+    ),
+    "haskell": (
+        #5e5086,
+        "Haskell",
+    ),
+    "r": (
+        #198ce7,
+        "R",
+    ),
+    "dart": (
+        #00d2b8,
+        "Dart",
+    ),
+    "elixir": (
+        #6e4a7e,
+        "Elixir",
+    ),
+    "clojure": (
+        #5881d8,
+        "Clojure",
+    ),
+    "bash": (
+        #4eaa25,
+        "Bash",
+    ),
+    "default": (
+        #333,
+        "Code",
+    ),
 );
 
 @mixin base-label-style($bg-color, $text-color: var(--label-color)) {
-  background: $bg-color;
-  color: $text-color;
-  border-radius: 0 0 0.25rem 0.25rem;
-  font-size: 12px;
-  letter-spacing: 0.025rem;
-  padding: 0.1rem 0.5rem;
-  text-align: right;
-  text-transform: uppercase;
-  position: absolute;
-  right: 0;
-  top: 0;
-  margin-top: 0.1rem;
+    background: var(--terminal-bar-bg); // Use terminal bar background instead
+    color: var(--text-color);
+    opacity: 0.8;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    padding: 2px 8px;
+    position: absolute;
+    right: 10px;
+    top: 4px; // Adjust position to align with terminal bar
+    z-index: 1;
+    text-transform: uppercase;
+    border-radius: 3px;
 }
 
-// Example usage within a specific class for clarity
-.code-label {
-  @include base-label-style(#333); // Default background color
-}
-
+// Generate language-specific labels
 @each $lang, $color-info in $language-colors {
-  .label-#{$lang} {
-    @include base-label-style(nth($color-info, 1));
-  }
+    .label-#{$lang} {
+        @include base-label-style(nth($color-info, 1));
+    }
 }
 
 code {
-  background-color: var(--bg-primary);
-  padding: 0.1em 0.2em;
-  border-radius: 5px;
-  border: 1px solid var(--border-color);
-  font-family: var(--code-font);
+    background-color: var(--bg-primary);
+    padding: 0.1em 0.2em;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    font-family: var(--code-font);
 }
 
 pre {
-  background-color: var(--bg-primary) !important;
-  border-radius: 5px;
-  border: 1px solid var(--border-color);
-  line-height: 1.4;
-  overflow-x: auto;
-  padding: 1em;
-  position: relative;
+    background-color: var(--bg-primary) !important;
+    border-radius: var(--terminal-radius);
+    border: 1px solid var(--border-color);
+    line-height: 1.4;
+    overflow: hidden;
+    padding: calc(var(--terminal-bar-height) + 1em) 1em 1em;
+    position: relative;
+    margin: 1.5em 0;
+    box-shadow: var(--terminal-shadow);
+    animation: slideUp 0.3s ease;
 
-  mark {
-    background-color: var(
-      --hightlight-color
-    ) !important; // Ensure mark uses the theme background
-    padding: 0;
-    border-radius: 0px;
-  }
+    // Terminal top bar
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: var(--terminal-bar-height);
+        background: var(--terminal-bar-bg);
+        border-radius: var(--terminal-radius) var(--terminal-radius) 0 0;
+        border-bottom: 1px solid var(--border-color);
+    }
 
-  code {
-    background-color: transparent !important;
-    color: var(--text-color);
-    font-size: 100%;
-    padding: 0;
-    border: none;
-    font-family: var(--code-font);
+    // Window control buttons
+    &::after {
+        content: "";
+        position: absolute;
+        top: 8px;
+        left: 10px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: var(--close-btn);
+        box-shadow:
+            20px 0 0 var(--minimize-btn),
+            40px 0 0 var(--maximize-btn);
+    }
 
-    table {
-      margin: 0;
-      border-collapse: collapse;
-      font-family: var(--code-font);
-
-      mark {
-        display: block;
-        color: unset;
-        padding: 0;
+    mark {
         background-color: var(--hightlight-color) !important;
-        filter: brightness(1.2); // Example to slightly increase brightness
-      }
+        padding: 0;
+        border-radius: 0px;
     }
 
-    td,
-    th,
-    tr {
-      padding: 0;
-      border-bottom: none;
-      border: none; // Ensure no borders around rows
-    }
+    code {
+        background-color: transparent !important;
+        color: var(--text-color);
+        font-family: var(--code-font);
+        font-size: 0.9em;
+        letter-spacing: 0.5px;
+        line-height: 1.6;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+        padding: 0;
+        border: none;
 
-    tbody td:first-child {
-      text-align: center;
-      user-select: none;
-      min-width: 60px;
-      border-right: none;
-    }
+        table {
+            width: 100%;
+            margin: 0;
+            border-collapse: collapse;
+            font-family: var(--code-font);
 
-    tbody tr:nth-child(even),
-    thead tr {
-      background-color: unset;
+            mark {
+                display: block;
+                color: unset;
+                padding: 0;
+                background-color: var(--hightlight-color) !important;
+                filter: brightness(1.2);
+            }
+        }
+
+        td,
+        th,
+        tr {
+            padding: 0.1em 0.5em;
+            border: none;
+        }
+
+        tbody td:first-child {
+            opacity: 0.5;
+            text-align: center;
+            user-select: none;
+            min-width: 60px;
+            border-right: 1px solid var(--border-color);
+            padding-right: 1em;
+        }
+
+        tbody tr:nth-child(even),
+        thead tr {
+            background-color: unset;
+        }
     }
-  }
 }
 
 .clipboard-button,
 .clipboard-button svg {
-  all: unset;
-  cursor: pointer;
-  position: absolute;
-  bottom: 5px;
-  /* 5px from the bottom */
-  right: 5px;
-  /* 5px from the right */
-  z-index: 10;
-  background-color: transparent;
-  border: none;
-  fill: #ef5350;
-  /* Sets the color of the SVG, assuming it's an SVG icon */
+    all: unset;
+    cursor: pointer;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    z-index: 10;
+    background-color: transparent;
+    border: none;
+    fill: #ef5350;
+    opacity: 0; /* Hide by default */
+    transition: opacity 0.2s ease; /* Add smooth transition */
+}
+
+pre:hover .clipboard-button,
+pre:hover .clipboard-button svg {
+    opacity: 1; /* Show when parent is hovered */
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

@@ -16,6 +16,7 @@ highlight_theme = "solarized-dark"
 [extra]
 use_cdn = true
 theme = "toggle"
+fancy_code = true
 
 menu = [
     { name = "/posts", url = "/posts", weight = 1 },
