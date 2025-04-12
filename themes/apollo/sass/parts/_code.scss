@@ -4,7 +4,6 @@
         monospace;
     --bg-primary: var(--bg-1);
     --text-color: var(--text-0);
-    --label-color: #f0f0f0;
     --hightlight-color: #f0f0f0;
     --terminal-radius: 8px;
     --terminal-bar-height: 25px;
@@ -23,135 +22,7 @@
     --terminal-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-// Language colors map (keeping your existing map)
-$language-colors: (
-    "js": (
-        #f7df1e,
-        "JavaScript",
-    ),
-    "yaml": (
-        #f71e6a,
-        "YAML",
-    ),
-    "shell": (
-        #4eaa25,
-        "Shell",
-    ),
-    "json": (
-        dodgerblue,
-        "JSON",
-    ),
-    "python": (
-        #3572a5,
-        "Python",
-    ),
-    "css": (
-        #264de4,
-        "CSS",
-    ),
-    "go": (
-        #00add8,
-        "Go",
-    ),
-    "markdown": (
-        #0000ff,
-        "Markdown",
-    ),
-    "rust": (
-        #ff4647,
-        "Rust",
-    ),
-    "java": (
-        #f89820,
-        "Java",
-    ),
-    "csharp": (
-        #178600,
-        "C#",
-    ),
-    "ruby": (
-        #701516,
-        "Ruby",
-    ),
-    "swift": (
-        #f05138,
-        "Swift",
-    ),
-    "php": (
-        #777bb4,
-        "PHP",
-    ),
-    "typescript": (
-        #3178c6,
-        "TypeScript",
-    ),
-    "scala": (
-        #c22d40,
-        "Scala",
-    ),
-    "kotlin": (
-        #f18e33,
-        "Kotlin",
-    ),
-    "lua": (
-        #000080,
-        "Lua",
-    ),
-    "perl": (
-        #0298c3,
-        "Perl",
-    ),
-    "haskell": (
-        #5e5086,
-        "Haskell",
-    ),
-    "r": (
-        #198ce7,
-        "R",
-    ),
-    "dart": (
-        #00d2b8,
-        "Dart",
-    ),
-    "elixir": (
-        #6e4a7e,
-        "Elixir",
-    ),
-    "clojure": (
-        #5881d8,
-        "Clojure",
-    ),
-    "bash": (
-        #4eaa25,
-        "Bash",
-    ),
-    "default": (
-        #333,
-        "Code",
-    ),
-);
-
-@mixin base-label-style($bg-color, $text-color: var(--label-color)) {
-    background: var(--terminal-bar-bg); // Use terminal bar background instead
-    color: var(--text-color);
-    opacity: 0.8;
-    font-size: 10px;
-    letter-spacing: 0.5px;
-    padding: 2px 8px;
-    position: absolute;
-    right: 10px;
-    top: 4px; // Adjust position to align with terminal bar
-    z-index: 1;
-    text-transform: uppercase;
-    border-radius: 3px;
-}
-
-// Generate language-specific labels
-@each $lang, $color-info in $language-colors {
-    .label-#{$lang} {
-        @include base-label-style(nth($color-info, 1));
-    }
-}
+// Removing all language colors map and label styles
 
 code {
     background-color: var(--bg-primary);
@@ -261,19 +132,19 @@ pre {
     all: unset;
     cursor: pointer;
     position: absolute;
-    bottom: 5px;
+    top: 15px;
     right: 5px;
-    z-index: 10;
-    background-color: transparent;
-    border: none;
-    fill: #ef5350;
     opacity: 0; /* Hide by default */
-    transition: opacity 0.2s ease; /* Add smooth transition */
+    transition: opacity 0.15s ease; /* Add smooth transition */
 }
 
 pre:hover .clipboard-button,
 pre:hover .clipboard-button svg {
     opacity: 1; /* Show when parent is hovered */
+}
+
+.code-label {
+    display: none !important;
 }
 
 @keyframes slideUp {
