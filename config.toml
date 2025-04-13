@@ -16,7 +16,7 @@ highlight_theme = "solarized-dark"
 [extra]
 toc = true
 use_cdn = true
-theme = "toggle"
+theme = "light"
 fancy_code = true
 dynamic_note = true
 mathjax = true
