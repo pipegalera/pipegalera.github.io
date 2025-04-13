@@ -1,12 +1,12 @@
 # Config: https://not-matthias.github.io/apollo/posts/configuration/
 
-base_url = "https://pipegalera.tech"
+base_url = "https://pipegalera.github.io"
 title = "~/.pipe_galera"
+description = "This is an example description"
 build_search_index = true
 generate_feeds = true
+compile_sass = true
 minify_html = true
-
-theme = "apollo"
 taxonomies = [{ name = "tags" }]
 
 [markdown]
@@ -14,13 +14,17 @@ highlight_code = true
 highlight_theme = "solarized-dark"
 
 [extra]
+toc = true
 use_cdn = true
 theme = "toggle"
 fancy_code = true
+dynamic_note = true
+mathjax = true
+mathjax_dollar_inline_enable = true
 
 menu = [
     { name = "/posts", url = "/posts", weight = 1 },
-    { name = "/projects", url = "/projects", weight = 2 },
+    #{ name = "/projects", url = "/projects", weight = 2 },
     { name = "/mostly_books", url = "/mostly_books", weight = 3 },
     #    { name = "/about", url = "/about", weight = 4 },
     { name = "/tags", url = "/tags", weight = 4 },
@@ -30,10 +34,6 @@ socials = [
     { name = "linkedin", url = "https://www.linkedin.com/in/pipegalera/", icon = "linkedin" },
     { name = "github", url = "https://github.com/pipegalera/", icon = "github" },
 ]
-
-# Math
-mathjax = true
-mathjax_dollar_inline_enable = true
 
 [search]
 include_title = true
