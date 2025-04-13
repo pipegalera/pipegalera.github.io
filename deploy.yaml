@@ -1,0 +1,6 @@
+name: "Zola Deploy to Pages"
+description: "Build and deploy a Zola site to GitHub Pages"
+author: "Pipe Galera"
+runs:
+  using: "docker"
+  image: "Dockerfile"
