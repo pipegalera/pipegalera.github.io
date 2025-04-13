@@ -1,0 +1,13 @@
+on: push
+name: Build and deploy GH Pages
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: build-and-deploy
+        uses: ./ # wherever your action is in relation to the root of the repo
+        env:
+          TOKEN: ${{secrets.TOKEN}}
