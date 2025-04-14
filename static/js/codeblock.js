@@ -54,6 +54,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     document.querySelectorAll('pre code').forEach(codeBlock => {
+        // Skip processing for ascii-art blocks
+        if (codeBlock.classList.contains('language-ascii-art')) {
+            return; // Go to the next code block
+        }
+
         const pre = codeBlock.parentNode;
         pre.style.position = 'relative'; // Ensure parent `pre` can contain absolute elements
 
