@@ -8,7 +8,7 @@ Economist by training.
 
 Coder for work and fun.
 
-```
+```ascii-art
         _________
        / ======= \
       / __________\
@@ -20,5 +20,4 @@ Coder for work and fun.
      / """"""""""" \       /
     / ::::::::::::: \  =D-'
    (_________________)
-
 ```
