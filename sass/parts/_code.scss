@@ -157,3 +157,37 @@ pre:hover .clipboard-button svg {
         transform: translateY(0);
     }
 }
+
+// Override styles for the PRE element containing ASCII art blocks
+pre:has(> code.language-ascii-art) {
+    background: none !important;
+    border: none !important;
+    padding: 0 !important; // Reset padding applied to pre
+    margin: 1.5em 0 !important; // Keep original margin or adjust as needed
+    box-shadow: none !important; // Remove box shadow
+    position: static !important; // Reset position if needed, careful not to break layout
+    overflow: visible !important; // Reset overflow if needed
+
+    // Remove the terminal bar pseudo-element
+    &::before,
+    &::after {
+        display: none !important;
+    }
+}
+
+// Override styles for the CODE element within ASCII art blocks
+pre:has(> code.language-ascii-art) > code.language-ascii-art {
+    // These might still be needed if code itself has specific styles applied globally
+    background: none !important;
+    border: none !important;
+    color: inherit !important;
+    padding: 0 !important;
+    font-family: var(--code-font) !important;
+    text-shadow: none !important;
+    font-size: 1em !important;
+    line-height: inherit !important;
+    letter-spacing: inherit !important;
+    // Ensure it's displayed correctly
+    display: block; 
+    white-space: pre; // Explicitly ensure whitespace is preserved
+}
