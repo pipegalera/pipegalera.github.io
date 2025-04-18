@@ -1,6 +1,6 @@
 # Config: https://not-matthias.github.io/apollo/posts/configuration/
 
-base_url = "https://pipegalera.github.io/"
+base_url = "https://www.pipegalera.com/"
 title = "~/.pipe_galera"
 description = "This is an example description"
 build_search_index = true
