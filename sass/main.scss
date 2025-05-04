@@ -20,6 +20,14 @@
     --text-font: "Roboto Mono", "Courier", "Helvetica", sans-serif;
     --header-font: "Inter", "Helvetica Neue", Helvetica, sans-serif;
     --code-font: "Roboto Mono", "Courier", "Helvetica", sans-serif;
+
+    /* Colors */
+    --heading-color: #000000;
+    --dark-yellow-color: #ffd63a;
+    --light-yellow-color: #ddd3a5;
+    --dark-gray-color: #4b4b4b;
+    --light-gray-color: #cad2d4;
+    --background-color: #f2e39b;
 }
 
 html {
@@ -37,16 +45,18 @@ html {
     padding: 0 24px;
     word-wrap: break-word;
     letter-spacing: -0.01em;
-    color: var(--text-color);
+    color: var(--dark-gray-color);
+    font-family: var(--text-font);
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
     font-size: 15px;
-    line-height: 28px;
 }
 
 h1,
 .h1 {
     font-family: var(--header-font);
     font-weight: 400;
-    color: var(--heading-color);
+    color: var(--dark-gray-color);
     margin-top: 10;
     font-size: 1.4rem;
 }
@@ -55,7 +65,7 @@ h2,
 .h2 {
     font-family: var(--header-font);
     font-weight: 400;
-    color: var(--heading-color);
+    color: var(--dark-gray-color);
     font-size: 1.3rem;
 }
 
@@ -65,7 +75,44 @@ h5,
 h6 {
     font-family: var(--header-font);
     font-weight: 400;
-    color: var(--heading-color);
+    color: var(--dark-gray-color);
+    font-size: 1.1rem;
+}
+
+h1::before {
+    color: var(--primary-color);
+    content: "# ";
+}
+
+h2::before {
+    color: var(--primary-color);
+    content: "## ";
+}
+
+h3::before {
+    color: var(--primary-color);
+    content: "### ";
+}
+
+h4::before {
+    color: var(--primary-color);
+    content: "#### ";
+}
+
+h5::before {
+    color: var(--primary-color);
+    content: "##### ";
+}
+
+h6::before {
+    color: var(--primary-color);
+    content: "###### ";
+}
+
+.blog-post-subtitle {
+    font-family: var(--header-font);
+    font-weight: 400;
+    color: var(--dark-gray-color);
     font-size: 1.1rem;
 }
 
