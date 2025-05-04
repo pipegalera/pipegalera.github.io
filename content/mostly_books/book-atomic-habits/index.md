@@ -4,8 +4,6 @@ description = "Compound interest also works with habits."
 date = "2021-12-30"
 [taxonomies]
 tags = ["books", "productivity"]
-[extra]
-comment = true
 +++
 
 ![](https://cdn-images-1.medium.com/max/800/1*q_ca6R_S8V1vlaGCc_VQxw.png)

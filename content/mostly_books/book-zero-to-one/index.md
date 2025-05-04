@@ -4,8 +4,6 @@ description = "Classic Startup book."
 date = "2023-05-28"
 [taxonomies]
 tags = ["books", "startups"]
-[extra]
-comment = true
 +++
 
 Below are all the quotes and ideas I considered worth it from the book, gathered into 7 central themes.

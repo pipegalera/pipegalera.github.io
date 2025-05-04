@@ -4,8 +4,6 @@ description = "My personal notes of Google's course."
 date = "2021-04-26"
 [taxonomies]
 tags = ["courses", "ux"]
-[extra]
-comment = true
 +++
 
 My personal notes and presentations tips of Google's course [Share Data Through the Art of Visualization](https://www.coursera.org/learn/visualize-data/)
