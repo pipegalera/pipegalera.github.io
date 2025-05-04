@@ -113,10 +113,10 @@ As an **example**, this is how a random weekly review in my life looks like.
 
 This review not a complicated system. I write this as part of a journal routine in my calendar app every Sunday. It takes 5 to 10 minutes.
 
-![](./images/calendar.png)
+![calendar image](./images/calendar.png)
 
 I also spend another 5 minutes adding the insights for the next week's scheduled activities as a reminder.
 
-![](./images/insight.png)
+![insight messages](./images/insight.png)
 
 The return on investment of these 15 minutes is huge. This exercise of reflection brings me instant clarity and increase the probability of achiving my goals for the following week.
