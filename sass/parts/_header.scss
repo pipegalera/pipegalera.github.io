@@ -28,6 +28,10 @@ header {
     width: 100%;
 }
 
+header a {
+    border-bottom: none !important;
+}
+
 header .main {
     display: flex;
     flex-direction: row;
@@ -41,6 +45,10 @@ nav {
     display: flex;
     align-items: center;
     gap: 1rem;
+}
+
+nav a {
+    border-bottom: none !important;
 }
 
 header .social img,
@@ -117,14 +125,14 @@ header .socials {
     header .main a {
         font-size: 20px;
     }
-    
+
     /* Add these styles to ensure navigation elements appear in mobile view */
     nav {
         margin-top: 1rem;
         width: 100%;
         justify-content: center;
     }
-    
+
     .nav-right {
         display: flex;
         justify-content: center;
