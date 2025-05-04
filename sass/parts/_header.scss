@@ -1,11 +1,11 @@
 .page-header {
-    font-size: 2.5em;
+    font-size: 2.1em;
     line-height: 100%;
     font-family: var(--header-font);
     margin: 4rem 0px 1rem 0px;
 }
 
-.centered-header {
+/* .centered-header {
     font-family: var(--header-font);
     position: absolute;
     top: 40%;
@@ -13,7 +13,7 @@
     transform: translate(-50%, -50%);
     text-align: center;
     font-size: 4em;
-}
+} */
 
 .centered-header span {
     line-height: 100%;
@@ -37,7 +37,7 @@ header .main {
     flex-direction: row;
     align-items: center;
     gap: 12px;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     margin: 0;
 }
 
@@ -194,7 +194,6 @@ h6::before {
     content: "###### ";
 }
 
-// Search button styles (if needed)
 .search-button {
     background: none;
     border: none;
