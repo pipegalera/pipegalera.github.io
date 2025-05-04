@@ -154,46 +154,6 @@ header .socials {
     border: unset;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-size: 1.2rem;
-    margin-top: 2em;
-}
-
-h1::before {
-    color: var(--primary-color);
-    content: "# ";
-}
-
-h2::before {
-    color: var(--primary-color);
-    content: "## ";
-}
-
-h3::before {
-    color: var(--primary-color);
-    content: "### ";
-}
-
-h4::before {
-    color: var(--primary-color);
-    content: "#### ";
-}
-
-h5::before {
-    color: var(--primary-color);
-    content: "##### ";
-}
-
-h6::before {
-    color: var(--primary-color);
-    content: "###### ";
-}
-
 .search-button {
     background: none;
     border: none;
