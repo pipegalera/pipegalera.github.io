@@ -5,8 +5,6 @@ date = "2025-04-25"
 draft=true
 [taxonomies]
 tags = ["courses", "machine learning", "deep learning", "python"]
-[extra]
-comment = true
 +++
 
 `MLOps` stands for Machine Learning Operations. MLOps is a core function of Machine Learning engineering, focused on streamlining the process of taking machine learning models to production, and then maintaining and monitoring them. 

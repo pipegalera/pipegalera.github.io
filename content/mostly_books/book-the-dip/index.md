@@ -2,6 +2,7 @@
 title = "The Dip, by Seth Godin"
 description = "Short book on when (and how) to quit."
 date = "2023-04-23"
+[taxonomies]
 tags = ["books", "human behaviour", "quitting"]
 +++
 

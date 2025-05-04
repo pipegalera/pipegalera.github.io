@@ -4,8 +4,6 @@ description = "My personal notes of MIT 6.S19."
 date = "2021-06-08"
 [taxonomies]
 tags = ["courses", "machine learning", "deep learning", "python"]
-[extra]
-comment = true
 +++
 
 

@@ -4,8 +4,6 @@ description = "My personal notes of the Fastai book/course."
 date = "2022-01-01"
 [taxonomies]
 tags = ["books","machine learning", "deep learning", "python"]
-[extra]
-comment = true
 +++
 
 

@@ -4,8 +4,6 @@ description = "Cal Newport's Deep Work but focused on coding and building tech p
 date = "2024-05-01"
 [taxonomies]
 tags = ["books", "clean code"]
-[extra]
-comment = true
 +++
 
 The book is a mix between how to write clean code (75%) and how to be a productive coder (25%). More than rules set in stone, it encourages applying minimalism to coding.

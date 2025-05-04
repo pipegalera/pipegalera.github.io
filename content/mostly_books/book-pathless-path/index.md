@@ -4,8 +4,6 @@ description = "White-collar worker quits his job and moves to Taiwan."
 date = "2023-08-21"
 [taxonomies]
 tags = ["books", "quitting"]
-[extra]
-comment = true
 +++
 
 The book is aimed to career-oriented people that reached (what can be seen as) professional success but do not feel meaning in their job. 

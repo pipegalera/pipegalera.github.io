@@ -1,8 +1,9 @@
 +++
 title= "Hell Yeah or No, by Derek Sivers"
 description=  "A small book about about making right decisions."
-tags= ["books", "productivity", "human behaviour"]
 date = "2023-10-07"
+[taxonomies]
+tags= ["books", "productivity", "human behaviour"]
 +++
 
 

@@ -1,8 +1,9 @@
 +++
 title= "Four Thousand Weeks, by Oliver Burkeman"
 description= "Must productivity books miss the main point of 4000 Weeks: we will eventually die."
-tags= ["books", "productivity"]
 date = "2023-10-10"
+[taxonomies]
+tags= ["books", "productivity"]
 +++
 
 The book explores a better way to handle time and it shares ideas from wise thinkers who emphasized understanding time instead of controlling it.

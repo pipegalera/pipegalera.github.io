@@ -2,8 +2,8 @@
 title = "Fooled by Randomness, by Nassim Nicholas Taleb"
 description = "The guy really hates journalist and MBAs."
 date = "2025-05-02"
+[taxonomies]
 tags = ["books", "probability", "human behaviour"]
-draft=false
 +++
 
 Praised by many authors and online personalities I respect and admire, I decided to read the first of the Incerto books. Summary: I love his ideas, I hate the writer. 
