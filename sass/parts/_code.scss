@@ -1,193 +1,152 @@
-:root {
-    --code-font:
-        "JetBrains Mono", "Fira Code", Consolas, Monaco, "Courier New",
-        monospace;
-    --bg-primary: var(--bg-1);
-    --text-color: var(--text-0);
-    --hightlight-color: #f0f0f0;
-    --terminal-radius: 8px;
-    --terminal-bar-height: 25px;
-    --terminal-bar-bg: #e0e0e0;
-    --terminal-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+// GitHub Light Theme for code blocks
+// This will override any inline styles with !important
 
-    // macOS window buttons
-    --close-btn: #ff5f56;
-    --minimize-btn: #ffbd2e;
-    --maximize-btn: #27c93f;
-}
+// GitHub light theme colors
+$gh-bg: #f6f8fa;
+$gh-text: #24292e;
+$gh-comment: #6a737d;
+$gh-keyword: #d73a49;
+$gh-function: #6f42c1;
+$gh-string: #032f62;
+$gh-number: #005cc5;
+$gh-tag: #22863a;
+$gh-variable: #24292e;
+$gh-attr: #005cc5;
+$gh-border: #e1e4e8;
 
-:root.dark {
-    --hightlight-color: #204e8a;
-    --terminal-bar-bg: #383838;
-    --terminal-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-// Removing all language colors map and label styles
-
-code {
-    background-color: var(--bg-primary);
-    padding: 0.1em 0.2em;
-    border-radius: 5px;
-    border: 1px solid var(--border-color);
-    font-family: var(--code-font);
-}
-
+// Force override inline styles for pre and code elements
 pre {
-    background-color: var(--bg-primary) !important;
-    border-radius: var(--terminal-radius);
-    border: 1px solid var(--border-color);
-    line-height: 1.4;
-    overflow: hidden;
-    padding: calc(var(--terminal-bar-height) + 1em) 1em 1em;
-    position: relative;
-    margin: 1.5em 0;
-    box-shadow: var(--terminal-shadow);
-    animation: slideUp 0.3s ease;
+    background-color: $gh-bg !important;
+    color: $gh-text !important;
+    border: 1px solid $gh-border !important;
+    border-radius: 6px !important;
+    padding: 16px !important;
+    margin: 1em 0 !important;
+    overflow: auto !important;
+    font-family: "SF Mono", Menlo, Consolas, monospace !important;
+    font-size: 14px !important;
+    line-height: 1.45 !important;
+    box-shadow: none !important;
 
-    // Terminal top bar
-    &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: var(--terminal-bar-height);
-        background: var(--terminal-bar-bg);
-        border-radius: var(--terminal-radius) var(--terminal-radius) 0 0;
-        border-bottom: 1px solid var(--border-color);
-    }
-
-    // Window control buttons
+    // Remove any special styling if present
+    &::before,
     &::after {
-        content: "";
-        position: absolute;
-        top: 8px;
-        left: 10px;
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background-color: var(--close-btn);
-        box-shadow:
-            20px 0 0 var(--minimize-btn),
-            40px 0 0 var(--maximize-btn);
+        display: none !important;
     }
 
-    mark {
-        background-color: var(--hightlight-color) !important;
-        padding: 0;
-        border-radius: 0px;
-    }
-
-    code {
+    // Override all code elements inside pre blocks
+    code,
+    code * {
         background-color: transparent !important;
-        color: var(--text-color);
-        font-family: var(--code-font);
-        font-size: 0.9em;
-        letter-spacing: 0.5px;
-        line-height: 1.6;
-        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-        padding: 0;
-        border: none;
+        font-family: inherit !important;
+        font-size: inherit !important;
+        line-height: inherit !important;
+    }
 
+    // Override the Solarized Dark theme inline styles
+    code {
+        color: $gh-text !important;
+
+        // Force syntax highlighting to GitHub light theme
+        [style*="color:#859900"],
+        [style*="color:#719e07"],
+        .keyword {
+            color: $gh-keyword !important;
+        }
+
+        [style*="color:#b58900"],
+        [style*="color:#cb4b16"],
+        .function {
+            color: $gh-function !important;
+        }
+
+        [style*="color:#268bd2"],
+        [style*="color:#2aa198"],
+        .string {
+            color: $gh-string !important;
+        }
+
+        [style*="color:#6c71c4"],
+        [style*="color:#d33682"],
+        .number {
+            color: $gh-number !important;
+        }
+
+        [style*="color:#657b83"],
+        [style*="color:#839496"],
+        .comment {
+            color: $gh-comment !important;
+        }
+
+        // Table styling for line numbers if present
         table {
-            width: 100%;
-            margin: 0;
-            border-collapse: collapse;
-            font-family: var(--code-font);
+            width: 100% !important;
+            border-collapse: collapse !important;
 
-            mark {
-                display: block;
-                color: unset;
-                padding: 0;
-                background-color: var(--hightlight-color) !important;
-                filter: brightness(1.2);
+            td,
+            th {
+                border: none !important;
+                padding: 0 !important;
+            }
+
+            td:first-child {
+                color: $gh-comment !important;
+                opacity: 0.6 !important;
+                text-align: right !important;
+                padding-right: 1em !important;
+                user-select: none !important;
             }
         }
-
-        td,
-        th,
-        tr {
-            padding: 0.1em 0.5em;
-            border: none;
-        }
-
-        tbody td:first-child {
-            opacity: 0.5;
-            text-align: center;
-            user-select: none;
-            min-width: 60px;
-            border-right: 1px solid var(--border-color);
-            padding-right: 1em;
-        }
-
-        tbody tr:nth-child(even),
-        thead tr {
-            background-color: unset;
-        }
     }
 }
 
-.clipboard-button,
-.clipboard-button svg {
-    all: unset;
-    cursor: pointer;
-    position: absolute;
-    top: 15px;
-    right: 5px;
-    opacity: 0; /* Hide by default */
-    transition: opacity 0.15s ease; /* Add smooth transition */
-}
-
-pre:hover .clipboard-button,
-pre:hover .clipboard-button svg {
-    opacity: 1; /* Show when parent is hovered */
-}
-
-.code-label {
-    display: none !important;
-}
-
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-// Override styles for the PRE element containing ASCII art blocks
+// Special case for ASCII art
 pre:has(> code.language-ascii-art) {
     background: none !important;
+    box-shadow: none !important;
     border: none !important;
-    padding: 0 !important; // Reset padding applied to pre
-    margin: 1.5em 0 !important; // Keep original margin or adjust as needed
-    box-shadow: none !important; // Remove box shadow
-    position: static !important; // Reset position if needed, careful not to break layout
-    overflow: visible !important; // Reset overflow if needed
+    padding: 0 !important;
 
-    // Remove the terminal bar pseudo-element
     &::before,
     &::after {
         display: none !important;
     }
 }
 
-// Override styles for the CODE element within ASCII art blocks
-pre:has(> code.language-ascii-art) > code.language-ascii-art {
-    // These might still be needed if code itself has specific styles applied globally
-    background: none !important;
-    border: none !important;
-    color: inherit !important;
-    padding: 0 !important;
-    font-family: var(--code-font) !important;
-    text-shadow: none !important;
-    font-size: 1em !important;
-    line-height: inherit !important;
-    letter-spacing: inherit !important;
-    // Ensure it's displayed correctly
-    display: block; 
-    white-space: pre; // Explicitly ensure whitespace is preserved
+// Copy button styling
+.copy-button {
+    position: absolute !important;
+    top: 5px !important;
+    right: 5px !important;
+    padding: 5px 8px !important;
+    font-size: 12px !important;
+    color: $gh-comment !important;
+    background-color: transparent !important;
+    border: 1px solid $gh-border !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    opacity: 0 !important;
+    transition:
+        opacity 0.2s,
+        color 0.2s,
+        background-color 0.2s !important;
+    z-index: 100 !important;
+
+    &:hover {
+        background-color: darken($gh-bg, 3%) !important;
+        color: $gh-text !important;
+    }
+
+    &:active {
+        background-color: darken($gh-bg, 5%) !important;
+    }
+
+    &.copied {
+        color: #22863a !important;
+    }
+}
+
+// Show copy button on hover
+pre:hover .copy-button {
+    opacity: 1 !important;
 }
