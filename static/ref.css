@@ -1,0 +1,232 @@
+/*
+/*
+ * Blog Post Styling
+ */
+
+.blog-post {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+@media (min-width: 576px) {
+    .blog-post {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+}
+
+.blog-post h1,
+.blog-post .h1 {
+    margin-top: 0;
+    font-family: "Inter", "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: 700;
+    color: #353535;
+    font-size: 2rem;
+}
+
+.blog-post h2,
+.blog-post .h2 {
+    font-family: "Inter", "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: 700;
+    color: #353535;
+    font-size: 1.5rem;
+}
+
+.blog-post h3,
+.blog-post h4,
+.blog-post h5,
+.blog-post h6 {
+    font-family: "Inter", "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: 700;
+    color: #353535;
+}
+
+.blog-post img {
+    width: calc(100% + 30px);
+    max-width: 576px;
+    margin-right: -15px;
+    margin-left: -15px;
+    margin-bottom: 15px;
+    border-radius: 0px;
+}
+
+@media (min-width: 576px) {
+    .blog-post img {
+        width: calc(100% + 50px);
+        max-width: 650px;
+        margin-right: -25px;
+        margin-left: -25px;
+        border-radius: 8px;
+    }
+}
+
+.blog-post ul {
+    margin: 0px 0px 25px 0px;
+    padding-left: 15px;
+}
+
+.blog-post li {
+    margin: 0px;
+    padding: 0px;
+}
+
+.blog-post-title {
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 700;
+    letter-spacing: -1px;
+    -webkit-font-smoothing: antialiased;
+    color: #353535;
+    margin-bottom: 35px;
+    font-size: 30px;
+}
+
+.blog-post-title a {
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    color: #353535;
+    margin-bottom: 35px;
+    text-decoration: none;
+}
+
+.blog-post-title a:hover {
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 700;
+    -webkit-font-smoothing: antialiased;
+    color: #000000;
+    margin-bottom: 35px;
+    text-decoration: none;
+}
+
+.blog-post-text .blog-post-subtitle {
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 500;
+    letter-spacing: -1.5px;
+    -webkit-font-smoothing: antialiased;
+    color: #cad2d4;
+    margin-top: -30px;
+    margin-bottom: 35px;
+    font-size: 20px;
+}
+
+.blog-post-text {
+    font-family: "Roboto Mono", "Courier", "Helvetica", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: #4b4b4b;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 28px;
+}
+
+.blog-post-text a {
+    color: #4b4b4b;
+    text-decoration: none;
+    background-color: #f2e39b;
+    padding: 1px 5px;
+    border-radius: 2px 2px 2px 2px;
+    -moz-border-radius: 2px 2px 2px 2px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+
+.blog-post-text a[href^="http://julian.digital"]
+{
+    color: #4b4b4b;
+    text-decoration: none;
+    background-color: #cad2d4;
+    padding: 1px 5px;
+    border-radius: 2px 2px 2px 2px;
+    -moz-border-radius: 2px 2px 2px 2px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+
+.blog-post-text a:hover {
+    color: #353535;
+    text-decoration: none;
+    background-color: #ddd3a5;
+    padding: 1px 5px;
+    border-radius: 2px 2px 2px 2px;
+    -moz-border-radius: 2px 2px 2px 2px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+
+.blog-post-text a:hover {
+    color: #353535;
+    text-decoration: none;
+    background-color: #c4c9ca;
+    padding: 1px 5px;
+    border-radius: 2px 2px 2px 2px;
+    -moz-border-radius: 2px 2px 2px 2px;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+
+.blog-post-text p {
+    margin-bottom: 20px;
+}
+
+.section {
+    font-family: "Roboto Mono", "Courier", "Helvetica", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: #4b4b4b;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.blog-post-bottom {
+    margin-bottom: 45px;
+    margin-left: -15px;
+    margin-right: -15px;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 45px;
+    border-bottom: 1px solid #c8caca;
+    text-transform: uppercase;
+}
+
+.passive {
+    font-weight: normal;
+    color: #cad2d4;
+}
+
+.blog-post-text .passive a {
+    font-weight: normal;
+    text-decoration: underline;
+    color: #cad2d4;
+    background-color: #ffffff;
+    padding: 0px;
+}
+
+.blog-post-text .passive a:hover {
+    font-weight: normal;
+    text-decoration: underline;
+    color: #353535;
+    background-color: #ffffff;
+    padding: 0px;
+}
+
+/*
+ *  Meta
+ */
+
+.meta {
+    font-family: "Roboto Mono", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #4b4b4b;
+}
+
+.meta a {
+    text-decoration: none;
+}
+
+.meta a:hover {
+    color: #4b4b4b;
+} */
