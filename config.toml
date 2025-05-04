@@ -2,7 +2,7 @@
 
 base_url = "https://www.pipegalera.com/"
 title = "~/.pipe_galera"
-description = "This is an example description"
+description = "Personal website of Pipe Galera"
 build_search_index = true
 generate_feeds = true
 compile_sass = true
@@ -24,9 +24,9 @@ mathjax_dollar_inline_enable = true
 
 menu = [
     { name = "/posts", url = "/posts", weight = 1 },
-    #{ name = "/projects", url = "/projects", weight = 2 },
+    # { name = "/projects", url = "/projects", weight = 2 },
     { name = "/mostly_books", url = "/mostly_books", weight = 3 },
-    #    { name = "/about", url = "/about", weight = 4 },
+    # { name = "/about", url = "/about", weight = 4 },
     { name = "/tags", url = "/tags", weight = 4 },
 ]
 
