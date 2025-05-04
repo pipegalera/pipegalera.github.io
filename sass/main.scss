@@ -17,9 +17,9 @@
     --border-color: var(--border-color);
 
     /* Fonts */
-    --text-font: "Jetbrains Mono";
-    --header-font: "Space Grotesk", "Helvetica", sans-serif;
-    --code-font: "Jetbrains Mono";
+    --text-font: "Roboto Mono", "Courier", "Helvetica", sans-serif;
+    --header-font: "Inter", "Helvetica Neue", Helvetica, sans-serif;
+    --code-font: "Roboto Mono", "Courier", "Helvetica", sans-serif;
 }
 
 html {
@@ -27,13 +27,46 @@ html {
     color: var(--text-0);
     font-family: var(--text-font);
     line-height: 1.6em;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
 }
 
 .content {
-    max-width: 1000px;
+    max-width: 700px;
     margin: 0 auto;
     padding: 0 24px;
     word-wrap: break-word;
+    letter-spacing: -0.01em;
+    color: var(--text-color);
+    font-size: 15px;
+    line-height: 28px;
+}
+
+h1,
+.h1 {
+    font-family: var(--header-font);
+    font-weight: 400;
+    color: var(--heading-color);
+    margin-top: 10;
+    font-size: 1.4rem;
+}
+
+h2,
+.h2 {
+    font-family: var(--header-font);
+    font-weight: 400;
+    color: var(--heading-color);
+    font-size: 1.3rem;
+}
+
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--header-font);
+    font-weight: 400;
+    color: var(--heading-color);
+    font-size: 1.1rem;
 }
 
 @media all and (min-width: 640px) {
