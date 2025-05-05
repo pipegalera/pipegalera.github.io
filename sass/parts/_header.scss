@@ -67,12 +67,6 @@ header .socials {
     gap: 12px;
 }
 
-#dark-mode-toggle {
-    display: flex;
-    align-items: center;
-    margin: 0;
-}
-
 .logo {
     border-bottom: unset;
     background-image: unset;
@@ -145,13 +139,6 @@ header .socials {
     display: flexbox;
     align-items: center;
     flex-wrap: wrap;
-}
-
-#dark-mode-toggle > img {
-    display: none;
-    width: 15px;
-    height: 15px;
-    border: unset;
 }
 
 .search-button {
