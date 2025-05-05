@@ -18,7 +18,7 @@ highlight_code = true
 analytics = false
 use_cdn = false
 dynamic_note = false
-
+favicon = "icons/favicons/favicon-32x32.png"
 
 toc = true
 copy_code = true
