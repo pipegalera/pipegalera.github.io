@@ -13,29 +13,35 @@
 @import "parts/footnotes";
 
 :root {
-    /* Used for: block comment, hr, ... */
-    --border-color: var(--border-color);
+    /* Base Colors */
+    --base-0-color: #fff; /* white */
+    --base-1-color: #fafafa; /* delta 1 white */
+    --base-2-color: #ebebeb; /* delta 4.1 white */
+
+    --border-color: var(--base-2-color);
+    --hover-color: var(--base-0-color);
+
+    /* Text Colors */
+    --text-0-color: #666666; /* light gray */
+    --text-1-color: #212121; /* dark gray */
+
+    /* Theme Colors */
+    --primary-color: #ffd63a; /* yellow */
+    --secondary-color: #ddd3a5; /* light yellow */
+
+    /* Typography */
+    --base-line-height: 1.6rem;
+    --content-line-height: 1.6rem;
 
     /* Fonts */
     --text-font: "Roboto Mono", "Courier", "Helvetica", sans-serif;
-    --header-font: "Inter", "Helvetica Neue", Helvetica, sans-serif;
-    --code-font: "Roboto Mono", "Courier", "Helvetica", sans-serif;
-
-    /* Colors */
-    --heading-color: #000000;
-    --dark-yellow-color: #ffd63a;
-    --light-yellow-color: #ddd3a5;
-    --dark-gray-color: #4b4b4b;
-    --light-gray-color: #cad2d4;
-    --background-color: #f2e39b;
+    --header-font: var(--text-font);
+    --code-font: var(--text-font);
 }
 
 html {
-    background-color: var(--bg-0);
-    color: var(--text-0);
-    font-family: var(--text-font);
-    line-height: 1.6em;
-    font-weight: 400;
+    background-color: var(--base-1-color);
+    line-height: var(--base-line-height);
     -webkit-font-smoothing: antialiased;
 }
 
@@ -45,19 +51,20 @@ html {
     padding: 0 24px;
     word-wrap: break-word;
     letter-spacing: -0.01em;
-    color: var(--dark-gray-color);
+    color: var(--text-1-color);
     font-family: var(--text-font);
     -webkit-font-smoothing: antialiased;
     font-weight: 400;
     font-size: 15px;
+    line-height: var(--content-line-height);
 }
 
 h1,
 .h1 {
     font-family: var(--header-font);
     font-weight: 400;
-    color: var(--dark-gray-color);
-    margin-top: 10;
+    color: var(--text-1-color);
+    margin-top: 1rem;
     font-size: 1.4rem;
 }
 
@@ -65,7 +72,7 @@ h2,
 .h2 {
     font-family: var(--header-font);
     font-weight: 400;
-    color: var(--dark-gray-color);
+    color: var(--text-1-color);
     font-size: 1.3rem;
 }
 
@@ -75,7 +82,7 @@ h5,
 h6 {
     font-family: var(--header-font);
     font-weight: 400;
-    color: var(--dark-gray-color);
+    color: var(--text-1-color);
     font-size: 1.1rem;
 }
 
@@ -90,30 +97,34 @@ h2::before {
 }
 
 h3::before {
-    color: var(--primary-color);
+    color: var(--secondary-color);
     content: "### ";
 }
 
 h4::before {
-    color: var(--primary-color);
+    color: var(--secondary-color);
     content: "#### ";
 }
 
 h5::before {
-    color: var(--primary-color);
+    color: var(--secondary-color);
     content: "##### ";
 }
 
 h6::before {
-    color: var(--primary-color);
+    color: var(--secondary-color);
     content: "###### ";
 }
 
 .blog-post-subtitle {
     font-family: var(--header-font);
     font-weight: 400;
-    color: var(--dark-gray-color);
+    color: var(--text-1-color);
     font-size: 1.1rem;
+}
+
+.social :hover {
+    filter: invert(1);
 }
 
 @media all and (min-width: 640px) {

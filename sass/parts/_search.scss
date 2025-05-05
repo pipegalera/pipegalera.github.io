@@ -52,8 +52,8 @@ html.light .search-button .search-icon {
         margin: 8% auto;
         width: 80%;
         max-width: 28rem;
-        background-color: var(--bg-0);
-        border: 1px solid var(--bg-1);
+        background-color: var(--base-0-color);
+        border: 1px solid var(--base-1-color);
         border-radius: 8px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
@@ -68,9 +68,9 @@ html.light .search-button .search-icon {
             flex: 1;
             padding: 0.75rem 2.5rem;
             font-size: 1rem;
-            color: var(--text-0);
-            background: var(--bg-1);
-            border: 1px solid var(--bg-1);
+            color: var(--text-1-color);
+            background: var(--base-1-color);
+            border: 1px solid var(--base-1-color);
             border-radius: 20px;
             width: 100%;
 
@@ -101,7 +101,7 @@ html.light .search-button .search-icon {
 
     #results-container {
         display: none;
-        border-top: 1px solid var(--bg-1);
+        border-top: 1px solid var(--base-1-color);
 
         #results-info {
             padding: 0.5rem;
@@ -140,7 +140,7 @@ html.light .search-button .search-icon {
                 }
 
                 &:hover:not([aria-selected="true"]) {
-                    background: var(--bg-1);
+                    background: var(--base-1-color);
                 }
             }
         }
@@ -151,8 +151,8 @@ html.light .search-button .search-icon {
         margin: 8% auto;
         width: 80%;
         max-width: 28rem;
-        background-color: var(--bg-0);
-        border: 1px solid var(--bg-1);
+        background-color: var(--base-0-color);
+        border: 1px solid var(--base-1-color);
         border-radius: 8px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         padding: 1rem;
