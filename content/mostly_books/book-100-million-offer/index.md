@@ -5,5 +5,4 @@ date = "2021-12-30"
 draft=true
 [taxonomies]
 tags = ["books", "startups"]
-
 +++
