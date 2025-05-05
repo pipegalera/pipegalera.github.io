@@ -4,6 +4,8 @@ description= "Why we want what we want."
 date = "2025-05-04"
 [taxonomies]
 tags= ["books", "human behaviour"]
+[extra]
+toc = true
 +++
 
 Learnings and notes from the book **"Wanting: The Power of Mimetic Desire in Everyday Life, by Luke Burgis"**. Drawings belong to Luke Burgis.

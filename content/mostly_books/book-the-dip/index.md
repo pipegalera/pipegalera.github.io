@@ -4,6 +4,8 @@ description = "Short book on when (and how) to quit."
 date = "2023-04-23"
 [taxonomies]
 tags = ["books", "human behaviour", "quitting"]
+[extra]
+toc = false
 +++
 
 ![book cover](https://m.media-amazon.com/images/I/41DpNe1ihmL._SY445_SX342_.jpg)
