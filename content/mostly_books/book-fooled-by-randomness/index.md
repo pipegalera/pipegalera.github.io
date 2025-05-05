@@ -76,12 +76,7 @@ Overall, an "okay" book for me. A bit disappointed because it could have been a 
 
 - Having never been impressed by people with money (and I have met plenty of those throughout my life), I did not look at any of them as remotely a role model for me. Perhaps the opposite effect holds, as I am generally repelled by the wealthy, generally because of the attitude of epic heroism that usually accompanies rapid enrichment.
 
-- There are only two types of theories: 
-
-1. Theories that are known to be wrong, as they were tested and adequately rejected (falsified). 
-
-2. Theories that have not yet been known to be wrong, not falsified.
-
+- There are only two types of theories: i) Theories that are known to be wrong, as they were tested and adequately rejected (falsified). ii) Theories that have not yet been known to be wrong, not falsified.
 
 - Why is a theory never right? Because we will never know if all the swans are white
 
@@ -97,7 +92,7 @@ Overall, an "okay" book for me. A bit disappointed because it could have been a 
 
 - There are some instances in which one can trust a track record, but, alas, there are not too many of these.
 
-- The Monte Carlo generator will toss a coin; heads and the manager will make $10,000 over the year, tails and he will lose $10,000. We run it for the first year. At the end of the year, we expect 5,000 managers to be up $10,000 each, and 5,000 to be down $10,000. Now we run themngame a second year. Again, we can expect 2,500 managers to be up two years in a row; another year, 1,250; a fourth one, 625; a fifth, 313. We have now, simply in a fair game, 313 managers who made money for five years in a row. Out of pure luck. Meanwhile if we throw one of these successful traders into the real world we would get very interesting and helpful comments on his remarkable style, his incisive mind, and the influences that helped him achieve such success. Some analysts may attribute his achievement to precise elements among his childhood experiences. His biographer will dwell on the wonderful role models provided by his parents; we would be supplied with black-and-white pictures in the middle of the book of a great mind in the making. And the following year, should he stop outperforming (recall that his odds of having a good year have stayed at 50%) they would start laying blame, finding fault with the relaxation in his work ethics, or his dissipated lifestyle. They will find something he did before when he was successful that he has subsequently stopped doing, and attribute his failure to that. The truth will be, however, that he simply ran out of luck.
+- The Monte Carlo generator will toss a coin; heads and the manager will make `$`10,000 over the year, tails and he will lose `$`10,000. We run it for the first year. At the end of the year, we expect 5,000 managers to be up `$`10,000 each, and 5,000 to be down `$`10,000. Now we run themngame a second year. Again, we can expect 2,500 managers to be up two years in a row; another year, 1,250; a fourth one, 625; a fifth, 313. We have now, simply in a fair game, 313 managers who made money for five years in a row. Out of pure luck. Meanwhile if we throw one of these successful traders into the real world we would get very interesting and helpful comments on his remarkable style, his incisive mind, and the influences that helped him achieve such success. Some analysts may attribute his achievement to precise elements among his childhood experiences. His biographer will dwell on the wonderful role models provided by his parents; we would be supplied with black-and-white pictures in the middle of the book of a great mind in the making. And the following year, should he stop outperforming (recall that his odds of having a good year have stayed at 50%) they would start laying blame, finding fault with the relaxation in his work ethics, or his dissipated lifestyle. They will find something he did before when he was successful that he has subsequently stopped doing, and attribute his failure to that. The truth will be, however, that he simply ran out of luck.
 
 - Ergodicity: time will eliminate the annoying effects of randomness.
 
