@@ -68,10 +68,6 @@
     {# Font from cdn or disk #}
     {% if config.extra.use_cdn | default(value=false) %}
         <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/npm/jetbrains-mono@1.0.6/css/jetbrains-mono.min.css">
-        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/npm/@fontsource/space-grotesk@4.5.8/index.min.css">
-        <link rel="stylesheet"
               href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto+Mono:wght@400;700&display=swap">
     {% else %}
         <link href={{ get_url(path="fonts.css") }} rel="stylesheet" />
@@ -104,7 +100,7 @@
     {% endif %}
 
     {# Js copy-code button #}
-    {% if config.extra.fancy_code %}<script src={{ get_url(path="js/copy-code.js") }}></script>{% endif %}
+    {% if config.extra.copy_code %}<script src={{ get_url(path="js/copy-code.js") }}></script>{% endif %}
 
     {# Table of contents #}
     {% if config.extra.toc | default(value=false) %}<script src={{ get_url(path="js/toc.js") }}></script>{% endif %}
@@ -135,52 +131,7 @@
           href="{{ get_url(path="atom.xml", trailing_slash=false) }}">
 
 
-    {% set theme = config.extra.theme | default(value="toggle") %}
-    {% if theme == "dark" %}
-        <link rel="stylesheet"
-              type="text/css"
-              href="{{ get_url(path='theme/dark.css') }}" />
-    {% elif theme == "light" %}
-        <link rel="stylesheet"
-              type="text/css"
-              href="{{ get_url(path="theme/light.css") }}" />
-    {% elif theme == "auto" %}
-        <link rel="stylesheet"
-              type="text/css"
-              href="{{ get_url(path="theme/light.css") }}" />
-        <link rel="stylesheet"
-              type="text/css"
-              href="{{ get_url(path='theme/dark.css') }}"
-              media="(prefers-color-scheme: dark)" />
-    {% elif theme == "toggle" %}
-        <link rel="stylesheet"
-              type="text/css"
-              href="{{ get_url(path="theme/light.css") }}" />
-        <link id="darkModeStyle"
-              rel="stylesheet"
-              type="text/css"
-              href="{{ get_url(path='theme/dark.css') }}" />
-    {% endif %}
-
-    <!-- Set the correct theme in the script -->
-
-    {% if theme == "auto" or theme == "toggle" %}
-        <script src={{ get_url(path="js/themetoggle.js") }}></script>
-
-        {% if theme == "auto" %}
-            <script>
-                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                    setTheme("dark");
-                } else {
-                    setTheme("light");
-                }
-            </script>
-        {% else %}
-            <script>setTheme(getSavedTheme());</script>
-        {% endif %}
-    {% endif %}
-
-
+    {# CSS #}
     <link rel="stylesheet"
           type="text/css"
           media="screen"

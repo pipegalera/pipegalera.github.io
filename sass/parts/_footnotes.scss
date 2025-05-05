@@ -4,7 +4,7 @@
     padding-left: 1rem;
     border-left: 3px solid var(--primary-color);
     font-size: 0.9rem;
-    color: var(--text-1);
+    color: var(--text-1-color);
     position: relative; // For positioning the backlink
 
     p {
@@ -67,7 +67,7 @@ a.footnote-backlink {
 // For a section separator before footnotes
 .footnotes {
     margin-top: 2rem;
-    border-top: 1px solid var(--bg-2);
+    border-top: 1px solid var(--base-2-color);
     padding-top: 1rem;
 
     &:before {
