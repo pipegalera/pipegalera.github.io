@@ -164,7 +164,7 @@
 
                 {# Optional table of contents #}
                 {% if config.extra.toc | default(value=false) %}
-                    {% if page.toc %}
+                    {% if page.toc and page.extra.toc | default(value=true) %}
                         <div class="toc-container">
                             <h1 class="toc-title">Table of Contents</h1>
                             <ul class="toc-list">
