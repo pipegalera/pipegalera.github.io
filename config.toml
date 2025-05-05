@@ -10,6 +10,7 @@ minify_html = true
 taxonomies = [{ name = "tags" }]
 
 # https://www.getzola.org/documentation/getting-started/configuration/
+
 [markdown]
 highlight_theme = "solarized-dark"
 highlight_code = true
