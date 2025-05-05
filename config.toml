@@ -9,16 +9,18 @@ compile_sass = true
 minify_html = true
 taxonomies = [{ name = "tags" }]
 
+# https://www.getzola.org/documentation/getting-started/configuration/
 [markdown]
-highlight_code = true
 highlight_theme = "solarized-dark"
+highlight_code = true
 
 [extra]
+analytics = false
+use_cdn = false
+dynamic_note = false
+
 toc = true
-use_cdn = true
-theme = "light"
-fancy_code = true
-dynamic_note = true
+copy_code = true
 mathjax = true
 mathjax_dollar_inline_enable = true
 
