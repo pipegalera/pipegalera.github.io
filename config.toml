@@ -16,7 +16,7 @@ highlight_theme = "solarized-dark"
 highlight_code = true
 
 [extra]
-analytics = false
+analytics = true
 use_cdn = false
 dynamic_note = false
 favicon = "icons/favicons/favicon-32x32.png"
