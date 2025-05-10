@@ -67,8 +67,9 @@
 
     {# Analytics #}
     {% if config.extra.analytics %}
-        <script defer src="https://analytics.pipegalera.tech/script.js" data-website-id="6c70a805-dbd7-4ab6-a645-a5a795566829"></script>
+        <script defer src="https://umami.pipegalera.tech/script.js" data-website-id="6c70a805-dbd7-4ab6-a645-a5a795566829"></script>
     {% endif %}
+
 
     {# Font from cdn or disk #}
     {% if config.extra.use_cdn | default(value=false) %}
