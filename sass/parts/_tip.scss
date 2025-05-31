@@ -1,0 +1,165 @@
+// Obsidian-style FAQ Callout - Clean version with SVG icons
+// Usage: {% faq(clickable=true, header="FAQ: How do I run this?") %}content{% end %}
+
+.tip-callout {
+    // Default color for FAQ callouts
+    --callout-color: 255, 214, 58;
+    --header-color: 33, 33, 33;
+
+    // SVG icon data URIs as CSS variables
+    --icon-question: url("data:image/svg+xml,%3Csvg%20%20xmlns=%22http://www.w3.org/2000/svg%22%20%20width=%2224%22%20%20height=%2224%22%20%20viewBox=%220%200%2024%2024%22%20%20fill=%22none%22%20%20stroke=%22currentColor%22%20%20stroke-width=%222%22%20%20stroke-linecap=%22round%22%20%20stroke-linejoin=%22round%22%20%20class=%22icon%20icon-tabler%20icons-tabler-outline%20icon-tabler-bulb%22%3E%3Cpath%20stroke=%22none%22%20d=%22M0%200h24v24H0z%22%20fill=%22none%22/%3E%3Cpath%20d=%22M3%2012h1m8%20-9v1m8%208h1m-15.4%20-6.4l.7%20.7m12.1%20-.7l-.7%20.7%22%20/%3E%3Cpath%20d=%22M9%2016a5%205%200%201%201%206%200a3.5%203.5%200%200%200%20-1%203a2%202%200%200%201%20-4%200a3.5%203.5%200%200%200%20-1%20-3%22%20/%3E%3Cpath%20d=%22M9.7%2017l4.6%200%22%20/%3E%3C/svg%3E");
+    --icon-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 6l6 6-6 6' stroke='white' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+
+    border: 1px solid rgba(var(--callout-color), 0.4);
+    border-radius: 4px;
+    margin: 1.5rem 0 1.5rem 0;
+    background-color: rgba(var(--callout-color), 0.05);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+
+    // Header styling - left aligned
+    .tip-header {
+        display: flex;
+        font-weight: 600;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 10px 16px;
+        margin: 0;
+        color: rgb(var(--header-color));
+        background-color: rgba(var(--callout-color), 0.1);
+        border-bottom: 1px solid rgba(var(--callout-color), 0.2);
+        position: relative;
+        gap: 8px;
+
+        // Question mark icon - always visible
+        &::before {
+            content: "";
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            background-color: rgb(var(--callout-color));
+
+            // Using the CSS variable for the icon
+            mask-image: var(--icon-question);
+            mask-repeat: no-repeat;
+            mask-position: center;
+            mask-size: contain;
+            -webkit-mask-image: var(--icon-question);
+            -webkit-mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+            -webkit-mask-size: contain;
+        }
+
+        // When clickable, add cursor and chevron
+        &.clickable {
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.2s ease;
+
+            &:hover {
+                background-color: rgba(var(--callout-color), 0.15);
+            }
+
+            // Simple chevron-right icon
+            &::after {
+                content: "";
+                width: 14px;
+                height: 14px;
+                background-color: rgb(var(--callout-color));
+
+                // Using the CSS variable for the chevron icon
+                mask-image: var(--icon-chevron);
+                mask-repeat: no-repeat;
+                mask-position: center;
+                mask-size: contain;
+                -webkit-mask-image: var(--icon-chevron);
+                -webkit-mask-repeat: no-repeat;
+                -webkit-mask-position: center;
+                -webkit-mask-size: contain;
+
+                transition: transform 0.2s ease;
+                margin-left: auto;
+                flex-shrink: 0;
+            }
+
+            // Rotate chevron when expanded (90 degrees to point down)
+            &.expanded::after {
+                transform: rotate(90deg);
+            }
+        }
+    }
+
+    // Content area - minimal styling to inherit existing styles
+    .tip-content {
+        padding: 16px;
+        background: transparent;
+
+        // For collapsible functionality
+        &.collapsible {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 16px;
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+            &.expanded {
+                max-height: 2000px;
+                padding: 16px;
+                opacity: 1;
+            }
+        }
+
+        // Reset margins for first/last elements
+        > *:first-child {
+            margin-top: 0;
+        }
+
+        > *:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    // Non-clickable (always expanded) styling
+    &.static .tip-content {
+        padding: 16px;
+    }
+
+    // When static, remove the border-bottom from header
+    &.static .tip-header {
+        border-bottom: none;
+    }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+    .tip-callout {
+        border-radius: 3px;
+
+        .tip-header {
+            padding: 8px 12px;
+            font-size: 0.9rem;
+
+            &::before {
+                width: 14px;
+                height: 14px;
+            }
+
+            &.clickable::after {
+                width: 12px;
+                height: 12px;
+            }
+        }
+
+        .tip-content {
+            padding: 12px;
+
+            &.collapsible {
+                padding: 0 12px;
+
+                &.expanded {
+                    padding: 12px;
+                }
+            }
+        }
+    }
+}

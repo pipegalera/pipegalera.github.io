@@ -1,0 +1,164 @@
+// Obsidian-style FAQ Callout - Clean version with SVG icons
+// Usage: {% faq(clickable=true, header="FAQ: How do I run this?") %}content{% end %}
+
+.faq-callout {
+    // Default color for FAQ callouts
+    --callout-color: 102, 102, 160;
+
+    // SVG icon data URIs as CSS variables
+    --icon-question: url("data:image/svg+xml,%3Csvg%20%20xmlns=%22http://www.w3.org/2000/svg%22%20%20width=%2224%22%20%20height=%2224%22%20%20viewBox=%220%200%2024%2024%22%20%20fill=%22none%22%20%20stroke=%22currentColor%22%20%20stroke-width=%222%22%20%20stroke-linecap=%22round%22%20%20stroke-linejoin=%22round%22%20%20class=%22icon%20icon-tabler%20icons-tabler-outline%20icon-tabler-help%22%3E%3Cpath%20stroke=%22none%22%20d=%22M0%200h24v24H0z%22%20fill=%22none%22/%3E%3Cpath%20d=%22M12%2012m-9%200a9%209%200%201%200%2018%200a9%209%200%201%200%20-18%200%22%20/%3E%3Cpath%20d=%22M12%2017l0%20.01%22%20/%3E%3Cpath%20d=%22M12%2013.5a1.5%201.5%200%200%201%201%20-1.5a2.6%202.6%200%201%200%20-3%20-4%22%20/%3E%3C/svg%3E");
+    --icon-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9 6l6 6-6 6' stroke='white' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+
+    border: 1px solid rgba(var(--callout-color), 0.4);
+    border-radius: 4px;
+    margin: 1rem 0 1.5rem 0;
+    background-color: rgba(var(--callout-color), 0.05);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+
+    // Header styling - left aligned
+    .faq-header {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 10px 16px;
+        margin: 0;
+        font-weight: 600;
+        color: rgb(var(--callout-color));
+        background-color: rgba(var(--callout-color), 0.1);
+        border-bottom: 1px solid rgba(var(--callout-color), 0.2);
+        position: relative;
+        gap: 8px;
+
+        // Question mark icon - always visible
+        &::before {
+            content: "";
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            background-color: rgb(var(--callout-color));
+
+            // Using the CSS variable for the icon
+            mask-image: var(--icon-question);
+            mask-repeat: no-repeat;
+            mask-position: center;
+            mask-size: contain;
+            -webkit-mask-image: var(--icon-question);
+            -webkit-mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+            -webkit-mask-size: contain;
+        }
+
+        // When clickable, add cursor and chevron
+        &.clickable {
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.2s ease;
+
+            &:hover {
+                background-color: rgba(var(--callout-color), 0.15);
+            }
+
+            // Simple chevron-right icon
+            &::after {
+                content: "";
+                width: 14px;
+                height: 14px;
+                background-color: rgb(var(--callout-color));
+
+                // Using the CSS variable for the chevron icon
+                mask-image: var(--icon-chevron);
+                mask-repeat: no-repeat;
+                mask-position: center;
+                mask-size: contain;
+                -webkit-mask-image: var(--icon-chevron);
+                -webkit-mask-repeat: no-repeat;
+                -webkit-mask-position: center;
+                -webkit-mask-size: contain;
+
+                transition: transform 0.2s ease;
+                margin-left: auto;
+                flex-shrink: 0;
+            }
+
+            // Rotate chevron when expanded (90 degrees to point down)
+            &.expanded::after {
+                transform: rotate(90deg);
+            }
+        }
+    }
+
+    // Content area - minimal styling to inherit existing styles
+    .faq-content {
+        padding: 16px;
+        background: transparent;
+
+        // For collapsible functionality
+        &.collapsible {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 16px;
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+            &.expanded {
+                max-height: 2000px;
+                padding: 16px;
+                opacity: 1;
+            }
+        }
+
+        // Reset margins for first/last elements
+        > *:first-child {
+            margin-top: 0;
+        }
+
+        > *:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    // Non-clickable (always expanded) styling
+    &.static .faq-content {
+        padding: 16px;
+    }
+
+    // When static, remove the border-bottom from header
+    &.static .faq-header {
+        border-bottom: none;
+    }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+    .faq-callout {
+        border-radius: 3px;
+
+        .faq-header {
+            padding: 8px 12px;
+            font-size: 0.9rem;
+
+            &::before {
+                width: 14px;
+                height: 14px;
+            }
+
+            &.clickable::after {
+                width: 12px;
+                height: 12px;
+            }
+        }
+
+        .faq-content {
+            padding: 12px;
+
+            &.collapsible {
+                padding: 0 12px;
+
+                &.expanded {
+                    padding: 12px;
+                }
+            }
+        }
+    }
+}
