@@ -9,8 +9,10 @@
 @import "parts/_tags.scss";
 @import "parts/_mermaid.scss";
 @import "parts/_search.scss";
-@import "parts/footer";
-@import "parts/footnotes";
+@import "parts/footer.scss";
+@import "parts/_footnotes.scss";
+@import "parts/_faq.scss";
+@import "parts/_tip.scss";
 
 :root {
     /* Base Colors */
@@ -26,8 +28,9 @@
     --text-1-color: #212121; /* dark gray */
 
     /* Theme Colors */
-    --primary-color: #ffd63a; /* yellow */
-    --secondary-color: #ddd3a5; /* light yellow */
+    --primary-color-rgb: 255, 214, 58; /* yellow */
+    --primary-color: rgb(var(--primary-color-rgb));
+    --secondary-color: rgba(var(--primary-color-rgb), 0.5); /* light yellow */
 
     /* Typography */
     --base-line-height: 1.6rem;
@@ -64,7 +67,7 @@ h1,
     font-family: var(--header-font);
     font-weight: 400;
     color: var(--text-1-color);
-    margin-top: 1rem;
+    margin: 1.5rem 0 3rem 0;
     font-size: 1.4rem;
 }
 
@@ -74,9 +77,17 @@ h2,
     font-weight: 400;
     color: var(--text-1-color);
     font-size: 1.3rem;
+    margin: 3rem 0 3rem 0;
 }
 
 h3,
+.h3 {
+    font-family: var(--header-font);
+    font-weight: 400;
+    color: var(--text-1-color);
+    font-size: 1.1rem;
+    margin: 2rem 0 2rem 0;
+}
 h4,
 h5,
 h6 {
