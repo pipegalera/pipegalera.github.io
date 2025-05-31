@@ -1,0 +1,36 @@
+<div
+    class="tip-callout{% if clickable %} clickable{% else %} static{% endif %}"
+>
+    <div
+        class="tip-header{% if clickable %} clickable{% endif %}"
+        {%
+        if
+        clickable
+        %}onclick="toggleFaq(this)"
+        {%
+        endif
+        %}
+    >
+        {{ header }}
+    </div>
+    <div class="tip-content{% if clickable %} collapsible{% endif %}">
+        {{ body | default(value=content) | markdown | safe }}
+    </div>
+</div>
+
+{% if clickable %}
+<script>
+    function toggleFaq(header) {
+        const content = header.nextElementSibling;
+        const isExpanded = content.classList.contains("expanded");
+
+        if (isExpanded) {
+            content.classList.remove("expanded");
+            header.classList.remove("expanded");
+        } else {
+            content.classList.add("expanded");
+            header.classList.add("expanded");
+        }
+    }
+</script>
+{% endif %}
