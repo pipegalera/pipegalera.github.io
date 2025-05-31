@@ -43,7 +43,7 @@ I optimized the setup for simplicity.
 
 The choice of using Linux Desktop version is intentional. It allows interaction with the server without ssh. You could get the job done with any other Linux distro.
 
-Also, using Podman instead of Docker, any other wireguard instead of Tailscale, or nginx proxy instead of cloudfare - but it wouldn't be as simple.
+Also, feel free to  Podman instead of Docker, any other wireguard instead of Tailscale, or nginx proxy instead of cloudfare - but it wouldn't be as simple.
 I won't mention the words: proxmox, kubernetes, NixOS, reverse proxing, port routing, gateway router config...
 
 What I called a "minimalistic" configuration doesn't require you to be a part-time system admin. However, you still need to be comfortable writing commands on a terminal.
