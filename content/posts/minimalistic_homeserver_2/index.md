@@ -10,7 +10,7 @@ This post describes how to install your first batch of internal apps. *Internal*
 
 {% tip(clickable=false, header="Tip") %}
 
-For media apps (e.g. Jellyfin, Sonarr), please jump to the next post. 
+For media apps (e.g. Jellyfin, Sonarr), please jump to the next post.
 
 {% end %}
 
@@ -26,11 +26,11 @@ All the applications here use Tailscale for tunneling between devices. For examp
 
 ![tailscale.png](images/tailscale.png)
 
-**Why I need Tailscale?** 
+**Why I need Tailscale?**
 
-To access your server files (e.g Nextcloud) outside of your network (e.g. from a cafe) without exposing the server to the public internet. 
+To access your server files (e.g Nextcloud) outside of your network (e.g. from a cafe) without exposing the server to the public internet.
 
-Tailscale will allow to connect your server to other devices to the same secure network (called “tailnet”). It has a very generous free tier of up to 100 devices. 
+Tailscale will allow to connect your server to other devices to the same secure network (called “tailnet”). It has a very generous free tier of up to 100 devices.
 
 All the devices in this network pool will be able to connect between each other through the tailnet.
 ### 1.1  Install Tailscale in the client
@@ -43,11 +43,11 @@ Run in the server: `curl -fsSL https://tailscale.com/install.sh | sh`
 
 After the installation is completed, run `sudo tailscale up` and it will give you a website to visit in your client (e.g. https//login.tailscale.com/a/1204ecba01999). Login into that website, and it should say `Success.` in the server terminal.
 
-Into your Tailscale profile (https://login.tailscale.com/admin/machines) it should appear both machines (your *tailnet*):
+Into your Tailscale profile ([https://login.tailscale.com/admin/machines](https://login.tailscale.com/admin/machines)) it should appear both machines (your *tailnet*):
 
 ![tailscale_setup.png](images/tailscale_setup.png)
 
-Please notice that if you google "what is my public ip", it will show your real public IP. Tailscale uses their own IPs to connect and communicate devices. **This is not a free VPN to mask your devices, this is a VPN *network* to connect them securely. 
+Please notice that if you google "what is my public ip", it will show your real public IP. Tailscale uses their own IPs to connect and communicate devices. **This is not a free VPN to mask your devices, this is a VPN *network* to connect them securely.
 
 ### 1.3 Connect between devices
 
@@ -66,7 +66,7 @@ To install any of the following applications, you can either use the Desktop str
 
 ![nextcloud_0.png](images/nextcloud_0.png)
 
-I have to admin that calling Nextcloud a "self-hosted version of Dropbox" is a discredit to Nextcloud. I enjoy much more using Nextcloud that I've ever done with Dropbox - it works flawlessly. 
+I have to admin that calling Nextcloud a "self-hosted version of Dropbox" is a discredit to Nextcloud. I enjoy much more using Nextcloud that I've ever done with Dropbox - it works flawlessly.
 
 ### 2.1 Installation
 
@@ -97,9 +97,9 @@ This Nextcloud image is safe and comes from [https://www.linuxserver.io/](https:
 
 Change:
 
-- `your_user` for whatever su user you have
+- `your_user` for the user/folder name of your home user
 - `TZ` timezone for yours (e.g. `America/New_York`)
-- `4040` to any other number if that port is used. Never change the container internal port (right number) , only the external (left number). 
+- `4040` to any other number if that port is used. Never change the container internal port (right number) , only the external (left number)
 -  `1000` for your user id
 
 
@@ -110,11 +110,11 @@ Run `id` in the terminal:
 ![nextcloud_1.png](images/nextcloud_1.png)
 
 
-Normally it is 1000 by default. But if not, you should modify the docker-compose.yml `PUID` and `PGID` 
+Normally it is 1000 by default. But if not, you should modify the docker-compose.yml `PUID` and `PGID`
 
 {% end %}
 
-Finally, run the Nextcloud docker running: 
+Finally, run the Nextcloud docker running:
 
 ```bash
 docker compose up -d
@@ -132,7 +132,7 @@ From the client side (e.g. your phone or laptop), Nextcloud works like Dropbox. 
 
 ![nextcloud_3.png](images/nextcloud_3.png)
 
-After installing the app, it will ask for the server ip (e.g. `https://homeserver:4040/`) and for permission to sync the server data. 
+After installing the app, it will ask for the server ip (e.g. `https://homeserver:4040/`) and for permission to sync the server data.
 
 {% tip(clickable=false, header="Tip") %}
 
@@ -142,11 +142,11 @@ It can take up to 5 min to recognize the IP if you just installed Nextcloud.
 
 ![nextcloud_4.png](images/nextcloud_4.png)
 
-Please notice that the app has many more functionalities that you can explore: office, calendar, notes, videocalls. I personally only use Notes app in my Android phone and Nextcloud in all my devices. 
+Please notice that the app has many more functionalities that you can explore: office, calendar, notes, videocalls. I personally only use Notes app in my Android phone and Nextcloud in all my devices.
 
 {% tip(clickable=true, header="Bonus: NextCloud can be used to host Obsidian") %}
 
-Obsidian, the popular notetaking app, can use any folder as "vault" to start. 
+Obsidian, the popular notetaking app, can use any folder as "vault" to start.
 
 Simply use a Nextcloud folder (e.g. `Notes`) and all the notes will be synced across all the devices with Nextcloud.
 
@@ -161,7 +161,7 @@ Simply use a Nextcloud folder (e.g. `Notes`) and all the notes will be synced ac
 
 ![immich_0.png](images/immich_0.png)
 
-### 3.1 Installation 
+### 3.1 Installation
 
 I followed [the official documentation](https://immich.app/docs/install/docker-compose/) :
 
@@ -188,7 +188,7 @@ Same as with Nextloud. Visit server Tailscale IP + Immich port: `http://homeserv
 
 From your smartphone or tablet, download the app in the apple/play store and similary you can use the Tailscale IP + Immich port to log in.
 
-There is no desktop app but you can always visit `http://homeserver:2283/`. 
+There is no desktop app but you can always visit `http://homeserver:2283/`.
 
 {% tip(clickable=false, header="Tip") %}
 
@@ -204,7 +204,7 @@ Glance is a great dashboard that provides a visual overview of your whole server
 
 I strongly recommend it to control the temps, load, and application status of your server. [Here is the public repository of the project](https://github.com/glanceapp/glance)
 
-### 4.1 Installation 
+### 4.1 Installation
 
 Download the latest docker-compose
 
@@ -212,11 +212,15 @@ Download the latest docker-compose
 mkdir glance && cd glance && curl -sL https://github.com/glanceapp/docker-compose-template/archive/refs/heads/main.tar.gz | tar -xzf - --strip-components 2
 ```
 
-Note that besides downloading the `docker-compose.yml` file, the command also downloads a  template dashboard to start with. 
+Note that besides downloading the `docker-compose.yml` file, the command also downloads a  template dashboard to start with.
 
 Run the Glance docker image: `docker compose up -d` and  you should be able to see it at port 8080.
 
-The whole dashboard is configurable via a single yaml file in `docker/glance/config/home.yml`. In the official config docs [here](https://github.com/glanceapp/glance/blob/main/docs/configuration.md) you have plenty of widgets easy to configure and make it your own.
+### 4.2  Setup
+
+The whole dashboard is configurable via a single .yml file: `docker/glance/config/home.yml`.
+
+In the official config docs [here](https://github.com/glanceapp/glance/blob/main/docs/configuration.md#configuring-glance) you have plenty of widgets easy to configure and make it your own.
 
 
 {% faq(clickable=true, header="More apps ?") %}
