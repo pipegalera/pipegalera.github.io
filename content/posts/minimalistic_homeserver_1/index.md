@@ -13,7 +13,7 @@ My simple and opinionated guide setup for my minimalistic homeserver.
 
 It took me a couple of months of "journey", but I learned a lot of infrastructure, Linux, network security and was a hell of fun.
 
-I self-host applications that replaced my monthly subscriptions of Google Drive, Google Photos, Apple iCloud, Obsidian, Netflix and Disney. And I don't rent my stuff, I own it. 
+I self-host applications that replaced my monthly subscriptions of Google Drive, Google Photos, Apple iCloud, Obsidian, Netflix and Disney. And I don't rent my stuff, I own it.
 
 These series of posts describe my "minimalistic" and uncomplicated setup.
 
@@ -79,18 +79,18 @@ Total cost: ~€465 (EU-DK).
 
 Tell the Aliexpress seller to "please include a 2.5 sata cable" (like [this one](https://www.aliexpress.com/item/1005007348439542.html)), so you can install also SSD drives.
 
-### 1.2 Performance 
+### 1.2 Performance
 
 [Here](https://browser.geekbench.com/v6/cpu/compare/11218167?baseline=9919608)
- is the comparison with an equally expensive (in Europe) Raspberry Pi 5 - 16 Gb: 
+ is the comparison with an equally expensive (in Europe) Raspberry Pi 5 - 16 Gb:
 
 ![benchmark_pc.png](images/benchmark_pc.png)
 
-You get more bang per buck with a mini pc than a Raspberry Pi. 
+You get more bang per buck with a mini pc than a Raspberry Pi.
 
 To be fair, I think a Raspberry Pi 5 could do everything I will describe in my homeserver posts - so it can be also an option if you love the very small factor form of the Pi and you are willing to sacrifice performance.
 
-The mini pc is been serving media at 4k for multiple devices at the same time, has +20 docker containers running and it never crashed in 5 months using it. 99% of the time it doesn't produces any audible noise, and I can only hear it the 1% of time that is under intense load. 
+The mini pc is been serving media at 4k for multiple devices at the same time, has +20 docker containers running and it never crashed in 5 months using it. 99% of the time it doesn't produces any audible noise, and I can only hear it the 1% of time that is under intense load.
 
 
 ## 2. The OS: Ubuntu 24 Desktop
@@ -105,11 +105,11 @@ You don't need to install the linux "server version" of any distro to make it a 
 
 **The desktop interface takes 3% of my N100 CPU usage when in use, and 1% in idle** - and you can always remove the desktop UX later if you don't use it.
 
-Ubuntu Desktop 24 is has great reviews, feels very polished, it's a secure distro and it's well supported by Canonical (parent company).
+I choose Ubuntu Desktop 24 because it has great reviews in the community, feels very polished, and the security updates are well supported by Canonical (parent company).
 
-[Follow the official instructions](https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview), to install the OS in the server. They are illustrated and easy to follow.
+[Follow the official instructions](https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview) to install it - they are illustrated and easy to follow.
 
-After installing the OS, remember to update and upgrade (e.g. `sudo apt update && upgrade`). 
+After installing the OS, remember to update and upgrade (e.g. `sudo apt update && upgrade`).
 
 ## 3.  Docker
 
@@ -159,7 +159,7 @@ This message shows that your installation appears to be working correcly.
 
 ### 3.2 Admin privileges
 
-After that [create a su user for docker](https://docs.docker.com/engine/install/linux-postinstall/), so you don't have to write `sudo docker` constantly:
+After that [create a su user for docker](https://docs.docker.com/engine/install/linux-postinstall/), so you don't have to write `sudo` constantly using docker:
 
 ```bash
 sudo groupadd docker
@@ -167,6 +167,8 @@ sudo usermod -aG docker $USER
 newgrp docker
 docker run hello-world
 ```
+
+To test, run: `docker run hello-world`
 
 It should show the same as before, but this time you didn't have to use `sudo`.
 
