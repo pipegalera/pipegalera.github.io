@@ -47,6 +47,9 @@ Into your Tailscale profile ([https://login.tailscale.com/admin/machines](https:
 
 ![tailscale_setup.png](images/tailscale_setup.png)
 
+
+- If the tag  `ssh` do not appear, run: `sudo tailscale up --ssh`
+
 Please notice that if you google "what is my public ip", it will show your real public IP. Tailscale uses their own IPs to connect and communicate devices. **This is not a free VPN to mask your devices, this is a VPN *network* to connect them securely.**
 
 ### 1.3 Connect between devices
