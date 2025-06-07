@@ -2,6 +2,7 @@
 title = "My minimalistic homeserver: Internal Applications (2/N)"
 description = "Installing Nextcloud, Immich and Glance."
 date = "2025-06-02"
+updated = "2025-06-07"
 [taxonomies]
 tags = ["self-hosting", "servers", "docker"]
 +++
@@ -232,11 +233,12 @@ These are 3 examples of very useful applications, but they are endless self-host
 
 Just google: *"self-hosted version of X software"*. Look for the docker compose installation. As you can see, it is very easy and clean.
 
-Some other self hosted software that I like for internal use:
+Some other self-hosted software that I like for internal use:
 
 - [Paperless](https://docs.paperless-ngx.com/) to digitalize paper documents
+- [AudioBookShelf](https://www.audiobookshelf.org/)+ [Lissen](https://play.google.com/store/apps/details?id=org.grakovne.lissen&hl=da) (android client) for listening audiobooks. 
 - [Obsidian](https://obsidian.md/) for notetaking (via Nextcloud)
-- [Home Assistant](https://www.home-assistant.io/installation/alternative/#docker-compose) for managing smart bulbs and other home devices
+- [Home Assistant](https://www.home-assistant.io/installation/alternative/#docker-compose) for managing smart bulbs and other smart home devices
 - [Recipya](https://github.com/reaper47/recipya/) for cooking recepies
 - [Kestra](https://kestra.io/) to orchestrate and automate data pipelines (data engineering)
 
