@@ -2,6 +2,7 @@
 title = "My minimalistic homeserver: Setup (1/N)"
 description = "My simple and opinionated guide setup for my minimalistic homeserver."
 date = "2025-05-31"
+updated = "2025-06-07"
 [taxonomies]
 tags = ["self-hosting", "servers", "docker"]
 +++
@@ -124,7 +125,7 @@ Do not install Docker using `sudo apt install docker.io`. Ubuntu repository has 
 {% end %}
 
 
-[Follow the official instructions from the Docker website](https://docs.docker.com/engine/install/ubuntu/):
+[Follow the official instructions from the Docker website](https://docs.docker.com/engine/install/). For Ubuntu:
 
 
 ```bash
