@@ -2,7 +2,7 @@
 title = "My minimalistic homeserver: Setup (1/N)"
 description = "My simple and opinionated guide setup for my minimalistic homeserver."
 date = "2025-05-31"
-updated = "2025-06-07"
+updated = "2025-06-08"
 [taxonomies]
 tags = ["self-hosting", "servers", "docker"]
 +++
