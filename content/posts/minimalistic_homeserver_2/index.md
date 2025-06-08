@@ -2,7 +2,7 @@
 title = "My minimalistic homeserver: Internal Applications (2/N)"
 description = "Installing Nextcloud, Immich and Glance."
 date = "2025-06-02"
-updated = "2025-06-07"
+updated = "2025-06-08"
 [taxonomies]
 tags = ["self-hosting", "servers", "docker"]
 +++
