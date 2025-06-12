@@ -3,6 +3,7 @@
 title = "My minimalistic homeserver:  Public Applications (4/N)"
 description = "Exposing Umami service to the public internet."
 date = "2025-06-08"
+updated="2025-06-12"
 [taxonomies]
 tags = ["self-hosting", "servers", "docker"]
 +++
@@ -193,7 +194,7 @@ You can replace "localhost" for your IP or Tailscale machine name.
 - Route the new service: 
 
 ```
-cloudflared tunnel create homelab-tunnel my_new_service.pipegalera.tech
+cloudflared tunnel route dns homelab-tunnel my_new_service.pipegalera.tech
 ```
 
 - Reset cloudflared: `sudo systemctl restart cloudflared`
