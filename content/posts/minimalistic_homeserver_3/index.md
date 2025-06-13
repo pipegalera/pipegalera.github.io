@@ -2,6 +2,7 @@
 title = "My minimalistic homeserver: *Arr Media Suite (3/N)"
 description = "Installing *Arr Media Suite and securing internet privacy."
 date = "2025-06-07"
+updated = "2025-06-13"
 [taxonomies]
 tags = ["self-hosting", "servers", "docker"]
 +++
@@ -87,6 +88,7 @@ services:
         volumes:
             - /home/pipegalera/docker/arr/qbittorrent/config:/config
             - /home/pipegalera/data/torrents:/data/torrents
+        restart: unless-stopped
 
     sonarr:
         container_name: sonarr
@@ -101,7 +103,8 @@ services:
         volumes:
             - /home/pipegalera/docker/arr/sonarr/config:/config
             - /home/pipegalera/data:/data
-
+        restart: unless-stopped
+        
     radarr:
         container_name: radarr
         image: ghcr.io/hotio/radarr
@@ -115,7 +118,8 @@ services:
         volumes:
             - /home/pipegalera/docker/arr/radarr/config:/config
             - /home/pipegalera/data:/data
-
+        restart: unless-stopped
+        
     prowlarr:
         container_name: prowlarr
         image: ghcr.io/hotio/prowlarr
@@ -128,7 +132,8 @@ services:
             - TZ=Etc/UTC
         volumes:
             - /home/pipegalera/docker/arr/prowlarr/config:/config
-
+        restart: unless-stopped
+        
     jellyfin:
         container_name: jellyfin
         image: ghcr.io/hotio/jellyfin
@@ -142,7 +147,8 @@ services:
         volumes:
             - /home/pipegalera/docker/arr/jellyfin/config:/config
             - /home/pipegalera/data:/data
-
+        restart: unless-stopped
+        
     jellyseerr:
         container_name: jellyseerr
         image: ghcr.io/hotio/jellyseerr
@@ -155,6 +161,7 @@ services:
             - TZ=Etc/UTC
         volumes:
             - /home/pipegalera/docker/arr/jellyseerr/config:/config
+        restart: unless-stopped
 ```
 
 Make sure you are in the correct parent folder (e.g. `/home/pipegalera/docker/arr`) and run `docker compose up -d` 
