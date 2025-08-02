@@ -7,7 +7,6 @@ updated = "2025-06-08"
 tags = ["self-hosting", "servers", "docker"]
 +++
 
-
 My simple and opinionated guide setup for my minimalistic homeserver.
 
 ![](images/server_photo.png)
@@ -17,7 +16,6 @@ It took me a couple of months of "journey", but I learned a lot of infrastructur
 I self-host applications that replaced my monthly subscriptions of Google Drive, Google Photos, Apple iCloud, Obsidian, Netflix and Disney. And I don't rent my stuff, I own it.
 
 These series of posts describe my "minimalistic" and uncomplicated setup.
-
 
 {% faq(clickable=true, header="How minimalistic?") %}
 
@@ -36,31 +34,28 @@ That's it.
 
 {% end %}
 
-
-
 {% faq(clickable=true, header="How complicated ?") %}
 
 I optimized the setup for simplicity.
 
 The choice of using Linux Desktop version is intentional. It allows interaction with the server without ssh. You could get the job done with any other Linux distro.
 
-Also, feel free to  Podman instead of Docker, any other wireguard instead of Tailscale, or nginx proxy instead of cloudfare - but it wouldn't be as simple.
+Also, feel free to use Podman instead of Docker, any other wireguard instead of Tailscale, or use nginx proxy instead of cloudfare - but it wouldn't be as simple.
 I won't mention the words: proxmox, kubernetes, NixOS, reverse proxing, port routing, gateway router config...
 
 What I called a "minimalistic" configuration doesn't require you to be a part-time system admin. However, you still need to be comfortable writing commands on a terminal.
 
 {% end %}
 
-## 1. The server: *TexHoo QN10*
-
+## 1. The server: _TexHoo QN10_
 
 {% tip(clickable=false, header="Tip") %}
 
-Reuse any old laptop or pc as a server if you have one. Buying new: the key is to look for  Intel N series CPU + DDR5 ram + NVME storage.
+Reuse any old laptop or pc as a server if you have one. Buying new: the key is to look for Intel N series CPU + DDR5 ram + NVME storage.
 
 {% end %}
 
-I came across [this fantastic post form a reddit user](https://diycraic.com/2024/12/27/intel-n100-mini-pc-32gb-ram-as-a-home-server/) in which he recommends called *TexHoo QN10 Mini PC*.
+I came across [this fantastic post form a reddit user](https://diycraic.com/2024/12/27/intel-n100-mini-pc-32gb-ram-as-a-home-server/) in which he recommends called _TexHoo QN10 Mini PC_.
 
 This is a great server pc because:
 
@@ -72,7 +67,7 @@ I can confirm that the build quality is good and everything works as it should a
 
 ### 1.1 Cost
 
-- Mini PC barebones: €138  (Aliexpress.com)
+- Mini PC barebones: €138 (Aliexpress.com)
 - Crucial DDR5 24GB ram module: €55 (Amazon.de)
 - Crucial 4 TB NVME: €272 (Amazon.de)
 
@@ -83,7 +78,7 @@ Tell the Aliexpress seller to "please include a 2.5 sata cable" (like [this one]
 ### 1.2 Performance
 
 [Here](https://browser.geekbench.com/v6/cpu/compare/11218167?baseline=9919608)
- is the comparison with an equally expensive (in Europe) Raspberry Pi 5 - 16 Gb:
+is the comparison with an equally expensive (in Europe) Raspberry Pi 5 - 16 Gb:
 
 ![benchmark_pc.png](images/benchmark_pc.png)
 
@@ -92,7 +87,6 @@ You get more bang per buck with a mini pc than a Raspberry Pi.
 To be fair, I think a Raspberry Pi 5 could do everything I will describe in my homeserver posts - so it can be also an option if you love the very small factor form of the Pi and you are willing to sacrifice performance.
 
 The mini pc is been serving media at 4k for multiple devices at the same time, has +20 docker containers running and it never crashed in 5 months using it. 99% of the time it doesn't produces any audible noise, and I can only hear it the 1% of time that is under intense load.
-
 
 ## 2. The OS: Ubuntu 24 Desktop
 
@@ -112,7 +106,7 @@ I choose Ubuntu Desktop 24 because it has great reviews in the community, feels 
 
 After installing the OS, remember to update and upgrade (e.g. `sudo apt update && upgrade`).
 
-## 3.  Docker
+## 3. Docker
 
 The first program to install will be Docker, that will compartmentalize neatly all our applications.
 
@@ -124,9 +118,7 @@ Do not install Docker using `sudo apt install docker.io`. Ubuntu repository has 
 
 {% end %}
 
-
 [Follow the official instructions from the Docker website](https://docs.docker.com/engine/install/). For Ubuntu:
-
 
 ```bash
 # Add Docker's official GPG key:
