@@ -7,7 +7,7 @@ updated = "2025-06-08"
 tags = ["self-hosting", "servers", "docker"]
 +++
 
-This post describes how to install your first batch of internal apps. *Internal* in the sense that they are not public, only allowed devices will be able to reach them.
+This post describes how to install your first batch of internal apps. _Internal_ in the sense that they are not public, only allowed devices will be able to reach them.
 
 {% tip(clickable=false, header="Tip") %}
 
@@ -34,7 +34,8 @@ To access your server files (e.g Nextcloud) outside of your network (e.g. from a
 Tailscale will allow to connect your server to other devices to the same secure network (called “tailnet”). It has a very generous free tier of up to 100 devices.
 
 All the devices in this network pool will be able to connect between each other through the tailnet.
-### 1.1  Install Tailscale in the client
+
+### 1.1 Install Tailscale in the client
 
 In your client (e.g. your laptop) go to `https://tailscale.com/download` and follow the instructions.
 
@@ -44,14 +45,13 @@ Run in the server: `curl -fsSL https://tailscale.com/install.sh | sh`
 
 After the installation is completed, run `sudo tailscale up` and it will give you a website to visit in your client (e.g. https//login.tailscale.com/a/1204ecba01999). Login into that website, and it should say `Success.` in the server terminal.
 
-Into your Tailscale profile ([https://login.tailscale.com/admin/machines](https://login.tailscale.com/admin/machines)) it should appear both machines (your *tailnet*):
+Into your Tailscale profile ([https://login.tailscale.com/admin/machines](https://login.tailscale.com/admin/machines)) it should appear both machines (your _tailnet_):
 
 ![tailscale_setup.png](images/tailscale_setup.png)
 
+- If the tag `ssh` do not appear, run: `sudo tailscale up --ssh`
 
-- If the tag  `ssh` do not appear, run: `sudo tailscale up --ssh`
-
-Please notice that if you google "what is my public ip", it will show your real public IP. Tailscale uses their own IPs to connect and communicate devices. **This is not a free VPN to mask your devices, this is a VPN *network* to connect them securely.**
+Please notice that if you google "what is my public ip", it will show your real public IP. Tailscale uses their own IPs to connect and communicate devices. **This is not a free VPN to mask your devices, this is a VPN _network_ to connect them securely.**
 
 ### 1.3 Connect between devices
 
@@ -66,6 +66,7 @@ You can assign names to the devices and use this alias instead of the IP (e.g. `
 {% end %}
 
 To install any of the following applications, you can either use the Desktop straight in the server or ssh into the server from the client, it doesn't matter.
+
 ## 2. Self-hosted Dropbox: NextCloud
 
 ![nextcloud_0.png](images/nextcloud_0.png)
@@ -96,7 +97,6 @@ services:
     restart: unless-stopped
 ```
 
-
 This Nextcloud image is safe and comes from [https://www.linuxserver.io/](https://www.linuxserver.io/).
 
 Change:
@@ -104,15 +104,13 @@ Change:
 - `your_user` for the user/folder name of your home user
 - `TZ` timezone for yours (e.g. `America/New_York`)
 - `4040` to any other number if that port is used. Never change the container internal port (right number) , only the external (left number)
--  `1000` for your user id
-
+- `1000` for your user id
 
 {% faq(clickable=true, header="How to check your `id` ?") %}
 
 Run `id` in the terminal:
 
 ![nextcloud_1.png](images/nextcloud_1.png)
-
 
 Normally it is 1000 by default. But if not, you should modify the docker-compose.yml `PUID` and `PGID`
 
@@ -154,12 +152,9 @@ Obsidian, the popular notetaking app, can use any folder as "vault" to start.
 
 Simply use a Nextcloud folder (e.g. `Notes`) and all the notes will be synced across all the devices with Nextcloud.
 
-
 <iframe src="https://www.youtube-nocookie.com/embed/e3uQ2rtKkFA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="1"></iframe>
 
-
 {% end %}
-
 
 ## 3. Self-hosted Google Photos: Immich
 
@@ -216,27 +211,26 @@ Download the latest docker-compose
 mkdir glance && cd glance && curl -sL https://github.com/glanceapp/docker-compose-template/archive/refs/heads/main.tar.gz | tar -xzf - --strip-components 2
 ```
 
-Note that besides downloading the `docker-compose.yml` file, the command also downloads a  template dashboard to start with.
+Note that besides downloading the `docker-compose.yml` file, the command also downloads a template dashboard to start with.
 
-Run the Glance docker image: `docker compose up -d` and  you should be able to see it at port 8080.
+Run the Glance docker image: `docker compose up -d` and you should be able to see it at port 8080.
 
-### 4.2  Setup
+### 4.2 Setup
 
 The whole dashboard is configurable via a single .yml file: `docker/glance/config/home.yml`.
 
 In the official config docs [here](https://github.com/glanceapp/glance/blob/main/docs/configuration.md#configuring-glance) you have plenty of widgets easy to configure and make it your own.
 
-
 {% faq(clickable=true, header="More apps ?") %}
 
 These are 3 examples of very useful applications, but they are endless self-hosted applications that can replace subscription model software.
 
-Just google: *"self-hosted version of X software"*. Look for the docker compose installation. As you can see, it is very easy and clean.
+Just google: _"self-hosted version of X software"_. Look for the docker compose installation. As you can see, it is very easy and clean.
 
 Some other self-hosted software that I like for internal use:
 
 - [Paperless](https://docs.paperless-ngx.com/) to digitalize paper documents
-- [AudioBookShelf](https://www.audiobookshelf.org/)+ [Lissen](https://play.google.com/store/apps/details?id=org.grakovne.lissen&hl=da) (android client) for listening audiobooks. 
+- [AudioBookShelf](https://www.audiobookshelf.org/)+ [Lissen](https://play.google.com/store/apps/details?id=org.grakovne.lissen&hl=da) (android client) for listening audiobooks.
 - [Obsidian](https://obsidian.md/) for notetaking (via Nextcloud)
 - [Home Assistant](https://www.home-assistant.io/installation/alternative/#docker-compose) for managing smart bulbs and other smart home devices
 - [Recipya](https://github.com/reaper47/recipya/) for cooking recepies
