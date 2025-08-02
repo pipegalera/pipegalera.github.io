@@ -2,11 +2,22 @@
 title = "How to set up Hydrogen in Pulsar IDE"
 description = "Setting up Hydrogen in Atom's spiritual successor."
 date = "2023-08-02"
+updated = "2025-08-02"
 [taxonomies]
 tags = ["ide", "python", "ipython"]
 [extra]
 comment = true
 +++
+
+{% tip(clickable=false, header="2025-08-02 Update") %}
+
+This post is outdated.
+
+There are new packages made specifically for Pulsar like [x-terminal-reloaded](https://web.pulsar-edit.dev/packages/x-terminal-reloaded) or [hydrogen-next](https://web.pulsar-edit.dev/packages/hydrogen-next).
+
+Simply install hydrogen-next via package manager in Pulsar's settings.
+
+{% end %}
 
 ## I missed Atom 💔 (**tl;dr** skip to next section.)
 
