@@ -1,8 +1,8 @@
 +++
-title = "My minimalistic homeserver: *Arr Media Suite (3/N)"
+title = "My minimalistic your_ip: *Arr Media Suite (3/N)"
 description = "Installing *Arr Media Suite and securing internet privacy."
 date = "2025-06-07"
-updated = "2025-06-13"
+updated = "2025-08-21"
 [taxonomies]
 tags = ["self-hosting", "servers", "docker"]
 +++
@@ -21,11 +21,13 @@ This is my simple configuration for my media application for Movies and TVShows.
 
 I am able to run 4k at 60fps with ease in multiple devices at the same time from my network with a mini N100 pc.
 
-I do not expose publicly any of these applications, and I connect between my devices locally using Tailscale free tier (see [here](https://pipegalera.com/posts/minimalistic-homeserver-2/#1-the-connector-tailscale) instructions on how to install Tailscale.)
+I do not expose publicly any of these applications, and I connect between my devices locally using Tailscale free tier (see [here](https://pipegalera.com/posts/minimalistic-your_ip-2/#1-the-connector-tailscale) instructions on how to install Tailscale.)
 
-Remember to replace my home folder `/home/pipegalera/` for your own or whatever parent folder you want to use.
+Remember to replace the home folder `your_user_homepath` for your own or whatever parent folder you want to use.
 
-### 1. Installation
+## 1. Installation
+
+We will install arr suite via docker compose. I will use [hotio](https://hotio.dev/) docker images, but this also work with [linuxserver](https://www.linuxserver.io/our-images) alternatively.
 
 {% tip(clickable=false, header="Disclaimer and Privacy") %}
 
@@ -46,18 +48,20 @@ I will use a single `docker-compose.yml` file to install:
 
 ### 1.1 Create directory folders
 
-I will setup a single folder `data` for the media with the subfolders `movies` and `tv`.
+I will host data within the hardrive of the system in a folder called `data` . If you want to store your movies and tv shows in a separate hardrive, the process is the same - you just have to mount the it (google this) and replace the `your_user_homepath` for the hard drive path.
 
 ```
 # Set one folder for data and other for the app config
-sudo mkdir /home/pipegalera/data/{torrents,media}/{movies,tv}
-sudo mkdir /home/pipegalera/docker/arr
+sudo mkdir /your_user_homepath/data
+sudo mkdir /your_user_homepath/data/{torrents,media}
+sudo mkdir /your_user_homepath/data/{torrents,media}/{movies,tv}
+sudo mkdir /your_user_homepath/docker/arr
 ```
 
 ```
 # Set ownership
-sudo chown -R 1000:1000 /home/pipegalera/data
-sudo chown -R 1000:1000 /home/pipegalera/docker/arr
+sudo chown -R 1000:1000 /your_user_homepath/data
+sudo chown -R 1000:1000 /your_user_homepath/docker/arr
 ```
 
 ### 1.2 Docker compose file
@@ -65,7 +69,7 @@ sudo chown -R 1000:1000 /home/pipegalera/docker/arr
 After creating the files and setting the ownership (important!), create the `docker-compose.yml` file and install the apps via docker:
 
 ```
-cd /home/pipegalera/docker/arr
+cd /your_user_homepath/docker/arr
 touch docker-compose.yml
 ```
 
@@ -85,8 +89,8 @@ services:
             - TZ=Etc/UTC
             - WEBUI_PORTS=6080/tcp,6080/udp
         volumes:
-            - /home/pipegalera/docker/arr/qbittorrent/config:/config
-            - /home/pipegalera/data/torrents:/data/torrents
+            - /your_user_homepath/docker/arr/qbittorrent/config:/config
+            - /your_user_homepath/data/torrents:/data/torrents
         restart: unless-stopped
 
     sonarr:
@@ -100,8 +104,8 @@ services:
             - UMASK=002
             - TZ=Etc/UTC
         volumes:
-            - /home/pipegalera/docker/arr/sonarr/config:/config
-            - /home/pipegalera/data:/data
+            - /your_user_homepath/docker/arr/sonarr/config:/config
+            - /your_user_homepath/data:/data
         restart: unless-stopped
 
     radarr:
@@ -115,8 +119,8 @@ services:
             - UMASK=002
             - TZ=Etc/UTC
         volumes:
-            - /home/pipegalera/docker/arr/radarr/config:/config
-            - /home/pipegalera/data:/data
+            - /your_user_homepath/docker/arr/radarr/config:/config
+            - /your_user_homepath/data:/data
         restart: unless-stopped
 
     prowlarr:
@@ -130,7 +134,7 @@ services:
             - UMASK=002
             - TZ=Etc/UTC
         volumes:
-            - /home/pipegalera/docker/arr/prowlarr/config:/config
+            - /your_user_homepath/docker/arr/prowlarr/config:/config
         restart: unless-stopped
 
     jellyfin:
@@ -144,8 +148,8 @@ services:
             - UMASK=002
             - TZ=Etc/UTC
         volumes:
-            - /home/pipegalera/docker/arr/jellyfin/config:/config
-            - /home/pipegalera/data:/data
+            - /your_user_homepath/docker/arr/jellyfin/config:/config
+            - /your_user_homepath/data:/data
         restart: unless-stopped
 
     jellyseerr:
@@ -159,13 +163,22 @@ services:
             - UMASK=002
             - TZ=Etc/UTC
         volumes:
-            - /home/pipegalera/docker/arr/jellyseerr/config:/config
+            - /your_user_homepath/docker/arr/jellyseerr/config:/config
         restart: unless-stopped
 ```
 
-Make sure you are in the correct parent folder (e.g. `/home/pipegalera/docker/arr`) and run `docker compose up -d`
+Make sure you are in the correct parent folder (e.g. `/your_user_homepath/docker/arr`) and run `docker compose up -d`
 
 ![](images/docker_compose_up.png)
+
+From here on you should be able to access the services:
+
+- `Prowlarr`: http://your_ip:9696
+- `qBittorrent` http://your_ip:9696
+- `Radarr`: http://your_ip:9696
+- `Sonarr`: http://your_ip:9696
+- `Jellyfin`: http://your_ip:9696
+- `Jellyseerr`: http://your_ip:5055
 
 {% faq(clickable=true, header="Do you want more docker compose commands?") %}
 
@@ -176,6 +189,8 @@ Make sure you are in the correct parent folder (e.g. `/home/pipegalera/docker/ar
 
 {% end %}
 
+## 2. Setting up the apps
+
 Here I will follow what I consider a logical order to setting up the applications:
 
 1. `Prowlarr` to look for media
@@ -184,9 +199,11 @@ Here I will follow what I consider a logical order to setting up the application
 4. `Jellyfin` to reproduce them
 5. `Jellyseerr` to discover new stuff
 
-### 2. The Indexer: Prowlarr
+Replace `your_ip` for your IP or Tailscale IP / DNS name.
 
-1. Go to: http://homeserver:9696/
+### 2.1 The Indexer: Prowlarr
+
+1. Go to: `http://your_ip:9696/`
 2. Set up user:
 
 ![auth](images/auth.png)
@@ -199,33 +216,27 @@ I won't recommend any illegal site. There is an interactive search bar with the 
 
 4. Grab API key from `Radarr` to connect with Prowlarr
 
-- Go to: http://homeserver:7878/
+- Go to: `http://your_ip:7878/`
 - Set up user (same as with `Prowlarr`)
-- Go to: `General -> API key -> copy this`
+- Go to: `Settings -> General -> API key -> copy this`
 - Go back to `Prowlarr` and set up `Radarr` connection at: `Settings -> App -> Add -> Radarr`
 
 ![radarr.png](images/radarr.png)
-
-{% tip(clickable=false, header="Tip") %}
-
-For Tailscale users: you cannot use the machine name here - use the Tailscale IP.
-
-{% end %}
 
 5. Grab API key from `Sonarr` to connect with Prowlarr
 
 Same steps:
 
-- Go to: http://homeserver:8989/
+- Go to: `http://your_ip:8989/`
 - Set up user (same as `Prowlarr`)
-- Go to: `General -> API key -> copy this`
+- Go to: `Settings -> General -> API key -> copy this`
 - Go back to `Prowlarr` and set up `Sonarr` connection at: `Settings -> App -> Add -> Sonarr`
 
 `Prowlarr` should show now the 2 apps:
 
 ![prowlarr_apps.png](images/prowlarr_apps.png)
 
-## 3. The Torrent Client: qBittorrent
+## 2.2 The Torrent Client: qBittorrent
 
 The first time it runs, qBittorrent provides a temporary password. You can see the credentials by running: `docker logs qbittorrent` .
 
@@ -251,8 +262,10 @@ Tools -> Options -> WebUI -> Authentication -> change password -> Save
 - Limit the kind of files that are allowed to be downloaded for security:
 
 ```
-Tools -> Options -> Downloads -> Exclude file names:
+Tools -> Options -> Downloads -> Exclude file names
+```
 
+```
 *.arj
 *.lnk
 *.zipx
@@ -334,15 +347,17 @@ Tools -> Options -> Downloads -> Exclude file names:
 - The default path should be the one we created for `qBittorrent`:
 
 ```
-Tools -> Options -> Downloads -> Default Save path:
-
-/data/torrents
-
+Tools -> Options -> Downloads -> Default Save path
 ```
 
-## 4. Movie manager: Radarr
+```
+Default Save path: /data/torrents
+Keep incomplete torrents: /data/torrents/temp
+```
 
-We will configure `Radarr` now.
+## 2.3 Movie manager: Radarr
+
+We will configure `Radarr` now. Go to `Radarr` at `http://your_ip:7878/`.
 
 - Media Management settings
 
@@ -354,21 +369,19 @@ And set the path for the movies that we created previously: `/data/media/movies`
 
 - Download Client settings
 
+Use the credentials from `qbittorrent`.
+
 ```
 Settings -> Download Clients -> Download Client (plus sign) -> qbittorrent
 ```
 
 ![download_client.png](images/download_client.png)
 
-{% tip(clickable=false, header="Tip") %}
+Please note that my screenshot has my own internal tailscale ip, use your ip.
 
-Please note that my screenshot has my own `server ip` and `port`. Change them to yours.
+## 2.4 TV Shows manager: Sonarr
 
-{% end %}
-
-## 4. TV Shows manager: Sonarr
-
-We will configure `Sonarr` now. It is the exact same process.
+We will configure `Sonarr` now. It is the exact same process, go to `Sonarr` at `http://your_ip:8989/`.
 
 - Media Management settings
 
@@ -384,72 +397,93 @@ And set the path for the tv shows that we created previously: `/data/media/tv`
 Settings -> Download Clients -> Download Client (plus sign) -> qbittorrent
 ```
 
+Use the credentials from `qbittorrent`.
+
 ![download_client.png](images/download_client.png)
 
-## 5. After installation checks
+{% tip(clickable=false, header="After installation safety checks") %}
 
-- `Prowlerr`: Use the `Search` button up top of `Radarr` to check if you find any movies.
+- Use the `Search` button up top of `Radarr` to check if you find any (copyright free) movie. This will test if `Prowlarr` and `Radarr` can interact with each other.
 
-- Folder structure: Make sure the Root Folder of that movie is `/data/media/movies/...` and for tvshows `/data/media/tv`
+- Check that the movie was added and it's downloading (if it has seeders).
 
-- `qBittorrent`: Check that the movie was added and it's downloading (if it has seeders).
-
-- Download (copyright free) content and [check if hardlinks are working](https://trash-guides.info/File-and-Folder-Structure/Check-if-hardlinks-are-working/).
-
-## 6. Multimedia Player: Jellyfin
-
-`Jellyfin` is very easy to install. Go to the docker images url (e.g. `http://<Server Tailscale IP>:8096/)` and follow the instructions.
-
-{% tip(clickable=false, header= "Do not point Jellyfin to the torrent folder") %}
-
-You should use the media folder only. The files are _hardlinked_ to the torrent files and their formatting is "cleaned" by `Radarr/Sonarr` - do not use the path `data/torrents`
+- [Check if hardlinks are working](https://trash-guides.info/File-and-Folder-Structure/Check-if-hardlinks-are-working/).
 
 {% end %}
 
+## 2.5 Multimedia Player: Jellyfin
+
+`Jellyfin` is very easy to install. Go to the docker daemon at `http://your_ip:8096/` and follow the web instructions.
+
 - All the defaults are okay for my usecases.
+- Create one library to the movies pointing to folder `/data/media/movies`
 - Create one library to the tvshows pointing to folder `/data/media/tv`
-- Create one library to the movies pointing to folder `/data/media/tv`
-- Scan library
+
+{% tip(clickable=false, header= "Do not point Jellyfin to the torrent folder") %}
+
+You should use the `media` folder only, never `torrents`. The files are _hardlinked_ to the torrent files and their metadata is cleaned by `Radarr/Sonarr` - do not use the path `data/torrents`.
+
+{% end %}
 
 Libraries should look like:
 
 ![jellyfin_settings.png](images/jellyfin_settings.png)
 
-## 7. Discovery tool: Jellyseerr
+After loging in, click on to the left top corner (settings) and scan the libraries with the files. It will organize them and clean the metadata on it's hardlinked copy.
+
+```
+Settings -> Libraries -> Scan All Libraries
+```
+
+## 2.6 Discovery tool: Jellyseerr
 
 ![jellyseerr.png](images/jellyseerr.png)
 
 `Jellyseerr` is an application to discover new TV shows and movies. One of my favourite feature is that you can filter for network (e.g. `Apple tv+`) and request any content from there.
 
-To install it, go to `http://<Server Tailscale IP>:5025/` and follow the instructions.
-
-This application is connected to you `Jellyfin` account, so you will have to use your `Jellyfin` info and credentials.
+1. Go to `http://your_ip:5050/`
+2. Choose `Jellyfin` as server and fill the following info with your ip and `Jellyfin` credentials.
 
 ![jellyseerr_settings.png](images/jellyseerr_settings.png)
 
-## 8. Setting a VPN with Mullvad and Tailscale
+3. Click `Sync Libraries`, select both `Movies` and `TV Shows`, and `Start Scan`.
 
-I strongly recommend using a VPN if you want to protect your privacy. [Tailscale colab with Mullvad to provide a VPN mask for your IP for $5 month](https://tailscale.com/mullvad) .
+4. Configure Media Server. The usual information, at the end should look something like below with your own info.
 
-### 8.1 From the server
+![jellyseerr.png](images/jellyseerr_servers.png)
+
+Click continue and start exploring movies.
+
+## 3. Setting a VPN with Mullvad and Tailscale
+
+I strongly recommend using a VPN if you want to protect your privacy on the internet, even if you are not doing anything ilegal.
+
+[Tailscale colab with Mullvad to provide a VPN mask for your IP for $5 month](https://tailscale.com/mullvad).
+
+The instructions below is a guide on how to implement it to your server.
+
+### 3.1 From the server
 
 Once you got the Mullvad paid extension, you can see the list of VPN locations running:
 
 ```
 tailscale exit-node list
+
 ```
 
 Every location has a ip and name. You can use them running:
 
 ```
+
 tailscale set --exit-node=<IP> --exit-node-allow-lan-access=true
+
 ```
 
 After waiting 5 minutes you can use `curl ipinfo.io` to check where you public IP is:
 
 ![mullvad_server.png](images/mullvad_server.png)
 
-### 8.2 From clients and devices
+### 3.2 From clients and devices
 
 You can use the VPN in up to 5 devices, and set your devices in different locations.
 
@@ -460,3 +494,7 @@ From MacOS Tailscale app is very easy to change IP locations:
 Since the server and devices connect internally via Tailscale IPs, it doesn't affect their connection if they use different exit nodes or VPN locations.
 
 I really like [Mullvad](https://mullvad.net/en) VPN. They have all the "green flags" from people that care about internet privacy: from setting your user as a random token (they don't host your email), or allowing people to pay using cash in an envelope, or non predatory/vendor-lock VPN prices.
+
+```
+
+```
