@@ -1,5 +1,5 @@
 +++
-title = "My minimalistic your_ip: *Arr Media Suite (3/N)"
+title = "My minimalistic homeserver: *Arr Media Suite (3/N)"
 description = "Installing *Arr Media Suite and securing internet privacy."
 date = "2025-06-07"
 updated = "2025-08-21"
