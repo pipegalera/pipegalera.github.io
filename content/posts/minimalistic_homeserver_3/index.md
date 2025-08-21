@@ -1,6 +1,6 @@
 +++
 title = "My minimalistic homeserver: *Arr Media Suite (3/N)"
-description = "Installing *Arr Media Suite and securing internet privacy."
+description = "Installing *Arr Media Suite and securing you internet privacy."
 date = "2025-06-07"
 updated = "2025-08-21"
 [taxonomies]
