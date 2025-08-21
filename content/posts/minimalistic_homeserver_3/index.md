@@ -464,19 +464,18 @@ The instructions below is a guide on how to implement it to your server.
 
 ### 3.1 From the server
 
-Once you got the Mullvad paid extension, you can see the list of VPN locations running:
+Once you got the Mullvad paid extension, go to the [Mullvand section in Tailscale](https://login.tailscale.com/admin/settings/general/mullvad) and add your server DNS from the dropdown menu.
+
+After adding it, you can see the list of VPN locations running:
 
 ```
 tailscale exit-node list
-
 ```
 
-Every location has a ip and name. You can use them running:
+Choose an ip close to you and run:
 
 ```
-
-tailscale set --exit-node=<IP> --exit-node-allow-lan-access=true
-
+sudo tailscale set --exit-node=the_ip_choosen --exit-node-allow-lan-access=true
 ```
 
 After waiting 5 minutes you can use `curl ipinfo.io` to check where you public IP is:
@@ -495,6 +494,4 @@ Since the server and devices connect internally via Tailscale IPs, it doesn't af
 
 I really like [Mullvad](https://mullvad.net/en) VPN. They have all the "green flags" from people that care about internet privacy: from setting your user as a random token (they don't host your email), or allowing people to pay using cash in an envelope, or non predatory/vendor-lock VPN prices.
 
-```
-
-```
+Stay safe!
