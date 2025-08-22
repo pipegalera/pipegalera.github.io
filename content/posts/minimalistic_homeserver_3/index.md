@@ -25,15 +25,15 @@ I do not expose publicly any of these applications, and I connect between my dev
 
 Remember to replace the home folder `your_user_homepath` for your own or whatever parent folder you want to use.
 
+**Hard earned tips**:
+
+- It is very easy to f\*ck up the routing paths between the different apps. I recommend not to skim the sections.
+
+- If using Tailscale: use the Tailscale IP, not the Magic DNS name. Prowlarr/Sonarr/Radarr will detech initially the server but will the have problems connecting.
+
 ## 1. Installation
 
 We will install arr suite via docker compose. I will use [hotio](https://hotio.dev/) docker images, but this also work with [linuxserver](https://www.linuxserver.io/our-images) alternatively.
-
-{% tip(clickable=false, header="Disclaimer and Privacy") %}
-
-It is very easy to f\*ck up the routing paths between the different apps. I recommend not to skim the sections.
-
-{% end %}
 
 My setup follows [TRaSH folder structure](https://trash-guides.info/File-and-Folder-Structure/) to avoid having duplicating media files and wasting storage. `Sonarr` and `Radarr` will "read" the files from `qbittorrent` (_Hardlink_), instead of creating a copy of it.
 
@@ -48,7 +48,9 @@ I will use a single `docker-compose.yml` file to install:
 
 ### 1.1 Create directory folders
 
-I will host data within the hardrive of the system in a folder called `data` . If you want to store your movies and tv shows in a separate hardrive, the process is the same - you just have to mount the it (google this) and replace the `your_user_homepath` for the hard drive path.
+I will host data within the hardrive of the system in a folder called `data`.
+
+If you want to store your movies and tv shows in a separate hardrive, the process is the same - you just have to mount the it (google this) and replace the `your_user_homepath/data` for the hard drive path.
 
 ```
 # Set one folder for data and other for the app config
@@ -472,10 +474,10 @@ After adding it, you can see the list of VPN locations running:
 tailscale exit-node list
 ```
 
-Choose an ip close to you and run:
+Choose an ip or run `tailscale exit-node suggest`.
 
 ```
-sudo tailscale set --exit-node=the_ip_choosen --exit-node-allow-lan-access=true
+sudo tailscale set --exit-node=the_ip_choosen
 ```
 
 After waiting 5 minutes you can use `curl ipinfo.io` to check where you public IP is:
