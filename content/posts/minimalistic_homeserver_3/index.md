@@ -477,7 +477,7 @@ tailscale exit-node list
 Choose an ip or run `tailscale exit-node suggest`.
 
 ```
-sudo tailscale set --exit-node=the_ip_choosen
+sudo tailscale set --exit-node=the_ip_choosen --exit-node-allow-lan-access
 ```
 
 After waiting 5 minutes you can use `curl ipinfo.io` to check where you public IP is:
