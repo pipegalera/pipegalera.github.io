@@ -2,10 +2,12 @@
 title = "My minimalistic homeserver: *Arr Media Suite (3/N)"
 description = "Installing *Arr Media Suite and securing you internet privacy."
 date = "2025-06-07"
-updated = "2025-08-21"
+updated = "2025-08-23"
 [taxonomies]
 tags = ["self-hosting", "servers", "docker"]
 +++
+
+- Update 2025:08-23: Added `byparr`
 
 {% faq(clickable=false, header="Disclaimer and Privacy") %}
 
@@ -43,6 +45,7 @@ I will use a single `docker-compose.yml` file to install:
 - [Sonarr](https://sonarr.tv/) - a tv shows collection manager
 - [Prowlarr](https://prowlarr.com/) - an indexer manager
 - [qBittorrent](https://www.qbittorrent.org/) - a torrent sharing client
+- [Byparr](https://github.com/ThePhaseless/Byparr) - to bypass antibot protection of indexes
 - [Jellyfin](https://jellyfin.org/) - an organization media application
 - [Jellyseerr](https://docs.jellyseerr.dev/) - a discovery application
 
@@ -91,23 +94,23 @@ services:
             - TZ=Etc/UTC
             - WEBUI_PORTS=6080/tcp,6080/udp
         volumes:
-            - /your_user_homepath/docker/arr/qbittorrent/config:/config
-            - /your_user_homepath/data/torrents:/data/torrents
+            - /home/pipegalera/docker/arr/qbittorrent/config:/config
+            - /home/pipegalera/drive/data/torrents:/data/torrents
         restart: unless-stopped
 
     sonarr:
-        container_name: sonarr
         image: ghcr.io/hotio/sonarr
-        ports:
-            - "8989:8989"
+        container_name: sonarr
         environment:
             - PUID=1000
             - PGID=1000
             - UMASK=002
             - TZ=Etc/UTC
         volumes:
-            - /your_user_homepath/docker/arr/sonarr/config:/config
-            - /your_user_homepath/data:/data
+            - /home/pipegalera/docker/arr/sonarr/config:/config
+            - /home/pipegalera/drive/data:/data
+        ports:
+            - 8989:8989
         restart: unless-stopped
 
     radarr:
@@ -121,8 +124,8 @@ services:
             - UMASK=002
             - TZ=Etc/UTC
         volumes:
-            - /your_user_homepath/docker/arr/radarr/config:/config
-            - /your_user_homepath/data:/data
+            - /home/pipegalera/docker/arr/radarr/config:/config
+            - /home/pipegalera/drive/data:/data
         restart: unless-stopped
 
     prowlarr:
@@ -136,7 +139,7 @@ services:
             - UMASK=002
             - TZ=Etc/UTC
         volumes:
-            - /your_user_homepath/docker/arr/prowlarr/config:/config
+            - /home/pipegalera/docker/arr/prowlarr/config:/config
         restart: unless-stopped
 
     jellyfin:
@@ -150,8 +153,8 @@ services:
             - UMASK=002
             - TZ=Etc/UTC
         volumes:
-            - /your_user_homepath/docker/arr/jellyfin/config:/config
-            - /your_user_homepath/data:/data
+            - /home/pipegalera/docker/arr/jellyfin/config:/config
+            - /home/pipegalera/drive/data:/data
         restart: unless-stopped
 
     jellyseerr:
@@ -165,8 +168,19 @@ services:
             - UMASK=002
             - TZ=Etc/UTC
         volumes:
-            - /your_user_homepath/docker/arr/jellyseerr/config:/config
+            - /home/pipegalera/docker/arr/jellyseerr/config:/config
         restart: unless-stopped
+
+    byparr:
+        container_name: byparr
+        image: ghcr.io/thephaseless/byparr:latest
+        restart: unless-stopped
+        shm_size: 2gb
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - "8191:8191"
 ```
 
 Make sure you are in the correct parent folder (e.g. `/your_user_homepath/docker/arr`) and run `docker compose up -d`
@@ -212,11 +226,23 @@ Replace `your_ip` for your IP or Tailscale IP / DNS name.
 
 "Disable for Local Addresses" allow local logic without admin/password since we will only use the local network via Tailscale.
 
-3. Add indexers:
+3. Add byparr:
+
+As of August 2025, most indexes do not work with Prowlarr without bypassing Cloudflare protection with an indexer proxy.
+
+Go to: `Settings -> Indexes -> Add -> FlareSolverr` and add your byparr info from the docker compose.
+
+![auth](images/byparr.png)
+
+4. Add indexers:
 
 I won't recommend any illegal site. There is an interactive search bar with the most popular ones and what kind of service can provide.
 
-4. Grab API key from `Radarr` to connect with Prowlarr
+You will need to add `byparr` tag to the tag section of the index when you add it:
+
+![auth](images/byparr_index.png)
+
+5. Grab API key from `Radarr` to connect with Prowlarr
 
 - Go to: `http://your_ip:7878/`
 - Set up user (same as with `Prowlarr`)
@@ -225,7 +251,7 @@ I won't recommend any illegal site. There is an interactive search bar with the 
 
 ![radarr.png](images/radarr.png)
 
-5. Grab API key from `Sonarr` to connect with Prowlarr
+6. Grab API key from `Sonarr` to connect with Prowlarr
 
 Same steps:
 
