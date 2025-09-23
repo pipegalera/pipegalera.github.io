@@ -1,0 +1,224 @@
+<!doctype html><html lang=en><head><meta charset=UTF-8><meta content="IE=edge" http-equiv=X-UA-Compatible><meta content="width=device-width,initial-scale=1.0" name=viewport><meta content=https://pipegalera.com name=base><title>
+            
+                My minimalistic homeserver: *Arr Media Suite (3/N)
+            
+        </title><meta content="My minimalistic homeserver: *Arr Media Suite (3/N)" property=og:title><meta content="Installing *Arr Media Suite and securing you internet privacy." property=og:description><meta content="Installing *Arr Media Suite and securing you internet privacy." name=description><link href=icons/favicons/favicon-32x32.png rel=icon type=image/png><script data-website-id=873d04cd-70d9-47d6-8b16-a609b8cc57b8 defer src=https://analytics.pipegalera.tech/script.js></script><link href=https://pipegalera.com/fonts.css rel=stylesheet><script src=https://pipegalera.com/js/copy-code.js></script><script src=https://pipegalera.com/js/toc.js></script><script>MathJax = {
+              tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+              }
+            };</script><script async id=MathJax-script src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script><link href=https://pipegalera.com/atom.xml rel=alternate title=~/.pipe_galera type=application/atom+xml><link href=https://pipegalera.com/main.css media=screen rel=stylesheet><script src="https://pipegalera.com/js/searchElasticlunr.min.js?h=3626c0ef99daa745b31e" defer></script><body><div class=content><header><div class=main><a href=https://pipegalera.com>~/.pipe_galera</a><div class=socials><a class=social href=https://www.linkedin.com/in/pipegalera/ rel=me> <img alt=linkedin src=https://pipegalera.com/icons/social/linkedin.svg> </a><a class=social href=https://github.com/pipegalera/ rel=me> <img alt=github src=https://pipegalera.com/icons/social/github.svg> </a></div></div><nav><a href=https://pipegalera.com/posts style=margin-left:.25em>/posts</a><a href=https://pipegalera.com/mostly_books style=margin-left:.25em>/mostly_books</a><a href=https://pipegalera.com/tags style=margin-left:.25em>/tags</a><button title="$SHORTCUT to open search" class=search-button id=search-button><img alt=Search class=search-icon src=https://pipegalera.com/icons/search.svg></button><div class="search-modal js" aria-labelledby=modalTitle id=searchModal role=dialog><div id=modal-content><h1 class=page-header id=modalTitle>Search</h1><div id=searchBar><input aria-controls=results-container aria-expanded=false autocomplete=off id=searchInput placeholder=Search... role=combobox spellcheck=false><button title="Clear search" class=clear-button id=clear-search><svg viewbox="0 -960 960 960" xmlns=http://www.w3.org/2000/svg><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></button></div><div id=results-container><div id=results-info><span id=zero_results style=display:none>No results</span><span id=one_result style=display:none>1 result</span><span id=many_results style=display:none>$NUMBER results</span></div><div id=results role=listbox></div></div></div></div></nav></header><main><article><div><h1>My minimalistic homeserver: *Arr Media Suite (3/N)</h1><div class=meta>Posted on <time>2025-06-07</time> :: Updated on <time>2025-08-23</time> :: 1563 Words <span class=tags-label>:: Tags:</span><span class=tags> <a class=post-tag href=https://pipegalera.com/tags/self-hosting/>self-hosting</a> , <a class=post-tag href=https://pipegalera.com/tags/servers/>servers</a> , <a class=post-tag href=https://pipegalera.com/tags/docker/>docker</a> </span></div><div class=toc-container><h1 class=toc-title>Table of Contents</h1><ul class=toc-list><li><a href=https://pipegalera.com/posts/minimalistic-homeserver-3/#1-installation>1. Installation</a> <ul><li><a href=https://pipegalera.com/posts/minimalistic-homeserver-3/#1-1-create-directory-folders>1.1 Create directory folders</a><li><a href=https://pipegalera.com/posts/minimalistic-homeserver-3/#1-2-docker-compose-file>1.2 Docker compose file</a></ul><li><a href=https://pipegalera.com/posts/minimalistic-homeserver-3/#2-setting-up-the-apps>2. Setting up the apps</a> <ul><li><a href=https://pipegalera.com/posts/minimalistic-homeserver-3/#2-1-the-indexer-prowlarr>2.1 The Indexer: Prowlarr</a></ul><li><a href=https://pipegalera.com/posts/minimalistic-homeserver-3/#2-2-the-torrent-client-qbittorrent>2.2 The Torrent Client: qBittorrent</a><li><a href=https://pipegalera.com/posts/minimalistic-homeserver-3/#2-3-movie-manager-radarr>2.3 Movie manager: Radarr</a><li><a href=https://pipegalera.com/posts/minimalistic-homeserver-3/#2-4-tv-shows-manager-sonarr>2.4 TV Shows manager: Sonarr</a><li><a href=https://pipegalera.com/posts/minimalistic-homeserver-3/#2-5-multimedia-player-jellyfin>2.5 Multimedia Player: Jellyfin</a><li><a href=https://pipegalera.com/posts/minimalistic-homeserver-3/#2-6-discovery-tool-jellyseerr>2.6 Discovery tool: Jellyseerr</a><li><a href=https://pipegalera.com/posts/minimalistic-homeserver-3/#3-setting-a-vpn-with-mullvad-and-tailscale>3. Setting a VPN with Mullvad and Tailscale</a> <ul><li><a href=https://pipegalera.com/posts/minimalistic-homeserver-3/#3-1-from-the-server>3.1 From the server</a><li><a href=https://pipegalera.com/posts/minimalistic-homeserver-3/#3-2-from-clients-and-devices>3.2 From clients and devices</a></ul></ul></div><ul><li>Update 2025:08-23: Added <code>byparr</code></ul><div class="faq-callout static"><div class=faq-header>Disclaimer and Privacy</div><div class=faq-content><p>This post is for educational purposes only.<p>The applications and software shown in this post are free and open source with a wide variety of features and use cases. <strong>How you use these tools is to be dictated by your local laws and personal discretion.</strong> This post will not show how to find, obtain, or download non-open source materials.</div></div><p>This is my simple configuration for my media application for Movies and TVShows.<p><img alt=livingroom.png src=https://pipegalera.com/posts/minimalistic-homeserver-3/images/livingroom.png><p>I am able to run 4k at 60fps with ease in multiple devices at the same time from my network with a mini N100 pc.<p>I do not expose publicly any of these applications, and I connect between my devices locally using Tailscale free tier (see <a href=https://pipegalera.com/posts/minimalistic-your_ip-2/#1-the-connector-tailscale>here</a> instructions on how to install Tailscale.)<p>Remember to replace the home folder <code>your_user_homepath</code> for your own or whatever parent folder you want to use.<p><strong>Hard earned tips</strong>:<ul><li><p>It is very easy to f*ck up the routing paths between the different apps. I recommend not to skim the sections.</p><li><p>If using Tailscale: use the Tailscale IP, not the Magic DNS name. Prowlarr/Sonarr/Radarr will detech initially the server but will the have problems connecting.</p></ul><h2 id=1-installation><a aria-label="Anchor link for: 1-installation" class=zola-anchor href=#1-installation>1. Installation</a></h2><p>We will install arr suite via docker compose. I will use <a href=https://hotio.dev/>hotio</a> docker images, but this also work with <a href=https://www.linuxserver.io/our-images>linuxserver</a> alternatively.<p>My setup follows <a href=https://trash-guides.info/File-and-Folder-Structure/>TRaSH folder structure</a> to avoid having duplicating media files and wasting storage. <code>Sonarr</code> and <code>Radarr</code> will "read" the files from <code>qbittorrent</code> (<em>Hardlink</em>), instead of creating a copy of it.<p>I will use a single <code>docker-compose.yml</code> file to install:<ul><li><a href=https://radarr.video/>Radarr</a> - a movie collection manager<li><a href=https://sonarr.tv/>Sonarr</a> - a tv shows collection manager<li><a href=https://prowlarr.com/>Prowlarr</a> - an indexer manager<li><a href=https://www.qbittorrent.org/>qBittorrent</a> - a torrent sharing client<li><a href=https://github.com/ThePhaseless/Byparr>Byparr</a> - to bypass antibot protection of indexes<li><a href=https://jellyfin.org/>Jellyfin</a> - an organization media application<li><a href=https://docs.jellyseerr.dev/>Jellyseerr</a> - a discovery application</ul><h3 id=1-1-create-directory-folders><a aria-label="Anchor link for: 1-1-create-directory-folders" class=zola-anchor href=#1-1-create-directory-folders>1.1 Create directory folders</a></h3><p>I will host data within the hardrive of the system in a folder called <code>data</code>.<p>If you want to store your movies and tv shows in a separate hardrive, the process is the same - you just have to mount the it (google this) and replace the <code>your_user_homepath/data</code> for the hard drive path.<pre style=color:#839496;background-color:#002b36><code><span># Set one folder for data and other for the app config
+</span><span>sudo mkdir /your_user_homepath/data
+</span><span>sudo mkdir /your_user_homepath/data/{torrents,media}
+</span><span>sudo mkdir /your_user_homepath/data/{torrents,media}/{movies,tv}
+</span><span>sudo mkdir /your_user_homepath/docker/arr
+</span></code></pre><pre style=color:#839496;background-color:#002b36><code><span># Set ownership
+</span><span>sudo chown -R 1000:1000 /your_user_homepath/data
+</span><span>sudo chown -R 1000:1000 /your_user_homepath/docker/arr
+</span></code></pre><h3 id=1-2-docker-compose-file><a aria-label="Anchor link for: 1-2-docker-compose-file" class=zola-anchor href=#1-2-docker-compose-file>1.2 Docker compose file</a></h3><p>After creating the files and setting the ownership (important!), create the <code>docker-compose.yml</code> file and install the apps via docker:<pre style=color:#839496;background-color:#002b36><code><span>cd /your_user_homepath/docker/arr
+</span><span>touch docker-compose.yml
+</span></code></pre><p>Write into <code>docker-compose.yml</code> the arr applications:<pre class=language-docker-compose.yml data-lang=docker-compose.yml style=color:#839496;background-color:#002b36><code class=language-docker-compose.yml data-lang=docker-compose.yml><span>services:
+</span><span>    qbittorrent:
+</span><span>        container_name: qbittorrent
+</span><span>        image: ghcr.io/hotio/qbittorrent
+</span><span>        ports:
+</span><span>            - "6080:6080"
+</span><span>        environment:
+</span><span>            - PUID=1000
+</span><span>            - PGID=1000
+</span><span>            - UMASK=002
+</span><span>            - TZ=Etc/UTC
+</span><span>            - WEBUI_PORTS=6080/tcp,6080/udp
+</span><span>        volumes:
+</span><span>            - /home/pipegalera/docker/arr/qbittorrent/config:/config
+</span><span>            - /home/pipegalera/drive/data/torrents:/data/torrents
+</span><span>        restart: unless-stopped
+</span><span>
+</span><span>    sonarr:
+</span><span>        image: ghcr.io/hotio/sonarr
+</span><span>        container_name: sonarr
+</span><span>        environment:
+</span><span>            - PUID=1000
+</span><span>            - PGID=1000
+</span><span>            - UMASK=002
+</span><span>            - TZ=Etc/UTC
+</span><span>        volumes:
+</span><span>            - /home/pipegalera/docker/arr/sonarr/config:/config
+</span><span>            - /home/pipegalera/drive/data:/data
+</span><span>        ports:
+</span><span>            - 8989:8989
+</span><span>        restart: unless-stopped
+</span><span>
+</span><span>    radarr:
+</span><span>        container_name: radarr
+</span><span>        image: ghcr.io/hotio/radarr
+</span><span>        ports:
+</span><span>            - "7878:7878"
+</span><span>        environment:
+</span><span>            - PUID=1000
+</span><span>            - PGID=1000
+</span><span>            - UMASK=002
+</span><span>            - TZ=Etc/UTC
+</span><span>        volumes:
+</span><span>            - /home/pipegalera/docker/arr/radarr/config:/config
+</span><span>            - /home/pipegalera/drive/data:/data
+</span><span>        restart: unless-stopped
+</span><span>
+</span><span>    prowlarr:
+</span><span>        container_name: prowlarr
+</span><span>        image: ghcr.io/hotio/prowlarr
+</span><span>        ports:
+</span><span>            - "9696:9696"
+</span><span>        environment:
+</span><span>            - PUID=1000
+</span><span>            - PGID=1000
+</span><span>            - UMASK=002
+</span><span>            - TZ=Etc/UTC
+</span><span>        volumes:
+</span><span>            - /home/pipegalera/docker/arr/prowlarr/config:/config
+</span><span>        restart: unless-stopped
+</span><span>
+</span><span>    jellyfin:
+</span><span>        container_name: jellyfin
+</span><span>        image: ghcr.io/hotio/jellyfin
+</span><span>        ports:
+</span><span>            - "8096:8096"
+</span><span>        environment:
+</span><span>            - PUID=1000
+</span><span>            - PGID=1000
+</span><span>            - UMASK=002
+</span><span>            - TZ=Etc/UTC
+</span><span>        volumes:
+</span><span>            - /home/pipegalera/docker/arr/jellyfin/config:/config
+</span><span>            - /home/pipegalera/drive/data:/data
+</span><span>        restart: unless-stopped
+</span><span>
+</span><span>    jellyseerr:
+</span><span>        container_name: jellyseerr
+</span><span>        image: ghcr.io/hotio/jellyseerr
+</span><span>        ports:
+</span><span>            - "5055:5055"
+</span><span>        environment:
+</span><span>            - PUID=1000
+</span><span>            - PGID=1000
+</span><span>            - UMASK=002
+</span><span>            - TZ=Etc/UTC
+</span><span>        volumes:
+</span><span>            - /home/pipegalera/docker/arr/jellyseerr/config:/config
+</span><span>        restart: unless-stopped
+</span><span>
+</span><span>    byparr:
+</span><span>        container_name: byparr
+</span><span>        image: ghcr.io/thephaseless/byparr:latest
+</span><span>        restart: unless-stopped
+</span><span>        shm_size: 2gb
+</span><span>        build:
+</span><span>            context: .
+</span><span>            dockerfile: Dockerfile
+</span><span>        ports:
+</span><span>            - "8191:8191"
+</span></code></pre><p>Make sure you are in the correct parent folder (e.g. <code>/your_user_homepath/docker/arr</code>) and run <code>docker compose up -d</code><p><img alt src=https://pipegalera.com/posts/minimalistic-homeserver-3/images/docker_compose_up.png><p>From here on you should be able to access the services:<ul><li><code>Prowlarr</code>: http://your_ip:9696<li><code>qBittorrent</code> http://your_ip:9696<li><code>Radarr</code>: http://your_ip:9696<li><code>Sonarr</code>: http://your_ip:9696<li><code>Jellyfin</code>: http://your_ip:9696<li><code>Jellyseerr</code>: http://your_ip:5055</ul><div class="faq-callout clickable"><div class="faq-header clickable" onclick=toggleFaq(this)>Do you want more docker compose commands?</div><div class="faq-content collapsible"><ul><li>Running only selected apps: <code>docker compose up -d jellyfin radarr</code><li>Taking them down: <code>docker compose down jellyfin</code><li>Check the logs for info or errors: <code>docker logs radarr</code><li>Check the images status: <code>docker compose ps</code></ul></div></div><script>function toggleFaq(header) {
+        const content = header.nextElementSibling;
+        const isExpanded = content.classList.contains("expanded");
+
+        if (isExpanded) {
+            content.classList.remove("expanded");
+            header.classList.remove("expanded");
+        } else {
+            content.classList.add("expanded");
+            header.classList.add("expanded");
+        }
+    }</script><h2 id=2-setting-up-the-apps><a aria-label="Anchor link for: 2-setting-up-the-apps" class=zola-anchor href=#2-setting-up-the-apps>2. Setting up the apps</a></h2><p>Here I will follow what I consider a logical order to setting up the applications:<ol><li><code>Prowlarr</code> to look for media<li><code>qBittorrent</code> to download media<li><code>Radarr</code> and <code>Sonarr</code> to organize the files<li><code>Jellyfin</code> to reproduce them<li><code>Jellyseerr</code> to discover new stuff</ol><p>Replace <code>your_ip</code> for your IP or Tailscale IP / DNS name.<h3 id=2-1-the-indexer-prowlarr><a aria-label="Anchor link for: 2-1-the-indexer-prowlarr" class=zola-anchor href=#2-1-the-indexer-prowlarr>2.1 The Indexer: Prowlarr</a></h3><ol><li>Go to: <code>http://your_ip:9696/</code><li>Set up user:</ol><p><img alt=auth src=https://pipegalera.com/posts/minimalistic-homeserver-3/images/auth.png><p>"Disable for Local Addresses" allow local logic without admin/password since we will only use the local network via Tailscale.<ol start=3><li>Add byparr:</ol><p>As of August 2025, most indexes do not work with Prowlarr without bypassing Cloudflare protection with an indexer proxy.<p>Go to: <code>Settings -> Indexes -> Add -> FlareSolverr</code> and add your byparr info from the docker compose.<p><img alt=auth src=https://pipegalera.com/posts/minimalistic-homeserver-3/images/byparr.png><ol start=4><li>Add indexers:</ol><p>I won't recommend any illegal site. There is an interactive search bar with the most popular ones and what kind of service can provide.<p>You will need to add <code>byparr</code> tag to the tag section of the index when you add it:<p><img alt=auth src=https://pipegalera.com/posts/minimalistic-homeserver-3/images/byparr_index.png><ol start=5><li>Grab API key from <code>Radarr</code> to connect with Prowlarr</ol><ul><li>Go to: <code>http://your_ip:7878/</code><li>Set up user (same as with <code>Prowlarr</code>)<li>Go to: <code>Settings -> General -> API key -> copy this</code><li>Go back to <code>Prowlarr</code> and set up <code>Radarr</code> connection at: <code>Settings -> App -> Add -> Radarr</code></ul><p><img alt=radarr.png src=https://pipegalera.com/posts/minimalistic-homeserver-3/images/radarr.png><ol start=6><li>Grab API key from <code>Sonarr</code> to connect with Prowlarr</ol><p>Same steps:<ul><li>Go to: <code>http://your_ip:8989/</code><li>Set up user (same as <code>Prowlarr</code>)<li>Go to: <code>Settings -> General -> API key -> copy this</code><li>Go back to <code>Prowlarr</code> and set up <code>Sonarr</code> connection at: <code>Settings -> App -> Add -> Sonarr</code></ul><p><code>Prowlarr</code> should show now the 2 apps:<p><img alt=prowlarr_apps.png src=https://pipegalera.com/posts/minimalistic-homeserver-3/images/prowlarr_apps.png><h2 id=2-2-the-torrent-client-qbittorrent><a aria-label="Anchor link for: 2-2-the-torrent-client-qbittorrent" class=zola-anchor href=#2-2-the-torrent-client-qbittorrent>2.2 The Torrent Client: qBittorrent</a></h2><p>The first time it runs, qBittorrent provides a temporary password. You can see the credentials by running: <code>docker logs qbittorrent</code> .<p>It should print something like:<pre style=color:#839496;background-color:#002b36><code><span>******** Information ********
+</span><span>To control qBittorrent, access the WebUI at: http://localhost:6080
+</span><span>The WebUI administrator username is: admin
+</span><span>The WebUI administrator password was not set. A temporary password is provided for this session: vpRYnzDbq
+</span><span>You should set your own password in program preferences.
+</span><span>Connection to localhost (::1) 6080 port [tcp/*] succeeded!
+</span></code></pre><p>Once you are inside the app.<ul><li>Change the password:</ul><pre style=color:#839496;background-color:#002b36><code><span>Tools -> Options -> WebUI -> Authentication -> change password -> Save
+</span></code></pre><ul><li>Limit the kind of files that are allowed to be downloaded for security:</ul><pre style=color:#839496;background-color:#002b36><code><span>Tools -> Options -> Downloads -> Exclude file names
+</span></code></pre><pre style=color:#839496;background-color:#002b36><code><span>*.arj
+</span><span>*.lnk
+</span><span>*.zipx
+</span><span>*sample.mkv
+</span><span>*sample.avi
+</span><span>*sample.mp4
+</span><span>*.py
+</span><span>*.vbs
+</span><span>*.html
+</span><span>*.php
+</span><span>*.torrent
+</span><span>*.exe
+</span><span>*.bat
+</span><span>*.cmd
+</span><span>*.com
+</span><span>*.cpl
+</span><span>*.dll
+</span><span>*.js
+</span><span>*.jse
+</span><span>*.msi
+</span><span>*.msp
+</span><span>*.pif
+</span><span>*.scr
+</span><span>*.vbs
+</span><span>*.vbe
+</span><span>*.wsf
+</span><span>*.wsh
+</span><span>*.hta
+</span><span>*.reg
+</span><span>*.inf
+</span><span>*.ps1
+</span><span>*.ps2
+</span><span>*.psm1
+</span><span>*.psd1
+</span><span>*.sh
+</span><span>*.apk
+</span><span>*.app
+</span><span>*.ipa
+</span><span>*.iso
+</span><span>*.jar
+</span><span>*.bin
+</span><span>*.tmp
+</span><span>*.vb
+</span><span>*.vxd
+</span><span>*.ocx
+</span><span>*.drv
+</span><span>*.sys
+</span><span>*.scf
+</span><span>*.ade
+</span><span>*.adp
+</span><span>*.bas
+</span><span>*.chm
+</span><span>*.crt
+</span><span>*.hlp
+</span><span>*.ins
+</span><span>*.isp
+</span><span>*.key
+</span><span>*.mda
+</span><span>*.mdb
+</span><span>*.mdt
+</span><span>*.mdw
+</span><span>*.mdz
+</span><span>*.potm
+</span><span>*.potx
+</span><span>*.ppam
+</span><span>*.ppsx
+</span><span>*.pptm
+</span><span>*.sldm
+</span><span>*.sldx
+</span><span>*.xlam
+</span><span>*.xlsb
+</span><span>*.xlsm
+</span><span>*.xltm
+</span><span>*.nsh
+</span><span>*.mht
+</span><span>*.mhtml
+</span></code></pre><ul><li>The default path should be the one we created for <code>qBittorrent</code>:</ul><pre style=color:#839496;background-color:#002b36><code><span>Tools -> Options -> Downloads -> Default Save path
+</span></code></pre><pre style=color:#839496;background-color:#002b36><code><span>Default Save path: /data/torrents
+</span><span>Keep incomplete torrents: /data/torrents/temp
+</span></code></pre><h2 id=2-3-movie-manager-radarr><a aria-label="Anchor link for: 2-3-movie-manager-radarr" class=zola-anchor href=#2-3-movie-manager-radarr>2.3 Movie manager: Radarr</a></h2><p>We will configure <code>Radarr</code> now. Go to <code>Radarr</code> at <code>http://your_ip:7878/</code>.<ul><li>Media Management settings</ul><pre style=color:#839496;background-color:#002b36><code><span>Settings -> Media Management -> Root Folders
+</span></code></pre><p>And set the path for the movies that we created previously: <code>/data/media/movies</code><ul><li>Download Client settings</ul><p>Use the credentials from <code>qbittorrent</code>.<pre style=color:#839496;background-color:#002b36><code><span>Settings -> Download Clients -> Download Client (plus sign) -> qbittorrent
+</span></code></pre><p><img alt=download_client.png src=https://pipegalera.com/posts/minimalistic-homeserver-3/images/download_client.png><p>Please note that my screenshot has my own internal tailscale ip, use your ip.<h2 id=2-4-tv-shows-manager-sonarr><a aria-label="Anchor link for: 2-4-tv-shows-manager-sonarr" class=zola-anchor href=#2-4-tv-shows-manager-sonarr>2.4 TV Shows manager: Sonarr</a></h2><p>We will configure <code>Sonarr</code> now. It is the exact same process, go to <code>Sonarr</code> at <code>http://your_ip:8989/</code>.<ul><li>Media Management settings</ul><pre style=color:#839496;background-color:#002b36><code><span>Settings -> Media Management -> Root Folders
+</span></code></pre><p>And set the path for the tv shows that we created previously: <code>/data/media/tv</code><ul><li>Download Client settings</ul><pre style=color:#839496;background-color:#002b36><code><span>Settings -> Download Clients -> Download Client (plus sign) -> qbittorrent
+</span></code></pre><p>Use the credentials from <code>qbittorrent</code>.<p><img alt=download_client.png src=https://pipegalera.com/posts/minimalistic-homeserver-3/images/download_client.png><div class="tip-callout static"><div class=tip-header>After installation safety checks</div><div class=tip-content><ul><li><p>Use the <code>Search</code> button up top of <code>Radarr</code> to check if you find any (copyright free) movie. This will test if <code>Prowlarr</code> and <code>Radarr</code> can interact with each other.</p><li><p>Check that the movie was added and it's downloading (if it has seeders).</p><li><p><a href=https://trash-guides.info/File-and-Folder-Structure/Check-if-hardlinks-are-working/>Check if hardlinks are working</a>.</p></ul></div></div><h2 id=2-5-multimedia-player-jellyfin><a aria-label="Anchor link for: 2-5-multimedia-player-jellyfin" class=zola-anchor href=#2-5-multimedia-player-jellyfin>2.5 Multimedia Player: Jellyfin</a></h2><p><code>Jellyfin</code> is very easy to install. Go to the docker daemon at <code>http://your_ip:8096/</code> and follow the web instructions.<ul><li>All the defaults are okay for my usecases.<li>Create one library to the movies pointing to folder <code>/data/media/movies</code><li>Create one library to the tvshows pointing to folder <code>/data/media/tv</code></ul><div class="tip-callout static"><div class=tip-header>Do not point Jellyfin to the torrent folder</div><div class=tip-content><p>You should use the <code>media</code> folder only, never <code>torrents</code>. The files are <em>hardlinked</em> to the torrent files and their metadata is cleaned by <code>Radarr/Sonarr</code> - do not use the path <code>data/torrents</code>.</div></div><p>Libraries should look like:<p><img alt=jellyfin_settings.png src=https://pipegalera.com/posts/minimalistic-homeserver-3/images/jellyfin_settings.png><p>After loging in, click on to the left top corner (settings) and scan the libraries with the files. It will organize them and clean the metadata on it's hardlinked copy.<pre style=color:#839496;background-color:#002b36><code><span>Settings -> Libraries -> Scan All Libraries
+</span></code></pre><h2 id=2-6-discovery-tool-jellyseerr><a aria-label="Anchor link for: 2-6-discovery-tool-jellyseerr" class=zola-anchor href=#2-6-discovery-tool-jellyseerr>2.6 Discovery tool: Jellyseerr</a></h2><p><img alt=jellyseerr.png src=https://pipegalera.com/posts/minimalistic-homeserver-3/images/jellyseerr.png><p><code>Jellyseerr</code> is an application to discover new TV shows and movies. One of my favourite feature is that you can filter for network (e.g. <code>Apple tv+</code>) and request any content from there.<ol><li>Go to <code>http://your_ip:5050/</code><li>Choose <code>Jellyfin</code> as server and fill the following info with your ip and <code>Jellyfin</code> credentials.</ol><p><img alt=jellyseerr_settings.png src=https://pipegalera.com/posts/minimalistic-homeserver-3/images/jellyseerr_settings.png><ol start=3><li><p>Click <code>Sync Libraries</code>, select both <code>Movies</code> and <code>TV Shows</code>, and <code>Start Scan</code>.</p><li><p>Configure Media Server. The usual information, at the end should look something like below with your own info.</p></ol><p><img alt=jellyseerr.png src=https://pipegalera.com/posts/minimalistic-homeserver-3/images/jellyseerr_servers.png><p>Click continue and start exploring movies.<h2 id=3-setting-a-vpn-with-mullvad-and-tailscale><a aria-label="Anchor link for: 3-setting-a-vpn-with-mullvad-and-tailscale" class=zola-anchor href=#3-setting-a-vpn-with-mullvad-and-tailscale>3. Setting a VPN with Mullvad and Tailscale</a></h2><p>I strongly recommend using a VPN if you want to protect your privacy on the internet, even if you are not doing anything ilegal.<p><a href=https://tailscale.com/mullvad>Tailscale colab with Mullvad to provide a VPN mask for your IP for $5 month</a>.<p>The instructions below is a guide on how to implement it to your server.<h3 id=3-1-from-the-server><a aria-label="Anchor link for: 3-1-from-the-server" class=zola-anchor href=#3-1-from-the-server>3.1 From the server</a></h3><p>Once you got the Mullvad paid extension, go to the <a href=https://login.tailscale.com/admin/settings/general/mullvad>Mullvand section in Tailscale</a> and add your server DNS from the dropdown menu.<p>After adding it, you can see the list of VPN locations running:<pre style=color:#839496;background-color:#002b36><code><span>tailscale exit-node list
+</span></code></pre><p>Choose an ip or run <code>tailscale exit-node suggest</code>.<pre style=color:#839496;background-color:#002b36><code><span>sudo tailscale set --exit-node=the_ip_choosen --exit-node-allow-lan-access
+</span></code></pre><p>After waiting 5 minutes you can use <code>curl ipinfo.io</code> to check where you public IP is:<p><img alt=mullvad_server.png src=https://pipegalera.com/posts/minimalistic-homeserver-3/images/mullvad_server.png><h3 id=3-2-from-clients-and-devices><a aria-label="Anchor link for: 3-2-from-clients-and-devices" class=zola-anchor href=#3-2-from-clients-and-devices>3.2 From clients and devices</a></h3><p>You can use the VPN in up to 5 devices, and set your devices in different locations.<p>From MacOS Tailscale app is very easy to change IP locations:<p><img alt=mullvad_client.png src=https://pipegalera.com/posts/minimalistic-homeserver-3/images/mullvad_client.png><p>Since the server and devices connect internally via Tailscale IPs, it doesn't affect their connection if they use different exit nodes or VPN locations.<p>I really like <a href=https://mullvad.net/en>Mullvad</a> VPN. They have all the "green flags" from people that care about internet privacy: from setting your user as a random token (they don't host your email), or allowing people to pay using cash in an envelope, or non predatory/vendor-lock VPN prices.<p>Stay safe!<footer><div class=footer-content><p></div></footer></div>
