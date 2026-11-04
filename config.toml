@@ -14,6 +14,7 @@ taxonomies = [{ name = "tags" }]
 [markdown]
 highlight_theme = "solarized-dark"
 highlight_code = true
+lazy_async_image = true
 
 [extra]
 analytics = true
