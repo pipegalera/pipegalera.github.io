@@ -162,3 +162,9 @@
         }
     }
 }
+
+.faq-callout {
+    @include dark {
+        --callout-color: 160, 160, 220;
+    }
+}

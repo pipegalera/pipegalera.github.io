@@ -1,3 +1,5 @@
+@import "parts/_theme.scss"; // mixins only, must come first
+@import "parts/_fonts.scss";
 @import "parts/_cards.scss";
 @import "parts/_code.scss";
 @import "parts/_header.scss";
@@ -14,18 +16,23 @@
 @import "parts/_faq.scss";
 @import "parts/_tip.scss";
 
+// Light theme (default)
 :root {
+    color-scheme: light dark;
+
     /* Base Colors */
-    --base-0-color: #fff; /* white */
-    --base-1-color: #fafafa; /* delta 1 white */
-    --base-2-color: #ebebeb; /* delta 4.1 white */
+    --base-0-color: #fff; /* raised surfaces: search modal, cards */
+    --base-1-color: #fafafa; /* page background */
+    --base-2-color: #ebebeb; /* borders */
 
     --border-color: var(--base-2-color);
-    --hover-color: var(--base-0-color);
+    --hover-color: #212121; /* text on a yellow (primary) background */
 
     /* Text Colors */
     --text-0-color: #666666; /* light gray */
     --text-1-color: #212121; /* dark gray */
+    --text-muted-color: #6b6b6b; /* dates and meta; 4.9:1 on the background */
+    --image-border-color: var(--text-1-color);
 
     /* Theme Colors */
     --primary-color-rgb: 255, 214, 58; /* yellow */
@@ -40,6 +47,24 @@
     --text-font: "Roboto Mono", "Courier", "Helvetica", sans-serif;
     --header-font: var(--text-font);
     --code-font: var(--text-font);
+}
+
+// Dark theme: the system setting, or the visitor's choice from the toggle (see _theme.scss)
+@include dark-root {
+    color-scheme: dark;
+
+    --base-0-color: #1f1f1f;
+    --base-1-color: #151515;
+    --base-2-color: #2e2e2e;
+
+    --text-0-color: #a6a6a6;
+    --text-1-color: #e6e6e6;
+    --text-muted-color: #9b9b9b;
+    --image-border-color: #3a3a3a;
+}
+
+:root[data-theme="light"] {
+    color-scheme: light;
 }
 
 html {
@@ -67,7 +92,7 @@ h1,
     font-family: var(--header-font);
     font-weight: 400;
     color: var(--text-1-color);
-    margin: 1.5rem 0 3rem 0;
+    margin: 1.5rem 0 1.25rem 0;
     font-size: 1.4rem;
 }
 
@@ -77,7 +102,7 @@ h2,
     font-weight: 400;
     color: var(--text-1-color);
     font-size: 1.3rem;
-    margin: 3rem 0 3rem 0;
+    margin: 3rem 0 1.25rem 0;
 }
 
 h3,
@@ -86,7 +111,7 @@ h3,
     font-weight: 400;
     color: var(--text-1-color);
     font-size: 1.1rem;
-    margin: 2rem 0 2rem 0;
+    margin: 2rem 0 1rem 0;
 }
 h4,
 h5,
@@ -134,8 +159,26 @@ h6::before {
     font-size: 1.1rem;
 }
 
-.social :hover {
-    filter: invert(1);
+// Social and search icons are black SVGs: show them white in dark mode,
+// and black on the yellow hover background in both modes.
+.social:hover,
+.search-button:hover {
+    background-color: var(--primary-color);
+    border-radius: 4px;
+}
+
+.social img,
+.search-button .search-icon {
+    @include dark {
+        filter: invert(1);
+    }
+}
+
+.social:hover img,
+.search-button:hover .search-icon {
+    @include dark {
+        filter: none;
+    }
 }
 
 @media all and (min-width: 640px) {
@@ -155,3 +198,6 @@ h6::before {
         font-size: 18px;
     }
 }
+
+// Last, so print overrides beat both the light and dark theme variables.
+@import "parts/_print.scss";

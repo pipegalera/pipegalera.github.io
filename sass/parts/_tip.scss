@@ -163,3 +163,9 @@
         }
     }
 }
+
+.tip-callout {
+    @include dark {
+        --header-color: 230, 230, 230;
+    }
+}

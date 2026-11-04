@@ -1,18 +1,45 @@
 // GitHub Light Theme for code blocks and inline code
 // This will override any inline styles with !important
-// GitHub light theme colors
-$gh-bg: #f6f8fa;
-$gh-text: #24292e;
-$gh-comment: #6a737d;
-$gh-keyword: #d73a49;
-$gh-function: #6f42c1;
-$gh-string: #032f62;
-$gh-number: #005cc5;
-$gh-tag: #22863a;
-$gh-variable: #24292e;
-$gh-attr: #005cc5;
-$gh-border: #e1e4e8;
-$gh-inline-bg: #f3f4f6; // Slightly different shade for inline code
+// GitHub light and dark theme colors, as CSS variables so dark mode can swap them
+:root {
+    --code-bg: #f6f8fa;
+    --code-text: #24292e;
+    --code-comment: #6a737d;
+    --code-keyword: #d73a49;
+    --code-function: #6f42c1;
+    --code-string: #032f62;
+    --code-number: #005cc5;
+    --code-border: #e1e4e8;
+    --code-inline-bg: #f3f4f6; // Slightly different shade for inline code
+    --code-hover-bg: #edf0f3;
+    --code-active-bg: #e7ebef;
+    --code-success: #22863a;
+}
+
+@include dark-root {
+    --code-bg: #161b22;
+    --code-text: #c9d1d9;
+    --code-comment: #8b949e;
+    --code-keyword: #ff7b72;
+    --code-function: #d2a8ff;
+    --code-string: #a5d6ff;
+    --code-number: #79c0ff;
+    --code-border: #30363d;
+    --code-inline-bg: #262c36;
+    --code-hover-bg: #21262d;
+    --code-active-bg: #292e36;
+    --code-success: #3fb950;
+}
+
+$gh-bg: var(--code-bg);
+$gh-text: var(--code-text);
+$gh-comment: var(--code-comment);
+$gh-keyword: var(--code-keyword);
+$gh-function: var(--code-function);
+$gh-string: var(--code-string);
+$gh-number: var(--code-number);
+$gh-border: var(--code-border);
+$gh-inline-bg: var(--code-inline-bg);
 
 // Inline code styling (code not inside pre)
 code:not(pre code) {
@@ -152,20 +179,22 @@ pre:has(> code.language-ascii-art) {
     z-index: 100 !important;
 
     &:hover {
-        background-color: darken($gh-bg, 3%) !important;
+        background-color: var(--code-hover-bg) !important;
         color: $gh-text !important;
     }
 
     &:active {
-        background-color: darken($gh-bg, 5%) !important;
+        background-color: var(--code-active-bg) !important;
     }
 
     &.copied {
-        color: #22863a !important;
+        color: var(--code-success) !important;
     }
 }
 
-// Show copy button on hover
-pre:hover .copy-button {
+// Show copy button on hover, and when it or its code block has keyboard focus
+pre:hover .copy-button,
+pre:focus-within .copy-button,
+.copy-button:focus-visible {
     opacity: 1 !important;
 }

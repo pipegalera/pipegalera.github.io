@@ -34,7 +34,7 @@ hr {
 
 blockquote {
     border-left: 3px solid var(--primary-color);
-    color: #737373;
+    color: var(--text-muted-color);
     margin: 0;
     padding-left: 1em;
 }
@@ -59,7 +59,19 @@ a:hover {
 }
 
 time {
-    color: grey;
+    color: var(--text-muted-color);
+}
+
+// Keyboard focus: a dark outline, plus the same yellow highlight as hover for links.
+:focus-visible {
+    outline: 2px solid var(--text-1-color);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+a:focus-visible {
+    background-color: var(--primary-color);
+    color: var(--hover-color);
 }
 
 /* Remove post list padding */
@@ -87,6 +99,7 @@ del {
 
         h1 {
             margin-top: 0;
+            margin-bottom: 0.5rem;
             // font-size: 130%;
 
             a {
@@ -112,15 +125,6 @@ del {
                 border-bottom: none;
             }
         }
-    }
-}
-
-/* Remove styling from theme toggle button */
-#dark-mode-toggle {
-    border-bottom: none;
-
-    &:hover {
-        background-color: transparent;
     }
 }
 

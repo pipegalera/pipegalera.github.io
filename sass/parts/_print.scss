@@ -1,0 +1,94 @@
+// Print: plain black on white, no navigation or interactive bits,
+// full link addresses after external links, and collapsed callouts expanded.
+@media print {
+    :root {
+        --base-0-color: #fff;
+        --base-1-color: #fff;
+        --base-2-color: #ccc;
+        --text-0-color: #444;
+        --text-1-color: #000;
+        --text-muted-color: #444;
+        --image-border-color: #ccc;
+        --code-bg: #f6f8fa;
+        --code-text: #24292e;
+        --code-comment: #6a737d;
+        --code-border: #ddd;
+        --code-inline-bg: #f3f4f6;
+    }
+
+    html {
+        font-size: 11pt;
+    }
+
+    .content {
+        max-width: none;
+        padding: 0;
+    }
+
+    header nav,
+    header .socials,
+    .search-modal,
+    .toc-container,
+    .copy-button,
+    .pagination,
+    footer {
+        display: none !important;
+    }
+
+    header {
+        padding: 0 0 1rem 0;
+    }
+
+    a {
+        border-bottom: none !important;
+        text-decoration: underline;
+    }
+
+    h1 a,
+    h2 a,
+    h3 a,
+    h4 a,
+    .meta a {
+        text-decoration: none;
+    }
+
+    // Print the address after links in the body text, so they survive on paper
+    article p a[href^="http"]::after,
+    article li a[href^="http"]::after {
+        content: " (" attr(href) ")";
+        font-size: 0.85em;
+        word-break: break-all;
+    }
+
+    pre {
+        white-space: pre-wrap !important;
+        word-break: break-word;
+    }
+
+    pre,
+    img,
+    video,
+    figure,
+    table,
+    .tip-callout,
+    .faq-callout {
+        break-inside: avoid;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        break-after: avoid;
+    }
+
+    main img {
+        max-width: 100%;
+    }
+
+    .tip-content.collapsible,
+    .faq-content.collapsible {
+        max-height: none !important;
+        overflow: visible !important;
+    }
+}

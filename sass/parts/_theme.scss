@@ -1,0 +1,34 @@
+// Theme switching. The dark theme applies when:
+//   - the visitor picked dark with the toggle (<html data-theme="dark">), or
+//   - they picked nothing and their system is set to dark.
+// <html data-theme="light"> forces light. Only on screens: print always uses light.
+
+// For CSS variables on :root
+@mixin dark-root {
+    @media screen and (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+            @content;
+        }
+    }
+
+    @media screen {
+        :root[data-theme="dark"] {
+            @content;
+        }
+    }
+}
+
+// For use inside a style rule: `.thing { @include dark { ... } }`
+@mixin dark {
+    @media screen and (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) & {
+            @content;
+        }
+    }
+
+    @media screen {
+        :root[data-theme="dark"] & {
+            @content;
+        }
+    }
+}

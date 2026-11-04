@@ -1,10 +1,11 @@
-img {
+// Scoped to content: a global img rule also hit the header icons.
+main img {
     max-width: 576px;
     height: auto;
     display: block;
     margin: 3rem;
     border-radius: 5px;
-    border: 1px solid;
+    border: 1px solid var(--image-border-color);
     margin-right: auto;
     margin-left: auto;
 }
