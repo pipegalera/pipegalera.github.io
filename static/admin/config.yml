@@ -1,0 +1,186 @@
+# Sveltia CMS: the editor at https://pipegalera.com/admin/
+# Docs: https://sveltiacms.app/en/docs
+#
+# Every save is a commit to the main branch, made with your own GitHub account,
+# which triggers the usual GitHub Action deploy.
+
+backend:
+  name: github
+  repo: pipegalera/pipegalera.github.io
+  branch: main
+  # Sign in with a GitHub personal access token. No OAuth server needed.
+  auth_methods: [token]
+  # Ask for a commit message on each save, pre-filled from the templates below.
+  prompt_commit_messages: true
+  commit_messages:
+    create: "Create {{collection}} “{{slug}}”"
+    update: "Update {{collection}} “{{slug}}”"
+    delete: "Delete {{collection}} “{{slug}}”"
+    uploadMedia: "Upload “{{path}}”"
+    deleteMedia: "Delete “{{path}}”"
+
+site_url: https://pipegalera.com
+logo:
+  src: /icons/favicons/android-chrome-192x192.png
+
+# Used only by the Home and About pages. Posts and book notes keep their
+# images in an images/ folder next to their index.md (see each collection).
+media_folder: static/images
+public_folder: /images
+
+# Uploaded photos and screenshots are converted to WebP and scaled down to
+# at most 1400 px wide in the browser, before they are committed.
+# GIFs and SVGs are left as they are.
+media_libraries:
+  stock_assets: false
+  default:
+    config:
+      transformations:
+        png: { format: webp, quality: 82, width: 1400 }
+        jpeg: { format: webp, quality: 82, width: 1400 }
+        heic: { format: webp, quality: 82, width: 1400 }
+
+# Leave out empty optional fields, so an empty "Updated" date is never written
+# as updated = "" (which Zola would reject).
+output:
+  omit_empty_optional_fields: true
+
+# New post folders get names like my-new-post
+slug:
+  encoding: ascii
+  clean_accents: true
+
+collections:
+  - name: posts
+    label: Posts
+    label_singular: Post
+    description: Blog posts in content/posts. Each post is a folder with an index.md and its images.
+    folder: content/posts
+    path: "{{slug}}/index"
+    format: toml-frontmatter
+    extension: md
+    media_folder: images
+    public_folder: images
+    summary: "{{title}} · {{date}}"
+    sortable_fields: [date, title]
+    fields:
+      - { name: title, label: Title, widget: string }
+      - name: description
+        label: Description
+        widget: string
+        required: false
+        hint: One line shown under the title in post lists and link previews.
+      - name: date
+        label: Date
+        widget: datetime
+        type: date
+        format: YYYY-MM-DD
+        default: "{{now}}"
+      - name: updated
+        label: Updated
+        widget: datetime
+        type: date
+        format: YYYY-MM-DD
+        required: false
+        hint: Only if you revised the post after publishing.
+      - name: draft
+        label: Draft
+        widget: boolean
+        default: false
+        required: false
+        hint: Drafts are not published.
+      - name: taxonomies
+        label: Tags
+        widget: object
+        fields:
+          - name: tags
+            label: Tags
+            widget: list
+            required: false
+            hint: Use existing tags where you can, e.g. self-hosting, docker, python.
+      - name: extra
+        label: Options
+        widget: object
+        collapsed: true
+        fields:
+          - { name: toc, label: Table of contents, widget: boolean, default: true, required: false }
+          - { name: math, label: Math (MathJax), widget: boolean, default: false, required: false, hint: Turn on if the post uses $...$ or $$...$$. }
+      - { name: body, label: Body, widget: markdown, required: false }
+
+  - name: books
+    label: Mostly books
+    label_singular: Book note
+    description: Book and course notes in content/mostly_books. Not included in site search.
+    folder: content/mostly_books
+    path: "{{slug}}/index"
+    format: toml-frontmatter
+    extension: md
+    media_folder: images
+    public_folder: images
+    summary: "{{title}} · {{date}}"
+    sortable_fields: [date, title]
+    fields:
+      # Book notes are kept out of the site search index
+      - { name: in_search_index, widget: hidden, default: false }
+      - { name: title, label: Title, widget: string }
+      - name: description
+        label: Description
+        widget: string
+        required: false
+        hint: One line shown under the title in post lists and link previews.
+      - name: date
+        label: Date
+        widget: datetime
+        type: date
+        format: YYYY-MM-DD
+        default: "{{now}}"
+      - name: updated
+        label: Updated
+        widget: datetime
+        type: date
+        format: YYYY-MM-DD
+        required: false
+        hint: Only if you revised the post after publishing.
+      - name: draft
+        label: Draft
+        widget: boolean
+        default: false
+        required: false
+        hint: Drafts are not published.
+      - name: taxonomies
+        label: Tags
+        widget: object
+        fields:
+          - name: tags
+            label: Tags
+            widget: list
+            required: false
+            hint: Use existing tags where you can, e.g. self-hosting, docker, python.
+      - name: extra
+        label: Options
+        widget: object
+        collapsed: true
+        fields:
+          - { name: toc, label: Table of contents, widget: boolean, default: true, required: false }
+          - { name: math, label: Math (MathJax), widget: boolean, default: false, required: false, hint: Turn on if the post uses $...$ or $$...$$. }
+      - { name: body, label: Body, widget: markdown, required: false }
+
+
+  - name: pages
+    label: Pages
+    format: toml-frontmatter
+    files:
+      - name: home
+        label: Home page
+        file: content/_index.md
+        fields:
+          - { name: title, label: Title, widget: string }
+          - { name: template, widget: hidden, default: homepage.html }
+          - { name: body, label: Body, widget: markdown, required: false }
+      - name: about
+        label: About
+        file: content/about.md
+        fields:
+          - { name: title, label: Title, widget: string }
+          - { name: path, widget: hidden, default: about }
+          - { name: body, label: Body, widget: markdown, required: false }

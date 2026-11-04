@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="robots" content="noindex" />
+        <title>Content manager · pipegalera.com</title>
+        <!--
+            Sveltia CMS, the editor for this site. Settings are in config.yml next to this file.
+            The version is pinned so an update can't break the editor unexpectedly. To update,
+            change the version number (see https://github.com/sveltia/sveltia-cms/releases).
+        -->
+        <script src="https://unpkg.com/@sveltia/cms@0.258.1/dist/sveltia-cms.js"></script>
+    </head>
+    <body>
+        <script>
+            // Buttons in the editor for the site's tip and faq shortcodes
+            // (templates/shortcodes/tip.html and faq.html). They write:
+            //   {% tip(clickable=false, header="Tip") %}
+            //   ...
+            //   {% end %}
+            for (const [id, label, defaultHeader] of [
+                ["tip", "Tip", "Tip"],
+                ["faq", "FAQ", "Question?"],
+            ]) {
+                CMS.registerEditorComponent({
+                    id,
+                    label,
+                    fields: [
+                        { name: "header", label: "Title", widget: "string", default: defaultHeader },
+                        { name: "clickable", label: "Collapsible", widget: "boolean", default: false },
+                        { name: "body", label: "Content", widget: "markdown" },
+                    ],
+                    pattern: new RegExp(
+                        `^\\{% ${id}\\(clickable=(true|false),\\s*header=\\s*"([^"]*)"\\) %\\}\\n([\\s\\S]*?)\\n\\{% end %\\}`,
+                        "m",
+                    ),
+                    fromBlock: (match) => ({
+                        clickable: match[1] === "true",
+                        header: match[2],
+                        body: match[3].trim(),
+                    }),
+                    toBlock: ({ header = "", clickable = false, body = "" }) =>
+                        `{% ${id}(clickable=${clickable ? "true" : "false"}, header="${header.replaceAll('"', "'")}") %}\n\n${body.trim()}\n\n{% end %}`,
+                    toPreview: ({ header = "", body = "" }) =>
+                        `<div style="border:1px solid #ddd;border-left:4px solid #ffd63a;padding:8px 12px"><strong>${header}</strong><div>${body}</div></div>`,
+                });
+            }
+        </script>
+    </body>
+</html>
