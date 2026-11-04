@@ -1,5 +1,6 @@
 +++
 title = "One week electricity forecast in California"
+in_search_index = false
 description = "CI/CD machine learning pipeline using Github Actions."
 date = "2023-01-09"
 weight = 1
