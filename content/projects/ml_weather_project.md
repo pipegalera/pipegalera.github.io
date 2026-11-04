@@ -6,7 +6,7 @@ date = "2023-01-09"
 weight = 1
 
 [extra]
-local_image = "/projects/weather_forecast_cover.png"
+local_image = "/projects/weather_forecast_cover.webp"
 +++
 
 # One week electricity forecast in California
