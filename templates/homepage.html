@@ -3,5 +3,5 @@
 {% block main_content %}
     {{ post_macros::home_page(section=section) }}
     {# Animates the ASCII computer in content/_index.md #}
-    <script defer src="{{ get_url(path='js/ascii-computer.js') }}"></script>
+    <script defer src="{{ get_url(path='js/ascii-computer.js', cachebust=true) | safe }}"></script>
 {% endblock main_content %}

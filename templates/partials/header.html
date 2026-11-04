@@ -16,7 +16,7 @@
             if (t === "dark" || t === "light") document.documentElement.setAttribute("data-theme", t);
         } catch (e) {}
     </script>
-    <script defer src="{{ get_url(path='js/theme-toggle.js') }}"></script>
+    <script defer src="{{ get_url(path='js/theme-toggle.js', cachebust=true) | safe }}"></script>
 
     {# Optional per-page meta tags, from [[extra.meta]] tables in a page's front matter #}
     {% if page.extra.meta %}
@@ -82,10 +82,10 @@
     {% endif %}
 
     {# Js copy-code button #}
-    {% if config.extra.copy_code %}<script defer src={{ get_url(path="js/copy-code.js") }}></script>{% endif %}
+    {% if config.extra.copy_code %}<script defer src="{{ get_url(path='js/copy-code.js', cachebust=true) | safe }}"></script>{% endif %}
 
     {# Table of contents #}
-    {% if config.extra.toc | default(value=false) %}<script defer src={{ get_url(path="js/toc.js") }}></script>{% endif %}
+    {% if config.extra.toc | default(value=false) %}<script defer src="{{ get_url(path='js/toc.js', cachebust=true) | safe }}"></script>{% endif %}
 
     {# Dynamic Note #}
     {% if config.extra.dynamic_note | default(value=false) %}
@@ -113,10 +113,11 @@
           href="{{ get_url(path="atom.xml", trailing_slash=false) }}">
 
 
-    {# CSS #}
+    {# CSS. cachebust adds ?h=<hash>, so browsers fetch the new file after each deploy
+       instead of pairing new HTML with a cached old stylesheet. #}
     <link rel="stylesheet"
           type="text/css"
-          href="{{ get_url(path="main.css") }}" />
+          href="{{ get_url(path='main.css', cachebust=true) | safe }}" />
 
     {% if config.extra.stylesheets %}
         {% for stylesheet in config.extra.stylesheets %}
