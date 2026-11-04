@@ -13,19 +13,19 @@ This guide works with any other service or application.
 
 {% end %}
 
-Here I will make accessible my local service `umami` (`http://localhost:3000`) publicly as `umami.pipegalera.tech`.
+Here I will make my local service `umami` (`http://localhost:3000`) publicly accessible as `umami.pipegalera.tech`.
 
 ![umami_dashboard](images/umami_dashboard.png)
 
 Umami is an [analytics platform](https://umami.is/), similar to Google Analytics, that can be self-hosted.
 
-I will user [Cloudflare tunnels](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/), instead of the usual combo of [Nginx reverse proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/), getting a static IP and opening the ports of the home router.
+I will use [Cloudflare tunnels](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/), instead of the usual combo of [Nginx reverse proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/), getting a static IP and opening the ports of the home router.
 
-Cloudflare allow to create “tunnels” for an outbound connections so you can make public a website or service hosted in your homelab securely.
+Cloudflare allows you to create “tunnels” for outbound connections so you can securely make a website or service hosted in your homelab public.
 
 ![cloudflare_tunnel.png](images/cloudflare_tunnel.png)
 
-If you want to completely manage your network security, go for [Nginx](https://nginx.org/). I prefer Cloudflare to handle my network security and not get paranoid with DoS, DDoS or bruteforce IP attacks.
+If you want to completely manage your network security, go for [Nginx](https://nginx.org/). I prefer Cloudflare to handle my network security and not get paranoid about DoS, DDoS or brute-force IP attacks.
 
 {% faq(clickable=false, header="Requirements") %}
 
@@ -34,13 +34,13 @@ If you want to completely manage your network security, go for [Nginx](https://n
 
 {% end %}
 
-## 1. Share a service via Cloudfare
+## 1. Share a service via Cloudflare
 
 ### 1.1. Connect your domain to Cloudflare
 
-Go to [www.cloudflare.com](www.cloudflare.com) , log in and click `+ Add domain` under `Account Home`.
+Go to [www.cloudflare.com](https://www.cloudflare.com), log in, and click `+ Add domain` under `Account Home`.
 
-Just follow the instructions, they are easy: write your domain, it will give you a DNS record (e.g. `kim.ns.cloudflare.com `) and it will tell you to go to your domain provider (e.g. Namecheap) and put it there under `Custom Domain`.
+Just follow the instructions, they are easy: write your domain and it will give you a DNS record (e.g. `kim.ns.cloudflare.com `) and it will tell you to go to your domain provider (e.g. Namecheap) and put it there under `Custom Domain`.
 
 ### 1.2. Install cloudflared on your Linux homelab machine
 
@@ -54,7 +54,7 @@ rm cloudflared-linux-amd64.deb
 
 Depending on your OS, the version (e.g. `linux-arm64` instead of `linux-amd64` ) might change. See the [official docs](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/downloads/)
 
-You also need to install cloudflared service:
+You also need to install the cloudflared service:
 
 ```
 sudo cloudflared service install
@@ -74,7 +74,7 @@ The authentication will create a cert in `~/.cloudflared/cert.pem`
 
 ### 1.4. Create a Cloudflare Tunnel
 
-Create a tunnel, I called mine `homelab-tunnel`:
+Create a tunnel; I called mine `homelab-tunnel`:
 
 ```
 cloudflared tunnel create homelab-tunnel
@@ -113,11 +113,11 @@ ingress:
   - service: http_status:404
 ```
 
-Please replace the tunnel id, home path, the port, subdomain with your own.
+Please replace the tunnel ID, home path, port, and subdomain with your own.
 
 ### 1.6. Configure tunnel routing
 
-One the `config.yml` file is created, you can now route the service to the domain:
+Once the `config.yml` file is created, you can now route the service to the domain:
 
 ```
 cloudflared tunnel route dns homelab-tunnel umami.pipegalera.tech
@@ -125,7 +125,7 @@ cloudflared tunnel route dns homelab-tunnel umami.pipegalera.tech
 
 ### 1.7. Start the Service
 
-Re-execute the systemd, reload the config files, start cloudflared and enable it to make sure it activate the tunnel after the homelab reboots.
+Re-execute the systemd, reload the config files, start cloudflared and enable it to make sure it activates the tunnel after the homelab reboots.
 
 ```
 sudo systemctl daemon-reexec
@@ -141,7 +141,7 @@ Check status:
 sudo systemctl status cloudflared
 ```
 
-If everything goes well, in 15 minutes to 1 hour the subdomain should be up publicly.
+If everything goes well, within 15 minutes to 1 hour the subdomain should be up publicly.
 
 ![umami_public](images/umami_public.png)
 

@@ -11,11 +11,11 @@ My simple and opinionated guide setup for my minimalistic homeserver.
 
 ![](images/server_photo.png)
 
-It took me a couple of months of "journey", but I learned a lot of infrastructure, Linux, network security and was a hell of fun.
+It took me a couple of months of "journey", but I learned a lot about infrastructure, Linux, and network security, and it was a hell of a lot of fun.
 
-I self-host applications that replaced my monthly subscriptions of Google Drive, Google Photos, Apple iCloud, Obsidian, Netflix and Disney. And I don't rent my stuff, I own it.
+I self-host applications that replaced my monthly subscriptions to Google Drive, Google Photos, Apple iCloud, Obsidian, Netflix and Disney. And I don't rent my stuff, I own it.
 
-These series of posts describe my "minimalistic" and uncomplicated setup.
+This series of posts describes my "minimalistic" and uncomplicated setup.
 
 {% faq(clickable=true, header="How minimalistic?") %}
 
@@ -40,10 +40,10 @@ I optimized the setup for simplicity.
 
 The choice of using Linux Desktop version is intentional. It allows interaction with the server without ssh. You could get the job done with any other Linux distro.
 
-Also, feel free to use Podman instead of Docker, any other wireguard instead of Tailscale, or use nginx proxy instead of cloudfare - but it wouldn't be as simple.
-I won't mention the words: proxmox, kubernetes, NixOS, reverse proxing, port routing, gateway router config...
+Also, feel free to use Podman instead of Docker, any other wireguard instead of Tailscale, or use nginx proxy instead of Cloudflare - but it wouldn't be as simple.
+I won't mention the words: proxmox, kubernetes, NixOS, reverse proxying, port routing, gateway router config...
 
-What I called a "minimalistic" configuration doesn't require you to be a part-time system admin. However, you still need to be comfortable writing commands on a terminal.
+What I call a "minimalistic" configuration doesn't require you to be a part-time system admin. However, you still need to be comfortable writing commands on a terminal.
 
 {% end %}
 
@@ -55,13 +55,13 @@ Reuse any old laptop or pc as a server if you have one. Buying new: the key is t
 
 {% end %}
 
-I came across [this fantastic post form a reddit user](https://diycraic.com/2024/12/27/intel-n100-mini-pc-32gb-ram-as-a-home-server/) in which he recommends called _TexHoo QN10 Mini PC_.
+I came across [this fantastic post from a Reddit user](https://diycraic.com/2024/12/27/intel-n100-mini-pc-32gb-ram-as-a-home-server/) in which he recommends the _TexHoo QN10 Mini PC_.
 
 This is a great server pc because:
 
-- It has an Intel CPU N100 that consumes very little energy yet powerful
+- It has an Intel CPU N100 that consumes very little energy yet is powerful
 - It has DDR5 ram slots (DDR4 is a main performance bottleneck for tiny computers)
-- It has an standard NVME storage X3 faster than m.2 SATA 2280 that tons of mini PCs use
+- It has standard NVMe storage 3x faster than the M.2 SATA 2280 that tons of mini PCs use
 
 I can confirm that the build quality is good and everything works as it should after running it 24/7 for a couple of months.
 
@@ -73,7 +73,7 @@ I can confirm that the build quality is good and everything works as it should a
 
 Total cost: ~€465 (EU-DK).
 
-Tell the Aliexpress seller to "please include a 2.5 sata cable" (like [this one](https://www.aliexpress.com/item/1005007348439542.html)), so you can install also SSD drives.
+Tell the Aliexpress seller to "please include a 2.5 sata cable" (like [this one](https://www.aliexpress.com/item/1005007348439542.html)), so you can also install SSD drives.
 
 ### 1.2 Performance
 
@@ -84,9 +84,9 @@ is the comparison with an equally expensive (in Europe) Raspberry Pi 5 - 16 Gb:
 
 You get more bang per buck with a mini pc than a Raspberry Pi.
 
-To be fair, I think a Raspberry Pi 5 could do everything I will describe in my homeserver posts - so it can be also an option if you love the very small factor form of the Pi and you are willing to sacrifice performance.
+To be fair, I think a Raspberry Pi 5 could do everything I will describe in my homeserver posts - so it can be also an option if you love the very small form factor of the Pi and you are willing to sacrifice performance.
 
-The mini pc is been serving media at 4k for multiple devices at the same time, has +20 docker containers running and it never crashed in 5 months using it. 99% of the time it doesn't produces any audible noise, and I can only hear it the 1% of time that is under intense load.
+The mini pc has been serving media at 4k for multiple devices at the same time, has 20+ docker containers running, and has never crashed in 5 months of use. 99% of the time it doesn't produce any audible noise, and I can only hear it the 1% of the time that it is under intense load.
 
 ## 2. The OS: Ubuntu 24 Desktop
 
@@ -100,7 +100,7 @@ You don't need to install the linux "server version" of any distro to make it a 
 
 **The desktop interface takes 3% of my N100 CPU usage when in use, and 1% in idle** - and you can always remove the desktop UX later if you don't use it.
 
-I choose Ubuntu Desktop 24 because it has great reviews in the community, feels very polished, and the security updates are well supported by Canonical (parent company).
+I chose Ubuntu Desktop 24 because it has great reviews in the community, feels very polished, and the security updates are well supported by Canonical (parent company).
 
 [Follow the official instructions](https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview) to install it - they are illustrated and easy to follow.
 
@@ -114,7 +114,7 @@ The first program to install will be Docker, that will compartmentalize neatly a
 
 {% tip(clickable=false, header="Tip") %}
 
-Do not install Docker using `sudo apt install docker.io`. Ubuntu repository has Docker 20.10.24, and this version don't include **docker compose** plugin.
+Do not install Docker using `sudo apt install docker.io`. The Ubuntu repository has Docker 20.10.24, and this version doesn't include **docker compose** plugin.
 
 {% end %}
 
@@ -167,7 +167,7 @@ It should show the same as before, but this time you didn't have to use `sudo`.
 
 ### 3.3 Docker parent folder
 
-Create a docker folder from your server parent directory:
+Create a docker folder in your server's parent directory:
 
 ```bash
 mkdir -p docker

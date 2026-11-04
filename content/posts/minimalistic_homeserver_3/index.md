@@ -1,13 +1,13 @@
 +++
 title = "My minimalistic homeserver: *Arr Media Suite (3/N)"
-description = "Installing *Arr Media Suite and securing you internet privacy."
+description = "Installing *Arr Media Suite and securing your internet privacy."
 date = "2025-06-07"
 updated = "2025-08-23"
 [taxonomies]
 tags = ["self-hosting", "servers", "docker"]
 +++
 
-- Update 2025:08-23: Added `byparr`
+- Update 2025-08-23: Added `byparr`
 
 {% faq(clickable=false, header="Disclaimer and Privacy") %}
 
@@ -17,27 +17,27 @@ The applications and software shown in this post are free and open source with a
 
 {% end %}
 
-This is my simple configuration for my media application for Movies and TVShows.
+This is my simple configuration for my media applications for movies and TV shows.
 
 ![livingroom.png](images/livingroom.png)
 
-I am able to run 4k at 60fps with ease in multiple devices at the same time from my network with a mini N100 pc.
+I am able to run 4k at 60fps with ease on multiple devices at the same time from my network with a mini N100 pc.
 
-I do not expose publicly any of these applications, and I connect between my devices locally using Tailscale free tier (see [here](https://pipegalera.com/posts/minimalistic-your_ip-2/#1-the-connector-tailscale) instructions on how to install Tailscale.)
+I do not expose publicly any of these applications, and I connect between my devices locally using Tailscale free tier (see [here](https://pipegalera.com/posts/minimalistic-your_ip-2/#1-the-connector-tailscale) for instructions on how to install Tailscale).
 
-Remember to replace the home folder `your_user_homepath` for your own or whatever parent folder you want to use.
+Remember to replace the home folder `your_user_homepath` with your own or whatever parent folder you want to use.
 
 **Hard earned tips**:
 
-- It is very easy to f\*ck up the routing paths between the different apps. I recommend not to skim the sections.
+- It is very easy to f\*ck up the routing paths between the different apps. I recommend that you don't skim the sections.
 
-- If using Tailscale: use the Tailscale IP, not the Magic DNS name. Prowlarr/Sonarr/Radarr will detech initially the server but will the have problems connecting.
+- If using Tailscale: use the Tailscale IP, not the Magic DNS name. Prowlarr/Sonarr/Radarr will initially detect the server but will then have problems connecting.
 
 ## 1. Installation
 
-We will install arr suite via docker compose. I will use [hotio](https://hotio.dev/) docker images, but this also work with [linuxserver](https://www.linuxserver.io/our-images) alternatively.
+We will install the *Arr suite via docker compose. I will use [hotio](https://hotio.dev/) docker images, but this also works with [linuxserver](https://www.linuxserver.io/our-images) as an alternative.
 
-My setup follows [TRaSH folder structure](https://trash-guides.info/File-and-Folder-Structure/) to avoid having duplicating media files and wasting storage. `Sonarr` and `Radarr` will "read" the files from `qbittorrent` (_Hardlink_), instead of creating a copy of it.
+My setup follows [TRaSH folder structure](https://trash-guides.info/File-and-Folder-Structure/) to avoid having duplicate media files and wasting storage. `Sonarr` and `Radarr` will "read" the files from `qbittorrent` (_Hardlink_), instead of creating a copy of them.
 
 I will use a single `docker-compose.yml` file to install:
 
@@ -51,9 +51,9 @@ I will use a single `docker-compose.yml` file to install:
 
 ### 1.1 Create directory folders
 
-I will host data within the hardrive of the system in a folder called `data`.
+I will host data within the hard drive of the system in a folder called `data`.
 
-If you want to store your movies and tv shows in a separate hardrive, the process is the same - you just have to mount the it (google this) and replace the `your_user_homepath/data` for the hard drive path.
+If you want to store your movies and tv shows in a separate hard drive, the process is the same - you just have to mount it (google this) and replace the `your_user_homepath/data` for the hard drive path.
 
 ```
 # Set one folder for data and other for the app config
@@ -190,10 +190,10 @@ Make sure you are in the correct parent folder (e.g. `/your_user_homepath/docker
 From here on you should be able to access the services:
 
 - `Prowlarr`: http://your_ip:9696
-- `qBittorrent` http://your_ip:9696
-- `Radarr`: http://your_ip:9696
-- `Sonarr`: http://your_ip:9696
-- `Jellyfin`: http://your_ip:9696
+- `qBittorrent`: http://your_ip:6080
+- `Radarr`: http://your_ip:7878
+- `Sonarr`: http://your_ip:8989
+- `Jellyfin`: http://your_ip:8096
 - `Jellyseerr`: http://your_ip:5055
 
 {% faq(clickable=true, header="Do you want more docker compose commands?") %}
@@ -207,12 +207,12 @@ From here on you should be able to access the services:
 
 ## 2. Setting up the apps
 
-Here I will follow what I consider a logical order to setting up the applications:
+Here I will follow what I consider a logical order for setting up the applications:
 
 1. `Prowlarr` to look for media
 2. `qBittorrent` to download media
 3. `Radarr` and `Sonarr` to organize the files
-4. `Jellyfin` to reproduce them
+4. `Jellyfin` to play them
 5. `Jellyseerr` to discover new stuff
 
 Replace `your_ip` for your IP or Tailscale IP / DNS name.
@@ -224,7 +224,7 @@ Replace `your_ip` for your IP or Tailscale IP / DNS name.
 
 ![auth](images/auth.png)
 
-"Disable for Local Addresses" allow local logic without admin/password since we will only use the local network via Tailscale.
+"Disable for Local Addresses" allows local login without admin/password since we will only use the local network via Tailscale.
 
 3. Add byparr:
 
@@ -236,7 +236,7 @@ Go to: `Settings -> Indexes -> Add -> FlareSolverr` and add your byparr info fro
 
 4. Add indexers:
 
-I won't recommend any illegal site. There is an interactive search bar with the most popular ones and what kind of service can provide.
+I won't recommend any illegal site. There is an interactive search bar with the most popular ones and the kind of service each provides.
 
 You will need to add `byparr` tag to the tag section of the index when you add it:
 
@@ -279,7 +279,7 @@ You should set your own password in program preferences.
 Connection to localhost (::1) 6080 port [tcp/*] succeeded!
 ```
 
-Once you are inside the app.
+Once you are inside the app:
 
 - Change the password:
 
@@ -405,7 +405,7 @@ Settings -> Download Clients -> Download Client (plus sign) -> qbittorrent
 
 ![download_client.png](images/download_client.png)
 
-Please note that my screenshot has my own internal tailscale ip, use your ip.
+Please note that my screenshot has my own internal Tailscale IP, so use your own.
 
 ## 2.4 TV Shows manager: Sonarr
 
@@ -443,9 +443,9 @@ Use the credentials from `qbittorrent`.
 
 `Jellyfin` is very easy to install. Go to the docker daemon at `http://your_ip:8096/` and follow the web instructions.
 
-- All the defaults are okay for my usecases.
-- Create one library to the movies pointing to folder `/data/media/movies`
-- Create one library to the tvshows pointing to folder `/data/media/tv`
+- All the defaults are okay for my use cases.
+- Create one library for movies pointing to the folder `/data/media/movies`
+- Create one library for TV shows pointing to the folder `/data/media/tv`
 
 {% tip(clickable=false, header= "Do not point Jellyfin to the torrent folder") %}
 
@@ -457,7 +457,7 @@ Libraries should look like:
 
 ![jellyfin_settings.png](images/jellyfin_settings.png)
 
-After loging in, click on to the left top corner (settings) and scan the libraries with the files. It will organize them and clean the metadata on it's hardlinked copy.
+After logging in, click on the top left corner (settings) and scan the libraries with the files. It will organize them and clean the metadata on its hardlinked copy.
 
 ```
 Settings -> Libraries -> Scan All Libraries
@@ -467,16 +467,16 @@ Settings -> Libraries -> Scan All Libraries
 
 ![jellyseerr.png](images/jellyseerr.png)
 
-`Jellyseerr` is an application to discover new TV shows and movies. One of my favourite feature is that you can filter for network (e.g. `Apple tv+`) and request any content from there.
+`Jellyseerr` is an application to discover new TV shows and movies. One of my favourite features is that you can filter for network (e.g. `Apple tv+`) and request any content from there.
 
-1. Go to `http://your_ip:5050/`
+1. Go to `http://your_ip:5055/`
 2. Choose `Jellyfin` as server and fill the following info with your ip and `Jellyfin` credentials.
 
 ![jellyseerr_settings.png](images/jellyseerr_settings.png)
 
 3. Click `Sync Libraries`, select both `Movies` and `TV Shows`, and `Start Scan`.
 
-4. Configure Media Server. The usual information, at the end should look something like below with your own info.
+4. Configure the media server. Fill in the usual information; at the end it should look something like the screenshot below, with your own info.
 
 ![jellyseerr.png](images/jellyseerr_servers.png)
 
@@ -484,15 +484,15 @@ Click continue and start exploring movies.
 
 ## 3. Setting a VPN with Mullvad and Tailscale
 
-I strongly recommend using a VPN if you want to protect your privacy on the internet, even if you are not doing anything ilegal.
+I strongly recommend using a VPN if you want to protect your privacy on the internet, even if you are not doing anything illegal.
 
-[Tailscale colab with Mullvad to provide a VPN mask for your IP for $5 month](https://tailscale.com/mullvad).
+[Tailscale partners with Mullvad to provide a VPN that masks your IP for $5 a month](https://tailscale.com/mullvad).
 
-The instructions below is a guide on how to implement it to your server.
+The instructions below are a guide on how to implement it on your server.
 
 ### 3.1 From the server
 
-Once you got the Mullvad paid extension, go to the [Mullvand section in Tailscale](https://login.tailscale.com/admin/settings/general/mullvad) and add your server DNS from the dropdown menu.
+Once you have the paid Mullvad extension, go to the [Mullvad section in Tailscale](https://login.tailscale.com/admin/settings/general/mullvad) and add your server DNS from the dropdown menu.
 
 After adding it, you can see the list of VPN locations running:
 
@@ -500,13 +500,13 @@ After adding it, you can see the list of VPN locations running:
 tailscale exit-node list
 ```
 
-Choose an ip or run `tailscale exit-node suggest`.
+Choose an IP or run `tailscale exit-node suggest`.
 
 ```
 sudo tailscale set --exit-node=the_ip_choosen --exit-node-allow-lan-access
 ```
 
-After waiting 5 minutes you can use `curl ipinfo.io` to check where you public IP is:
+After waiting 5 minutes you can use `curl ipinfo.io` to check where your public IP is:
 
 ![mullvad_server.png](images/mullvad_server.png)
 
@@ -514,12 +514,12 @@ After waiting 5 minutes you can use `curl ipinfo.io` to check where you public I
 
 You can use the VPN in up to 5 devices, and set your devices in different locations.
 
-From MacOS Tailscale app is very easy to change IP locations:
+In the macOS Tailscale app it is very easy to change IP locations:
 
 ![mullvad_client.png](images/mullvad_client.png)
 
 Since the server and devices connect internally via Tailscale IPs, it doesn't affect their connection if they use different exit nodes or VPN locations.
 
-I really like [Mullvad](https://mullvad.net/en) VPN. They have all the "green flags" from people that care about internet privacy: from setting your user as a random token (they don't host your email), or allowing people to pay using cash in an envelope, or non predatory/vendor-lock VPN prices.
+I really like [Mullvad](https://mullvad.net/en) VPN. They have all the "green flags" from people that care about internet privacy: from setting your user as a random token (they don't host your email), allowing people to pay with cash in an envelope, and non-predatory prices with no vendor lock-in.
 
 Stay safe!

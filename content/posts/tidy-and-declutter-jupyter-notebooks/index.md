@@ -8,13 +8,13 @@ tags = ["clean code", "python", "ipython"]
 comment = true
 +++
 
-As a general rule, I create a new conda/mamba environment for every new data science project. For simplicity and to avoid compatibility issues. Every 3 months I used to end up with 12 different environments and ipykernels.
+As a general rule, I create a new conda/mamba environment for every new data science project, for simplicity and to avoid compatibility issues. Every 3 months I used to end up with 12 different environments and ipykernels.
 
 ![](https://i.stack.imgur.com/99fyH.png)
 
-This post contains how to create, remove, and remove environments and kernels for tidiness.
+This post contains how to create, rename, and remove environments and kernels for tidiness.
 
-A first step to declutter is taking a look of what you already have first.
+A first step to declutter is to take a look at what you already have.
 
 ## How to see all the environments and kernels installed?
 
@@ -39,17 +39,17 @@ Also locally at:
 
 C:/Users/{_windows_username_here_}/AppData/Roaming/jupyter/kernels/
 
-## How do I create jupyter project from zero?
+## How do I create a Jupyter project from scratch?
 
 **Environment:**
 
 ```bash
-conda create -n {enviroment_name_here} python={X.X}
+conda create -n {environment_name_here} python={X.X}
 # Activate it
-conda activate {enviroment_name_here}
+conda activate {environment_name_here}
 ```
 
-_Optional_ -> consider creating a -f `requirements.txt` file for best practices.
+_Optional_ -> consider creating a `requirements.txt` file (`-f`) as a best practice.
 
 **Kernel:**
 
@@ -63,7 +63,7 @@ Your IDE will say something similar to:
 ```
 Installed kernelspec {kernel_name_here} in
 
-C:/Users/{windows_username_here/AppData/Roaming/jupyter/kernels/{kernel_name_here}
+C:/Users/{windows_username_here}/AppData/Roaming/jupyter/kernels/{kernel_name_here}
 ```
 
 ## How to remove them?
@@ -84,11 +84,11 @@ jupyter kernelspec uninstall {kernel_name_here}
 
 **Environments:**
 
-You can't. One workaround is to create clone a new environment and then remove the original one ([source](https://stackoverflow.com/questions/42231764/how-can-i-rename-a-conda-environment)).
+You can't. One workaround is to create a clone of the environment and then remove the original one ([source](https://stackoverflow.com/questions/42231764/how-can-i-rename-a-conda-environment)).
 
 ```bash
-conda env create -n new_name --copy --clone {old_nama_here}
-conda remove -n {old_nama_here}
+conda env create -n new_name --copy --clone {old_name_here}
+conda env remove -n {old_name_here}
 ```
 
 **Kernels:**
