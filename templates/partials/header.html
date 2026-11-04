@@ -5,72 +5,80 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="base" content="{{ config.base_url }}">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#151515" media="(prefers-color-scheme: dark)">
 
+    {# Apply the theme chosen with the toggle before the page renders. See js/theme-toggle.js #}
+    <script>
+        try {
+            var t = localStorage.getItem("theme");
+            if (t === "dark" || t === "light") document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {}
+    </script>
+    <script defer src="{{ get_url(path='js/theme-toggle.js') }}"></script>
+
+    {# Optional per-page meta tags, from [[extra.meta]] tables in a page's front matter #}
     {% if page.extra.meta %}
-        <!-- the meta data config goes here  -->
         {% for data in page.extra.meta %}
-            <meta {% for key, value in data %} {% if key == "property" and value == "og:title" %} {% set_global page_has_og_title = true -%} {% endif %}
-                  {% if key == "property" and value == "og:description" %} {% set_global page_has_og_description = true -%} {% endif %}
-                  {% if key == "name" and value == "description" %} {% set_global page_has_description = true -%} {% endif %}
-                  {{ key }}
-                  None="{{ value }}"
-                  {% endfor %} />
+            {%- for key, value in data %}
+                {%- if key == "property" and value == "og:title" %}{% set_global page_has_og_title = true %}{% endif %}
+                {%- if key == "property" and value == "og:description" %}{% set_global page_has_og_description = true %}{% endif %}
+                {%- if key == "name" and value == "description" %}{% set_global page_has_description = true %}{% endif %}
+            {%- endfor %}
+            <meta {% for key, value in data %}{{ key }}="{{ value }}" {% endfor %}/>
         {% endfor %}
     {% endif %}
 
-    {# Site title #}
+    {# Title and description #}
     {% set current_path = current_path | default(value="/") %}
-    {% if current_path == "/" %}
-        <title>{{ config.title | default(value="Home") }}</title>
-        {% if not page_has_og_title %}
-            <meta property="og:title"
-                  content="{{ config.title | default(value="Home") }}" />
-        {% endif %}
+    {%- if current_path == "/" %}{% set page_title = config.title | default(value="Home") %}
+    {%- elif page.title %}{% set page_title = page.title %}
+    {%- elif section.title %}{% set page_title = section.title %}
+    {%- else %}{% set page_title = config.title | default(value="Post") %}{% endif %}
 
+    {%- if page.description %}{% set page_description = page.description %}
+    {%- elif section.description %}{% set page_description = section.description %}
+    {%- else %}{% set page_description = config.description | default(value="") %}{% endif %}
+
+    <title>{{ page_title }}</title>
+    {% if page_description %}
+        {% if not page_has_description %}<meta name="description" content="{{ page_description }}" />{% endif %}
+        {% if not page_has_og_description %}<meta property="og:description" content="{{ page_description }}" />{% endif %}
+    {% endif %}
+
+    {# Canonical URL and link previews (LinkedIn, Slack, Mastodon...) #}
+    {% if current_url %}
+        <link rel="canonical" href="{{ current_url | safe }}" />
+        <meta property="og:url" content="{{ current_url | safe }}" />
+    {% endif %}
+    {% if not page_has_og_title %}<meta property="og:title" content="{{ page_title }}" />{% endif %}
+    <meta property="og:site_name" content="{{ config.title }}" />
+    {% if page.date %}
+        <meta property="og:type" content="article" />
+        <meta property="article:published_time" content="{{ page.date }}" />
     {% else %}
-        <title>
-            {% if page.title %}
-                {{ page.title }}
-            {% elif section.title %}
-                {{ section.title }}
-            {% elif config.title %}
-                {{ config.title }}
-            {% else %}
-                Post
-            {% endif %}
-        </title>
-
-        {% if not page_has_og_title %}
-            <meta property="og:title"
-                  content="{% if page.title -%}{{ page.title }}{% elif config.title -%}{{ config.title }}{% else -%}Post{% endif -%}" />
-        {% endif %}
+        <meta property="og:type" content="website" />
     {% endif %}
+    {# A page can set its own preview image with extra.image = "path/from/site/root.webp" #}
+    {% set og_image = page.extra.image | default(value="icons/favicons/android-chrome-512x512.png") %}
+    <meta property="og:image" content="{{ get_url(path=og_image) }}" />
+    <meta name="twitter:card" content="summary" />
 
-    {% if not page_has_og_description %}
-        {% if page.description %}
-            <meta property="og:description" content="{{ page.description }}" />
-        {% elif config.description %}
-            <meta property="og:description" content="{{ config.description }}" />
-        {% endif %}
-    {% endif %}
+    {# Favicons #}
+    {% if config.extra.favicon %}<link rel="icon" type="image/png" href="{{ get_url(path=config.extra.favicon) }}" />{% endif %}
+    <link rel="apple-touch-icon" href="{{ get_url(path='icons/favicons/apple-touch-icon.png') }}" />
 
-    {% if not page_has_description %}
-        {% if page.description %}
-            <meta name="description" content="{{ page.description }}" />
-        {% elif config.description %}
-            <meta name="description" content="{{ config.description }}" />
-        {% endif %}
-    {% endif %}
-
-    {# Favicon #}
-    {% if config.extra.favicon %}<link rel="icon" type="image/png" href={{ config.extra.favicon }} />{% endif %}
-
-    {# Font from cdn or disk #}
+    {# Fonts: from a CDN, or self-hosted (the @font-face rules are in main.css) #}
     {% if config.extra.use_cdn | default(value=false) %}
         <link rel="stylesheet"
               href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto+Mono:wght@400;700&display=swap">
     {% else %}
-        <link href={{ get_url(path="fonts.css") }} rel="stylesheet" />
+        <link rel="preload"
+              href="{{ get_url(path='fonts/roboto-mono-v23-latin-regular.woff2') }}"
+              as="font"
+              type="font/woff2"
+              crossorigin />
     {% endif %}
 
     {# Js copy-code button #}
@@ -108,7 +116,6 @@
     {# CSS #}
     <link rel="stylesheet"
           type="text/css"
-          media="screen"
           href="{{ get_url(path="main.css") }}" />
 
     {% if config.extra.stylesheets %}
