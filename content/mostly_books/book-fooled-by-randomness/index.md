@@ -1,5 +1,6 @@
 +++
 title = "Fooled by Randomness, by Nassim Nicholas Taleb"
+in_search_index = false
 description = "The guy really hates journalist and MBAs."
 date = "2025-05-02"
 [taxonomies]

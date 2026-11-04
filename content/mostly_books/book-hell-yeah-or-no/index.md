@@ -1,4 +1,5 @@
 +++
+in_search_index = false
 title= "Hell Yeah or No, by Derek Sivers"
 description=  "A small book about about making right decisions."
 date = "2023-10-07"

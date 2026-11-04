@@ -1,5 +1,6 @@
 +++
 title = "The Dip, by Seth Godin"
+in_search_index = false
 description = "Short book on when (and how) to quit."
 date = "2023-04-23"
 [taxonomies]
@@ -16,7 +17,7 @@ toc = false
 
 This period is characterized by frustration, hard work, and the need to push through obstacles in order to achieve success. Not everyone has the perseverance and determination needed to go through the dip. As most people quit before they reach the other side of the dip, the scarcity of people that make it makes them very valuable.
 
-![](./images/Image_1.jpeg)
+![](./images/Image_1.webp)
 
 > Whatever you do for a living, or for fun, it’s probably somehow based on a system that’s based on quitting. Quitting creates scarcity; scarcity creates value.
 
@@ -36,7 +37,7 @@ Seth Godin define most of the situations that doesn't get better as _The Cul-de-
 
 > The Cul-de-Sac (French for “dead end”) is so simple it doesn’t even need a chart. It’s a situation where you work and you work and you work and nothing much changes. It doesn’t get a lot better, it doesn’t get a lot worse. It just is.
 
-![](./images/Image_2.jpeg)
+![](./images/Image_2.webp)
 
 There’s no reason to keep investing in something that is not going to get better._The Cul-de-Sac_ are all of the relations that do not go anywhere, the business that are leading nowhere, or those jobs that are purposeless.
 
@@ -72,7 +73,7 @@ Basically being _the Best in the World_. My first reaction reading this was that
 
 > The Best in the World? Anyone who is going to hire you, buy from you, recommend you, vote for you, or do what you want them to do is going to wonder if you’re the best choice. Best as in: best for them, right now, based on what they believe and what they know. And in the world as in: their world, the world they have access to. So if I’m looking for a freelance copy editor, I want the best copy editor in English, who’s available, who can find a way to work with me at a price I can afford. That’s my best in the world.
 
-![](./images/Image_3.jpeg)
+![](./images/Image_3.webp)
 
 ## Tips on quitting
 
@@ -88,7 +89,7 @@ Basically being _the Best in the World_. My first reaction reading this was that
 
 > When the pain gets so bad that you’re ready to quit, you’ve set yourself up as someone with nothing to lose. And someone with nothing to lose has quite a bit of power. You can go for broke. Challenge authority. Attempt unattempted alternatives. Lean into a problem; lean so far that you might just lean right through it.
 
-![](./images/Image_4.jpeg)
+![](./images/Image_4.webp)
 
 4. The time to look for a new job is when you don’t need one.
 

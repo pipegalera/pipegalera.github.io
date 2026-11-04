@@ -7,6 +7,7 @@ draft=true
 tags = ["python", "basketball analytics"]
 [extra]
 comment = true
+math = true
 +++
 
 

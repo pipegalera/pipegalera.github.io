@@ -1,5 +1,6 @@
 +++
 title = "Course Notes - Share Data Through the Art of Visualization"
+in_search_index = false
 description = "My personal notes of Google's course."
 date = "2021-04-26"
 [taxonomies]
@@ -8,7 +9,7 @@ tags = ["courses", "ux"]
 
 My personal notes and presentations tips of Google's course [Share Data Through the Art of Visualization](https://www.coursera.org/learn/visualize-data/)
 
-![](./images/banner.png)
+![](./images/banner.webp)
 
 ## 1. Visualizations
 
@@ -28,7 +29,7 @@ Tips for creating and designing powerful visualizations effectively.
 
 This decision tree is useful to choose what kind of data visualizations would be better.
 
-![](./images/C6_viz_decision_tree.png)
+![](./images/C6_viz_decision_tree.webp)
 
 ### 1.3 Designing a visualization in 60 minutes
 
@@ -48,7 +49,7 @@ Draft your approach to the problem. Define the timing and output of your work to
 
 Generate a visual solution and gauge its effectiveness at accurately communicating your data. Take your time and repeat the process until a final visual is produced. It is alright if you go through several visuals until you find the perfect fit.
 
-![](./images/C6_viz_in60.png)
+![](./images/C6_viz_in60.webp)
 
 ### 1.4 Introducing visualizations in a presentation: The McCandless Method
 
@@ -60,13 +61,13 @@ Use this method to introduce data visualizations during the presentations.
 
 One good way to make sure to follow these 2 steps is introducing the slide with the graphic with only the graphic name and the visualization. **No text**. Then, you describe what they are seeing and what the data comes from (answer obvious questions beforehand)
 
-![](./images/C6_mccandless_1.png)
+![](./images/C6_mccandless_1.webp)
 
 3. State the insight of your graphic (_key takeaways_)
 
 As you discuss the main insights of the graphic, show the key takeaways. **The overall text on the screen only populated as you began to discuss it**. So the audience knows exactly what to be listening to when you talking
 
-![](./images/C6_mccandless_2.png)
+![](./images/C6_mccandless_2.webp)
 
 4. Call out data to support that insight
 
@@ -76,7 +77,7 @@ For example, the arrow of _"Happiness Score"_ helps directing the attention to t
 
 Include conclusions with evidence or recommendations. Make sure that all the information that they are been listening worth something and they got something out of the presentation.
 
-![](./images/C6_mccandless_4.png)
+![](./images/C6_mccandless_4.webp)
 
 ## 2. Presentations
 
@@ -86,7 +87,7 @@ Tips for preparing thoughtful presentation - beyond the visuals.
 
 The design-thinking framework follows an overall flow of 1) understand, 2) explore, and 3) materialize. Within these larger buckets fall the 6 phases: empathize, define, ideate, prototype, test, and implement.
 
-![](./images/design-thinking.png)
+![](./images/design-thinking.webp)
 
 Any visualization or presentation can follow design thinking:
 
@@ -110,7 +111,7 @@ Any visualization or presentation can follow design thinking:
 
 - Use **arrows and call-outs** to direct the attention to the points that you want them to look at in the graphs.
 
-![](./images/C6_mccandless_3.png)
+![](./images/C6_mccandless_3.webp)
 
 - **Include transition slides or keynotes**. Those are slides that indicates that the previous slide presentation is over and indicating what to expect in the next slide. _"Moving on, the next tackles the effect of..."_
 

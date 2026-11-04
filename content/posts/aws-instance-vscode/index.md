@@ -10,7 +10,7 @@ toc = false
 
 I will explain how to connect VSCode to a remote machine. The remote machine will be an Ubuntu server in an AWS instance that, in my case, will be used to run lightweight ML models.
 
-![where to put the key](./images/vscode.png)
+![where to put the key](./images/vscode.webp)
 
 ## 1. Create an AWS instance
 
@@ -20,13 +20,13 @@ Free accounts have a free tier. Selecting everything with the "Free tier eligibl
 
 Here I will set up a cheap machine (like $0.1/hour):
 
-![AWS instance summary](./images/aws_instance.png)
+![AWS instance summary](./images/aws_instance.webp)
 
 - OS: Ubuntu Server 22.4 64-bit (x86)
 - Image: t3.large or t3.xlarge (8/16 Gb of RAM)
 - Key pair: New key -> place the pem file in the directory under your ~/.ssh/ folder (I called mine _mlops_key_):
 
-  ![where to put the key](./images/ssh_folder.png)
+  ![where to put the key](./images/ssh_folder.webp)
 
 - Network settings: Allow SSH traffic from “Anywhere”. As long as you configure the key pair you should be okay.
 - Storage: 30 Gb
@@ -37,11 +37,11 @@ If the SSH key file was placed correctly, you can access the machine via ssh usi
 ssh -i ~/.ssh/mlops_key.pem ubuntu@{Instance public IPv4 address}
 ```
 
-![AWS connection](./images/aws_connection.png)
+![AWS connection](./images/aws_connection.webp)
 
 P.S. I did have a problem the first time I tried to connect with "permissions being too open":
 
-![AWS instance summary](./images/permission_too_open.png)
+![AWS instance summary](./images/permission_too_open.webp)
 
 That can be solved by running `chmod 600 ~/.ssh/mlops_key.pem` [(Source)](https://stackoverflow.com/questions/9270734/ssh-permissions-are-too-open)
 
@@ -59,7 +59,7 @@ Host mlops
 
 E.g.:
 
-![Automatic connection](./images/automatic_connection.png)
+![Automatic connection](./images/automatic_connection.webp)
 
 ## 2. Install stuff in the ubuntu OS
 
@@ -88,7 +88,7 @@ cd miniconda3/bin
 
 After this, “which python” should point to the Anaconda version:
 
-![Which python](./images/which_python.png)
+![Which python](./images/which_python.webp)
 
 ## 3. Configure VSCode
 
@@ -100,16 +100,16 @@ Open VSCode locally and install the following:
 
 Open Command Palette (`Cmd+Shift+P`) and search "Connect host" and it will pop up:
 
-![Host name](./images/vscode_ssh.png)
+![Host name](./images/vscode_ssh.webp)
 
 It will automatically read the Host from the .ssh/config file:
 
-![Host name](./images/host_name.png)
+![Host name](./images/host_name.webp)
 
 And that's it, you have VSCode connected to the remote Ubuntu machine.
 
 Clicking open folder will load a tree view. From there you can easily organize files, drag&drop files from your local computer to the folders in the remote machine, or create new files, just like you would locally.
 
-![where to put the key](./images/vscode.png)
+![where to put the key](./images/vscode.webp)
 
 **Please remember to stop the instance in AWS to avoid getting charged while not using it.**

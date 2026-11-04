@@ -1,4 +1,5 @@
 +++
+in_search_index = false
 title= "The 3 alarms, by Eric Partaker"
 description= "Literally setting 3 alarms to help you focus."
 date = "2022-01-01"
@@ -111,10 +112,10 @@ As an **example**, this is how a random weekly review in my life looks like.
 
 This review not a complicated system. I write this as part of a journal routine in my calendar app every Sunday. It takes 5 to 10 minutes.
 
-![calendar image](./images/calendar.png)
+![calendar image](./images/calendar.webp)
 
 I also spend another 5 minutes adding the insights for the next week's scheduled activities as a reminder.
 
-![insight messages](./images/insight.png)
+![insight messages](./images/insight.webp)
 
 The return on investment of these 15 minutes is huge. This exercise of reflection brings me instant clarity and increase the probability of achiving my goals for the following week.

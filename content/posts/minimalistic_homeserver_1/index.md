@@ -9,7 +9,7 @@ tags = ["self-hosting", "servers", "docker"]
 
 My simple and opinionated guide setup for my minimalistic homeserver.
 
-![](images/server_photo.png)
+![](images/server_photo.webp)
 
 It took me a couple of months of "journey", but I learned a lot about infrastructure, Linux, and network security, and it was a hell of a lot of fun.
 
@@ -80,7 +80,7 @@ Tell the Aliexpress seller to "please include a 2.5 sata cable" (like [this one]
 [Here](https://browser.geekbench.com/v6/cpu/compare/11218167?baseline=9919608)
 is the comparison with an equally expensive (in Europe) Raspberry Pi 5 - 16 Gb:
 
-![benchmark_pc.png](images/benchmark_pc.png)
+![benchmark_pc.png](images/benchmark_pc.webp)
 
 You get more bang per buck with a mini pc than a Raspberry Pi.
 

@@ -1,5 +1,6 @@
 +++
 title = "Fastai - Deep Learning for Coders, by Jeremy Howard"
+in_search_index = false
 description = "My personal notes of the Fastai book/course."
 date = "2022-01-01"
 [taxonomies]
@@ -97,7 +98,7 @@ Machine Learning: The training of programs developed by allowing a computer to l
 
 Deep Learning is a branch of Machine Learning focus in Neural Networks. Visually, this is how they work:
 
-![](./images/2.png)
+![](./images/2.webp)
 
 Neural Networks, in theory, can solve any problem to any level of accuracy based on the parametrization of the weights - _Universal approximation theorem_.
 
@@ -129,7 +130,7 @@ Clarification: In the course they use "regression" not as a linear regression bu
 
 After making these changes, our diagram looks like:
 
-![](./images/3.png)
+![](./images/3.webp)
 
 More important terminology:
 
@@ -161,7 +162,7 @@ An epoch is how many times the model looks at the data.
 
 A more extended dictionary:
 
-![](./images/4.png)
+![](./images/4.webp)
 
 ### 1.5 P-values principles
 
@@ -276,7 +277,7 @@ With `show_batch` we can print a batch of images of the training set.
 dls.show_batch(max_n=6)
 ```
 
-![](./images/Fastbook_Chapter_5_Image_Classification_12_0.png)
+![](./images/Fastbook_Chapter_5_Image_Classification_12_0.webp)
 
 We can squish the images, or add padding to the sides or crop it by copying the model with `.new` method and modifying the part of the model that you want to change.
 
@@ -288,7 +289,7 @@ dls = pets.dataloaders(path/"images")
 dls.show_batch(max_n=6)
 ```
 
-![](./images/Fastbook_Chapter_5_Image_Classification_14_0.png)
+![](./images/Fastbook_Chapter_5_Image_Classification_14_0.webp)
 
 Here we add padding to the images:
 
@@ -298,7 +299,7 @@ dls = pets.dataloaders(path/"images")
 dls.show_batch(max_n=6)
 ```
 
-![](./images/Fastbook_Chapter_5_Image_Classification_15_0.png)
+![](./images/Fastbook_Chapter_5_Image_Classification_15_0.webp)
 
 **Remember that by cropping the images we removed some of the features that allow us to perform recognition.**
 
@@ -313,7 +314,7 @@ dls = pets.dataloaders(path/"images")
 dls.show_batch(max_n=6, unique=True)
 ```
 
-![](./images/Fastbook_Chapter_5_Image_Classification_17_0.png)
+![](./images/Fastbook_Chapter_5_Image_Classification_17_0.webp)
 
 We can alwasy use `new` method to get back to the first resizing method chosen (`aug_transforms`):
 
@@ -323,7 +324,7 @@ dls = pets.dataloaders(path/"images")
 dls.show_batch(max_n=6, unique = True)
 ```
 
-![](./images/Fastbook_Chapter_5_Image_Classification_19_0.png)
+![](./images/Fastbook_Chapter_5_Image_Classification_19_0.webp)
 
 ### 5.4 Creating a baseline model
 
@@ -411,7 +412,7 @@ It even includes handy shortcuts like `show_results` to print the real and predi
 learn.show_results()
 ```
 
-![](./images/Fastbook_Chapter_5_Image_Classification_26_1.png)
+![](./images/Fastbook_Chapter_5_Image_Classification_26_1.webp)
 
 ### 5.5 Model interpretation
 
@@ -444,7 +445,7 @@ And the the most "wrong" predictions:
 interp.plot_top_losses(5, nrows = 5)
 ```
 
-![](./images/Fastbook_Chapter_5_Image_Classification_31_0.png)
+![](./images/Fastbook_Chapter_5_Image_Classification_31_0.webp)
 
 ### 5.6 Exporting and importing a model
 
@@ -468,7 +469,7 @@ learn_inf = load_learner('my_export.pkl')
 
 To see if the model would work outside the dataloader environment, I googled "Bengal cat" in google images and drag a random image into the Google Colab folder. I consider the image as tricky, as it contains a human holding a Bengal cat:
 
-<img src="./images/test_image.jpg" alt="Random image finded in the internet" width="300" height="400">
+<img src="./images/test_image.webp" alt="Random image finded in the internet" width="300" height="400">
 
 I simply called the `predict` method of the model trained before to see if it is as easy at it looks to use fastai.
 
@@ -508,7 +509,7 @@ learn.lr_find()
 
     SuggestedLRs(valley=tensor(0.0025))
 
-![](./images/Fastbook_Chapter_5_Image_Classification_40_2.png)
+![](./images/Fastbook_Chapter_5_Image_Classification_40_2.webp)
 
 ```python
 # Let's call it the "leslie_smith_lr" in honor to the author of the orignal paper
@@ -646,7 +647,7 @@ learn.lr_find()
 
     SuggestedLRs(valley=4.365158383734524e-05)
 
-![](./images/Fastbook_Chapter_5_Image_Classification_49_2.png)
+![](./images/Fastbook_Chapter_5_Image_Classification_49_2.webp)
 
 In this graph, the Loss axis is way smaller than the previous one. The model is already trained beforehand and therefore trying mini-batches of different learning rates and iterating is easier.
 
@@ -766,7 +767,7 @@ For some machine learning problems is worth keep training the model for a day to
 learn.recorder.plot_loss()
 ```
 
-![](./images/Fastbook_Chapter_5_Image_Classification_60_0.png)
+![](./images/Fastbook_Chapter_5_Image_Classification_60_0.webp)
 
 ### 5.9 Deeper Architectures
 
@@ -1232,7 +1233,7 @@ dls = dblock.dataloaders(df)
 dls.show_batch(nrows=1, ncols=3)
 ```
 
-![](./images/output_40_0.png)
+![](./images/output_40_0.webp)
 
 Fastai includes a method called `summary` to check if anything goes wrong when you create your dataset. Besides the previous printing of the batch, we can call it to see errors, if any.
 
@@ -1493,7 +1494,7 @@ accs = [accuracy_multi(train, targs, thresh=i, sigmoid=False) for i in thr]
 plt.plot(xs,accs)
 ```
 
-![](./images/output_69_1.png)
+![](./images/output_69_1.webp)
 
 The x-axis denotes the threshold values, and the y-axis the accuracy values. We can see that a sigmoid threshold between 0.45 and 0.7 gives us around 0.96 accuracies in the validation set.
 
@@ -1587,7 +1588,7 @@ im = PILImage.create(img_files[0])
 im.to_thumb(224)
 ```
 
-![](./images/output_83_0.png)
+![](./images/output_83_0.webp)
 
 We extract the center of the image creating a function that returns the coordinates as a tensor of two items. However, the details of the function are not important. Every dataset will require a different cleaning a formatting process.
 
@@ -1631,7 +1632,7 @@ dls = biwi_data.dataloaders(path)
 dls.show_batch()
 ```
 
-![](./images/output_89_1.png)
+![](./images/output_89_1.webp)
 
 The input is the image, and the target is the red dots. The batch of data looks correct.
 
@@ -1736,7 +1737,7 @@ The predicted center points are quite close to the real center of the faces!
 learn.show_results(ds_idx=1, max_n = 3)
 ```
 
-![](./images/output_100_1.png)
+![](./images/output_100_1.webp)
 
 In problems that are at first glance completely different (single-label classification,
 multi-label classification, and regression), we end up using the same model with just
@@ -3377,7 +3378,7 @@ def plot_importance(model, features, n):
 plot_importance(rf_model, X, 10)
 ```
 
-![](./images/output_102_0.png)
+![](./images/output_102_0.webp)
 
 #### 9.11.3 Removing Low-Importance Variables
 
@@ -3462,7 +3463,7 @@ def cluster_columns(df, figsize=(10,6), font_size=12):
 cluster_columns(X_imp)
 ```
 
-![](./images/output_115_0.png)
+![](./images/output_115_0.webp)
 
 The more correlated the features, the early the group at the right of the rank.
 
@@ -3556,7 +3557,7 @@ fig,ax = plt.subplots(figsize=(12, 4))
 plot_partial_dependence(rf_model_3, X_valid_final, ['YearMade','ProductSize'], ax=ax);
 ```
 
-![](./images/output_129_0.png)
+![](./images/output_129_0.webp)
 
 - The `YearMade` partial plot show a nearly linear relationship between `YearMade` and `Salesprice` after year 1970
 
@@ -3625,7 +3626,7 @@ ax2.plot(target)
 ax3.scatter(X, target)
 ```
 
-![](./images/output_139_1.png)
+![](./images/output_139_1.webp)
 
 The linear relationship is really straightforward, as we can see in the "Relationship" plot - X and y values are very correlated.
 
@@ -3646,7 +3647,7 @@ plt.scatter(X, target)
 plt.scatter(X, y_preds, color='red', alpha=0.5);
 ```
 
-![](./images/output_142_0.png)
+![](./images/output_142_0.webp)
 
 **The random forest is not able to see the "clear" linear relationship between our linear points!**
 
@@ -3687,7 +3688,7 @@ rf_model_ODD = random_forest(X, is_valid)
 plot_importance(rf_model_ODD, X, 10)
 ```
 
-![](./images/output_147_0.png)
+![](./images/output_147_0.webp)
 
 - The difference in `SalesID` suggests that identifiers for auction sales might increment over time, we'll find bigger `SalesID` values in the validation set.
 - `saleYear` suggest that the latest auctions are in the validation set.
@@ -3749,7 +3750,7 @@ recent few years of the data:
 X['saleYear'].hist();
 ```
 
-![](./images/output_154_0.png)
+![](./images/output_154_0.webp)
 
 ```python
 X_final_2[X_final_2['saleYear'] > 2004]
@@ -4424,7 +4425,7 @@ learn.fit_one_cycle(10, learn.lr_find()[0])
   </tbody>
 </table>
 
-![](./images/output_179_2.png)
+![](./images/output_179_2.webp)
 
 We can use our r_mse function to compare the result to the random forest result we
 got earlier:

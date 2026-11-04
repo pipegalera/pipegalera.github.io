@@ -1,5 +1,6 @@
 +++
 title = "Course Notes - Machine Learning in production"
+in_search_index = false
 description = "My personal notes of DeepLearning.AI engineering course."
 date = "2025-04-25"
 draft=true
@@ -16,8 +17,6 @@ tags = ["courses", "machine learning", "deep learning", "python"]
 
 Beyond building the model, there are several aspects that determine the success of a machine learning in production.
 
-![](/images/MLOps_specialization/pic1.png)
-
 Building the deep learning model is only 5% of the ML Project. What its the 95% missing? 
 
 - Configuration
@@ -30,8 +29,6 @@ Building the deep learning model is only 5% of the ML Project. What its the 95% 
 - Serving Infrastructure 
 - Monitoring
 
-
-![](/images/MLOps_specialization/pic0.png)
 
 
 The workflow of a machine learning project is to systematically plan out the life cycle of a machine learning project. The framework contains 4 steps:
@@ -57,8 +54,6 @@ Deployment of the model in production, writing the software needed to put into p
 For example, because of little exposure of this segment in the training phase, or even this data segment is out of the training distribution (More on these problems in the next section). Sample bias, deployment in a different environment can be the causes among many others.
 
 The framework of Scoping, Data, Modelling, and Deployment is not a linear process. When modelling, you might discover new features that can be created, or that the labelling is wrong, or even that the proxy for the target variable is flawed. Working on one step can create improvement in other steps, and this iteration process is important to make the model on production works.
-
-![](/images/MLOps_specialization/pic2.png)
 
 When the model is deployed, the iteration between steps is even more relevant. 
 
@@ -104,16 +99,12 @@ Once the model looks like in does a good job in the shadow mode, the ML system c
 
 An alternative to canary deployment is **Blue-Green Deployment**. The blue-green deployment means that you have 2 systems: your current one (Blue), and the new ML system to be implemented (Green). As you prepare a new release of your ML system, you do your final stage of testing in the green environment. Once the ML model is working in the green environment, you switch the router so that all incoming requests go to the green environment - and the blue old environment is now idle.
 
-![](/images/MLOps_specialization/pic3.png)
-
 The router changes from the old to the new environment when the release is ready. Blue-green deployment also gives you a rapid way to rollback - if anything goes wrong you switch the router back to your blue environment. 
 
 
 ## Degrees of automation
 
 A ML model deployment is not a binary choice, implemented or not. It can be partially implemented depending on the problem it is trying to solve. Instead, think about the appropriate degree of automation of the ML model. 
-
-![](/images/MLOps_specialization/pic4.png)
 
 You can chose to stop in any step, from fully human to fully AI making decisions.
 
@@ -133,11 +124,7 @@ Think about a computer vision model predicting cancer - false negatives are crit
 It is important to decide beforehand the software, input, and output metrics that you will monitor. However, they are not set in stone. As with the iterative process of The Machine Learning Project Life cycle, the deployment step has as well its own iterative process of seeing the new input data that the ML system receives and deciding the correct measures and key metrics. 
 
 
-![](/images/MLOps_specialization/pic5.png)
-
 When monitoring, set alarms when certain parameters goes below or above a threshold. For example, the GPU usage in cloud computing going above a threshold can incur in extra cost for the company.  
-
-![](/images/MLOps_specialization/pic6.png)
 
 # Select and Train a Model
 
@@ -147,13 +134,9 @@ The modelling step is an iteration between modelling, monitoring, and continuous
 
 **The focus should be on improving the data, not the model tunning**. Usually, the biggest leap in performance comes when the data is better - not when the hyper parameters are tweaked. 
 
-![](/images/MLOps_specialization/pic7.png)
-
 A final audit performance is necessary before phasing to production, to make sure everything works as expected. 
 
 Usually, data science teams focus on doing a high accuracy model but test accuracy is not the end goal. The end goal is always solving the business problem. Test accuracy is not itself helping the business, neither stands by its own to justify the ML application.
-
-![](/images/MLOps_specialization/pic8.png)
 
 They are 3 main key metrics that data teams need to address to determine the success of the ML project: 
 
@@ -217,8 +200,6 @@ Take the example of *using ML for speach detection*. Listening to a couple of wr
 
 "car noise", "people noise" tag, and "low bandwidth" tag that the speech recognition algorithm is not capturing but seems to influence the prediction accuracy. 
 
-![](/images/MLOps_specialization/pic10.png)
-
 This error analysis can be used to decide what to focus first in improving the data.
 
 
@@ -265,8 +246,6 @@ We much better evaluate the model using the precision metric: when the model pre
 
 Why not recall? Because you rather prefer to have a spam mail on my inbox than an actual mail on the spam folder. 
 
-![](/images/MLOps_specialization/pic9.png)
-
 Normally, you have to balance between recall and precision in order to select the best model. Most experiments will end up with models with more recall but less precision than other models, and vice versa. 
 
 **How to choose the right metric for screwed datasets?** 
@@ -274,8 +253,6 @@ Normally, you have to balance between recall and precision in order to select th
 1. You can **weight each according to your needs**. For cancer prediction, you want to avoid False negatives at all cost so you weight recall way more than precision.
 
 2. Use **F1-score**. The F1-score combines the precision and recall of a classifier into a single metric by taking their harmonic mean. It is primarily used to compare the performance of two classifiers.
-
-![](/images/MLOps_specialization/pic11.png)
 
 More metrics beyond accuracy implemented in sklearn [here](https://scikit-learn.org/stable/modules/classes.html#classification-metrics)
 

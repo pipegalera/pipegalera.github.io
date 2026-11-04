@@ -15,7 +15,7 @@ This guide works with any other service or application.
 
 Here I will make my local service `umami` (`http://localhost:3000`) publicly accessible as `umami.pipegalera.tech`.
 
-![umami_dashboard](images/umami_dashboard.png)
+![umami_dashboard](images/umami_dashboard.webp)
 
 Umami is an [analytics platform](https://umami.is/), similar to Google Analytics, that can be self-hosted.
 
@@ -23,7 +23,7 @@ I will use [Cloudflare tunnels](https://developers.cloudflare.com/cloudflare-one
 
 Cloudflare allows you to create “tunnels” for outbound connections so you can securely make a website or service hosted in your homelab public.
 
-![cloudflare_tunnel.png](images/cloudflare_tunnel.png)
+![cloudflare_tunnel.png](images/cloudflare_tunnel.webp)
 
 If you want to completely manage your network security, go for [Nginx](https://nginx.org/). I prefer Cloudflare to handle my network security and not get paranoid about DoS, DDoS or brute-force IP attacks.
 
@@ -68,7 +68,7 @@ cloudflared tunnel login
 
 This opens a browser. Choose your domain and press “authenticate”.
 
-![auth_tunnel.png](images/auth_tunnel.png)
+![auth_tunnel.png](images/auth_tunnel.webp)
 
 The authentication will create a cert in `~/.cloudflared/cert.pem`
 
@@ -143,7 +143,7 @@ sudo systemctl status cloudflared
 
 If everything goes well, within 15 minutes to 1 hour the subdomain should be up publicly.
 
-![umami_public](images/umami_public.png)
+![umami_public](images/umami_public.webp)
 
 {% faq(clickable=true, header="How do I stop a service?") %}
 

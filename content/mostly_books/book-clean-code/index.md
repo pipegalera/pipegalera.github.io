@@ -1,5 +1,6 @@
 +++
 title = "The Art of Clean Code, by Christian Mayer"
+in_search_index = false
 description = "Cal Newport's Deep Work but focused on coding and building tech products."
 date = "2024-05-01"
 [taxonomies]
@@ -8,7 +9,7 @@ tags = ["books", "clean code"]
 
 The book is a mix between how to write clean code (75%) and how to be a productive coder (25%). More than rules set in stone, it encourages applying minimalism to coding.
 
-![](./images/cover.jpeg)
+![](./images/cover.webp)
 
 It reminded me of Cal Newport's work focused on coding and building tech products. Gladly, it is not as technical (or controversial) as Clean Code by Robert Cecil Martin or enter the category of self-help books with random productivity tips.
 
@@ -27,7 +28,7 @@ Complexity in organizations appears when they accumulate too many processes, and
 
 The goal of Software Development Life Cycle (SDLC) is to reduce this complexity by compartmentalize the abstraction of creating software into defined steps.
 
-![](./images/sdlc.png)
+![](./images/sdlc.webp)
 
 **Planning**
 
@@ -127,7 +128,7 @@ An MVP is a version of your product stripped of all except the most necessary fe
 
 The idea behind building an MVP is to combat problems that arise when you program in stealth mode. **Stealth mode is when you work on a project to completion without seeking any feedback from potential users.**
 
-![](./images/mvp_stealth.png)
+![](./images/mvp_stealth.webp)
 
 **Developing MVP products fights:**
 
@@ -155,7 +156,7 @@ You start a project with a bunch of assumptions, such as who the users will be. 
 
 You can be introducing features no only do not add value but harm the project adding complexity. If you introduce a set of features bundled without feedback, you don’t know whether the market would’ve accepted, or even preferred, any subset of features instead of the pack
 
-![](./images/stealth.png)
+![](./images/stealth.webp)
 
 ### How to build MVPs
 
@@ -199,7 +200,7 @@ However, the more you work on a team and work on serious software the more posit
 
 Code is still written mainly by humans, and likely must pass many levels of human judgement before it is deployed. **Assume that others will read your code.**
 
-![](./images/lines_code.png)
+![](./images/lines_code.webp)
 
 ### 1. Think about the big picture
 
@@ -365,7 +366,7 @@ No matter what you do, tech or otherwise, to reach a state of Flow you need:
 
 - **Balance Opportunity and Capacity**. Constantly seek harder challenges without reaching anxiety levels and increase your skill level accordingly
 
-![](./images/flow.png)
+![](./images/flow.webp)
 
 ### Reaching a state of Flow learning tech
 

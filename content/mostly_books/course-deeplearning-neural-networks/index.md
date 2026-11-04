@@ -1,9 +1,12 @@
 +++
 title = "Course Notes - Neural Networks and Deep Learning"
+in_search_index = false
 description = "My personal notes of DeepLearning.AI deep learning course."
 date = "2024-05-10"
 [taxonomies]
 tags = ["courses", "machine learning", "deep learning", "python"]
+[extra]
+math = true
 +++
 
 ## 1. Introduction to Deep Learning
@@ -14,11 +17,11 @@ Neural Networks are collection of connected units or nodes called "neurons", whi
 
 As an example, consider that we have to predict the price of houses using their size. We have 6 houses in the dataset. Every neuron applies the function in grey:
 
-![](./images/1.png)
+![](./images/1.webp)
 
 All the neuron does is taking the size of the house as input, apply a transformation equation called ReLU and the output is the estimated the price.
 
-![](./images/2.png)
+![](./images/2.webp)
 
 ReLU, or Rectified Linear Unit, is a simple function that takes the input and returns the same value if positive, otherwise returns zero:
 
@@ -42,7 +45,7 @@ The first layer, the **input layer**, and the hidden layers are connected: every
 
 The NN feeds the features size, the number of bedroom, zipcode, wealth and so to "hidden units" that explains the prize. This hidden units are made by the neurons without explicitly telling them. Therefore, some times you can find these models refered as "**black boxes**” due to the process not being explicit in the hidden layers:
 
-![](./images/3.png)
+![](./images/3.webp)
 
 For example, the NN is modelling “family size” given the combination of size of size and number of bedrooms.
 
@@ -69,15 +72,15 @@ The output shape is a 1 by $m$ dimensional matrix: $y.shape = (1,m)$.
 
 The prediction $\hat{y}$ (0 or 1) is determined by the probability of a real $y$ given factors $X$:
 
-![](./images/4.png)
+![](./images/4.webp)
 
 The probability is calculated by a `sigmoid` activation function that takes a linear regression $z$ as input:
 
-![](./images/6.png)
+![](./images/6.webp)
 
 Lastly, $Z$ is just a linear regresion.
 
-![](./images/5.png)
+![](./images/5.webp)
 
 Here I took the notation of "Betas" because this is what I am used to in Economics, but from here on I’ll refer at them as “Weights” and “bias” instead. It is the same with different notation.
 
@@ -105,7 +108,7 @@ To explain it in an intuitive way, we can use a “comparison mechanism” to se
 
 This comparison mechanism or equation is called “Loss function”. For logistic regression, a suitable loss function is Log-Loss, also called binary cross-entropy:
 
-![](./images/7.png)
+![](./images/7.webp)
 
 Notice that the equation is only a function of $y$ and $\hat{y}$ - it “compares” them.
 
@@ -128,7 +131,7 @@ In simple terms:
 
 This only works because the shape of the Log-Loss equation is convex, so the slope of the curve guides to the minimum of the equation.
 
-![](./images/8.png)
+![](./images/8.webp)
 
 Given it’s shape, the slope of Log-Loss can be used to determine the best set of weights.
 
@@ -142,7 +145,7 @@ Aside from gradient descent, Maximum Likelihood Estimation (MLE) can be used to 
 
 As a side note, gradient descent calculations demonstrate why the rise of Deep Learning could not have happened in the past. It needs a huge computational power by hardware that we are lucky to have today. Notice that the logistic function output, the change in the coefficients, and the Log-Loss function have to be calculated again and again.
 
-![](./images/9.png)
+![](./images/9.webp)
 
 We also have had progress in the way we do the computation iteration.
 
@@ -201,7 +204,7 @@ Instead of the pre-made data given, I took images from Cats and Dogs from Kaggle
 
 Visually, the model looks like:
 
-![](./images/10.png)
+![](./images/10.webp)
 
 - **1. Create arrays of cats and dogs from Kaggle dataset**
 
@@ -522,15 +525,15 @@ test accuracy: 59.5 %
 
 Until now, we saw the case of logistic regression as a single layer Neural Network.
 
-![](./images/10.png)
+![](./images/10.webp)
 
 “Deep” from Deep Learning refers to the layers of a neural network - They are “deep” hidden layers that are stacked. The only layer that receives the $X$ values as inputs is the `Input layer`. After that, the output of each layer is passed to the next one.
 
-![](./images/11.png)
+![](./images/11.webp)
 
 Each node computes $a$, the output of the sigmoid activation function passed through the linear regression. This calculation can be vectorized into matrix operations:
 
-![](./images/12.png)
+![](./images/12.webp)
 
 By vectorization, sigmoid transformation doesn’t have to loop each node - all $i$ weights and bias can stacked horizontally. The output $Z^1$ of the first layer goes through the activation function and $A^1$ passes to the second layer as input.
 
@@ -546,7 +549,7 @@ Tanh or ReLU are recommended as a default, but different ones for your applicati
 
 The sigmoid function goes within zero and one. An activation function that almost always works better than the sigmoid function is the tangent function or also called **hyperbolic tangent function (Tanh)**:
 
-![](./images/14.png)
+![](./images/14.webp)
 
 It goes between 1 and - 1. The tanh function is almost always strictly superior. The main difference is that using tanh instead of sigmoid outputs the data with mean zero (centering the data), which makes the learning for the next layer easier.
 
@@ -558,7 +561,7 @@ One of the downsides of both the sigmoid function and the tanh function is that 
 
 Another choice that is very popular in machine learning is what's called the **rectify linear unit (ReLU)**. So the value function looks like:
 
-![](./images/15.png)
+![](./images/15.webp)
 
 The derivative is 1 as $z$ is positive. And the derivative or slope is 0 when $z is negative. Is an increasingly popular default choice of activation function.
 
@@ -568,13 +571,13 @@ In practice, using the ReLU activation function, your neural network will often 
 
 It is similar to ReLU, but instead of returning zero for negative inputs, it returns a small negative value. This helps to avoid the "dying ReLU" problem, where some neurons can become permanently inactive during training.
 
-![](./images/16.png)
+![](./images/16.webp)
 
 ### 3.3 Gradient Descent
 
 The left equations describe the derivation, the right ones the equivalent in python vectorization.
 
-![](./images/13.png)
+![](./images/13.webp)
 
 Once the parameters are set, they update based on a learning rate $$\alpha: \theta = \theta - \alpha \frac{\partial J }{ \partial \theta }$$
 
@@ -586,7 +589,7 @@ We can initialize the weights randomly and the bias at zero.
 
 If we initialize weights and bias to zeros, all activations functions ($a_{i,j,...}$) will be equal:
 
-![](./images/17.png)
+![](./images/17.webp)
 
 All the neurons units would start off computing the same function and therefore all the hidden neurons completely identical. Using more hidden layers would be useless, after the first layer all the sequent layers calculate the same with the same weight optimisation.
 
@@ -629,7 +632,7 @@ The shape of the matrix derivates are equal to the original matrixes.
 
 For the vectorized implementation, instead of going 1 by 1 observation, it stack the observations columnise. Therefore the shapes are:
 
-![](./images/18.png)
+![](./images/18.webp)
 
 Generalizing:
 

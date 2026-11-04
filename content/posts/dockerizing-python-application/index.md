@@ -20,11 +20,11 @@ The goal of Docker is to deploy code that you have written somewhere else. This 
 
 Instead of having 1 server running 1 operating system, computers can emulate more than one machine. Imagine a computer having multiple partitions of Linux, Windows, with different versions, programs, and capacities. A server can have hundreds of versions or "virtual machines".
 
-![](./images/virtual_machine.png)
+![](./images/virtual_machine.webp)
 
 Imagine the "cloud" as different gigantic rooms somewhere around the world, with server racks with thousands of computers, running hundreds of thousands of virtual machines. The famous cloud providers (Google Cloud, AWS or Azure VMs) are simply renting you a small space in this gigantic room to store and run your code and software.
 
-![](./images/server_center.png)
+![](./images/server_center.webp)
 
 Now that we have toured from computers, to servers, to virtual machines, to cloud providers... how does this relate to Docker?
 
@@ -40,7 +40,7 @@ The basic structure of Docker is:
 2. **Docker images**: a container is run based on images layered on top of each other. One image is the OS (e.g. Windows), another Python, another the packages (e.g. Streamlit, sklearn).
 3. **Docker files**: A blueprint for the images. The files that specify how the images must be layered and built. For example, you want the OS to be built before the image of Python, and Python to be built before installing sklearn.
 
-![](./images/docker-progression.png)
+![](./images/docker-progression.webp)
 
 In summary, you use dockerfiles to build images, that are the parts of the final container that can be deployed.
 
@@ -54,7 +54,7 @@ First, make sure that you have correctly installed Docker for your machine follo
 
 The instructions of the container must be written in the dockerfile. Here we build a basic container by writing the following instructions or Dockerfile:
 
-![](./images/dockerfile.png)
+![](./images/dockerfile.webp)
 
 Below I'll explain the meaning of the different commands.
 
@@ -65,12 +65,12 @@ This is one of the pre-installed images that Docker has. There are more pre-inst
 
 In `COPY requirements.txt ./` we tell Docker to copy the requirements. These requirements are the list of packages that we need for the script. In this case only `seaborn`:
 
-![](./images/requirements.png)
+![](./images/requirements.webp)
 
 - We install them running `RUN pip install --no-cache-dir -r requirements.txt`.
 - `COPY python_script.py /` copies the script, the code that we want to run, into the Docker container. The script is just displaying the first 5 rows of the iris dataset:
 
-![](./images/python_script.png)
+![](./images/python_script.webp)
 
 - The last line of the Dockerfile, `ENTRYPOINT` is the final image layer that tells Docker what to do when someone accesses this Docker image: run python, and the python script.
 
@@ -82,17 +82,17 @@ Let's build a Docker image and tag it `simple_python_app` from the command line:
 
 `docker build -t simple_python_app .`
 
-![](./images/build.png)
+![](./images/build.webp)
 
 It should create the image quite fast and without errors if Docker is installed correctly in your machine.
 
 Checking if the image is created can be done by running: `docker image list`
 
-![](./images/list.png)
+![](./images/list.webp)
 
 Once we know it's there, we can run the Docker image by `docker run`:
 
-![](./images/iris_head.png)
+![](./images/iris_head.webp)
 
 Et voilà, Docker ran the code, compartmentalized.
 

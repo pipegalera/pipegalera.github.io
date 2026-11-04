@@ -1,5 +1,6 @@
 +++
 title = "The Pathless Path, by Paul Millerd"
+in_search_index = false
 description = "White-collar worker quits his job and moves to Taiwan."
 date = "2023-08-21"
 [taxonomies]
@@ -75,7 +76,7 @@ Maybe you actually only need a job change to get rid of the uncomfortable sensat
 
 Living slightly uncomfortable for 8+ hours per day while pretending all is alright comes with a cost: burnout.
 
-![](./images/this_is_fine.png)
+![](./images/this_is_fine.webp)
 
 The most usual cause of burnout is the emotional exhaustion for job-related stress.
 
@@ -198,7 +199,7 @@ Exploring activities that you like is an essential step of finding meaningful wo
 
 Remember, first comes the exploring phase, then the business phase - Otherwise you will come at risk of starting another job you dislike.
 
-![](./images/venn_diagram.png)
+![](./images/venn_diagram.webp)
 
 ### 5.1 Practical example
 
@@ -214,7 +215,7 @@ You can tell that he likes what he does by the way he talks about his craft in h
 
 He is also quite successful I assume, since he has literally cues of people waiting for what he does. If you want a product made by him you will have to wait a couple of months in the line:
 
-![](./images/kris.png)
+![](./images/kris.webp)
 
 I like his business story because it cannot get more simple. He liked usb cables and keyboards and tried to build some, that's it. Then the business came with the opportunity that he saw in the market, but that was an extension of exploring topics he liked.
 

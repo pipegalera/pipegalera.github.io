@@ -23,7 +23,7 @@ Simply install hydrogen-next via package manager in Pulsar's settings.
 
 I switched my IDE from Atom to VSCode around 5 years ago for my usual data science related work. However, year after year I kept missing the Hydrogen IDE package for one reason or another. If you don't know what I'm talking about, in essence Hydrogen is Jupyter notebook cells embedded in python files:
 
-![](./images/hydrogen.gif)
+<video src="./images/hydrogen.mp4" autoplay loop muted playsinline preload="metadata" style="max-width:100%;border-radius:5px"></video>
 
 This was a game changer for me using Python for data science during my first years. As free GPU platforms based on notebooks were getting more traction (e.g. Google Colab, Kaggle, Amazon SageMaker, Databricks) I ended up rotating to VSCode and Jupyter notebooks. They really _hooked me_ with free Tesla V100s GPUs.
 
@@ -31,7 +31,7 @@ Flash forward to 2022 and after much testing with other tools, I wanted to come 
 
 Luckily, the open-source community is amazing, and started developing an Atom fork called Pulsar.
 
-![](./images/pulsar.png)
+![](./images/pulsar.webp)
 
 In all honesty, at the early stages of Pulsar (Late 2022) the IDE was very buggy and unusable. Hydrogen wasn't working either on my machine. Trying to find solutions was difficult as they weren't precisely popping up in Stackoverflow or their Github repo. The project was basically brand new.
 
@@ -53,7 +53,7 @@ sudo apt install ./pulsar_1.105.2023052200_amd64.deb
 
 Make sure it's installed by running `pulsar --version`. Something like the following should show:
 
-![](./images/pulsar_version.png)
+![](./images/pulsar_version.webp)
 
 ### 2. Install Hydrogen and Hydrogen plugin
 
@@ -127,14 +127,14 @@ Done! We have all the pieces to run Hydrogen by now.
 
 To test that Hydrogen is working, create an empty _test.py_ file and copy&paste a [random example code from sklearn](https://scikit-learn.org/stable/auto_examples/release_highlights/plot_release_highlights_1_1_0.html#sphx-glr-auto-examples-release-highlights-plot-release-highlights-1-1-0-py):
 
-![](./images/example_sklearn.png)
+![](./images/example_sklearn.webp)
 
 Now, select the code that you want to run and press `Shift+Enter`. Hydrogen will launch and it will give you the option to select the kernel/environment to load. In this case _"Data Science kernel"_, the one we just created:
 
-![](./images/example_sklearn_2.png)
+![](./images/example_sklearn_2.webp)
 
 The code should run and print the results:
 
-![](./images/example_sklearn_3.png)
+![](./images/example_sklearn_3.webp)
 
 And that's it. I might switch back to VSCode when Copilot takes over the world, but for now Pulsar+Hydrogen is my favorite data science IDE 😊

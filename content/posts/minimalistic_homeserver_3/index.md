@@ -19,7 +19,7 @@ The applications and software shown in this post are free and open source with a
 
 This is my simple configuration for my media applications for movies and TV shows.
 
-![livingroom.png](images/livingroom.png)
+![livingroom.png](images/livingroom.webp)
 
 I am able to run 4k at 60fps with ease on multiple devices at the same time from my network with a mini N100 pc.
 
@@ -185,7 +185,7 @@ services:
 
 Make sure you are in the correct parent folder (e.g. `/your_user_homepath/docker/arr`) and run `docker compose up -d`
 
-![](images/docker_compose_up.png)
+![](images/docker_compose_up.webp)
 
 From here on you should be able to access the services:
 
@@ -222,7 +222,7 @@ Replace `your_ip` for your IP or Tailscale IP / DNS name.
 1. Go to: `http://your_ip:9696/`
 2. Set up user:
 
-![auth](images/auth.png)
+![auth](images/auth.webp)
 
 "Disable for Local Addresses" allows local login without admin/password since we will only use the local network via Tailscale.
 
@@ -232,7 +232,7 @@ As of August 2025, most indexes do not work with Prowlarr without bypassing Clou
 
 Go to: `Settings -> Indexes -> Add -> FlareSolverr` and add your byparr info from the docker compose.
 
-![auth](images/byparr.png)
+![auth](images/byparr.webp)
 
 4. Add indexers:
 
@@ -240,7 +240,7 @@ I won't recommend any illegal site. There is an interactive search bar with the 
 
 You will need to add `byparr` tag to the tag section of the index when you add it:
 
-![auth](images/byparr_index.png)
+![auth](images/byparr_index.webp)
 
 5. Grab API key from `Radarr` to connect with Prowlarr
 
@@ -249,7 +249,7 @@ You will need to add `byparr` tag to the tag section of the index when you add i
 - Go to: `Settings -> General -> API key -> copy this`
 - Go back to `Prowlarr` and set up `Radarr` connection at: `Settings -> App -> Add -> Radarr`
 
-![radarr.png](images/radarr.png)
+![radarr.png](images/radarr.webp)
 
 6. Grab API key from `Sonarr` to connect with Prowlarr
 
@@ -262,7 +262,7 @@ Same steps:
 
 `Prowlarr` should show now the 2 apps:
 
-![prowlarr_apps.png](images/prowlarr_apps.png)
+![prowlarr_apps.png](images/prowlarr_apps.webp)
 
 ## 2.2 The Torrent Client: qBittorrent
 
@@ -403,7 +403,7 @@ Use the credentials from `qbittorrent`.
 Settings -> Download Clients -> Download Client (plus sign) -> qbittorrent
 ```
 
-![download_client.png](images/download_client.png)
+![download_client.png](images/download_client.webp)
 
 Please note that my screenshot has my own internal Tailscale IP, so use your own.
 
@@ -427,7 +427,7 @@ Settings -> Download Clients -> Download Client (plus sign) -> qbittorrent
 
 Use the credentials from `qbittorrent`.
 
-![download_client.png](images/download_client.png)
+![download_client.png](images/download_client.webp)
 
 {% tip(clickable=false, header="After installation safety checks") %}
 
@@ -455,7 +455,7 @@ You should use the `media` folder only, never `torrents`. The files are _hardlin
 
 Libraries should look like:
 
-![jellyfin_settings.png](images/jellyfin_settings.png)
+![jellyfin_settings.png](images/jellyfin_settings.webp)
 
 After logging in, click on the top left corner (settings) and scan the libraries with the files. It will organize them and clean the metadata on its hardlinked copy.
 
@@ -465,20 +465,20 @@ Settings -> Libraries -> Scan All Libraries
 
 ## 2.6 Discovery tool: Jellyseerr
 
-![jellyseerr.png](images/jellyseerr.png)
+![jellyseerr.png](images/jellyseerr.webp)
 
 `Jellyseerr` is an application to discover new TV shows and movies. One of my favourite features is that you can filter for network (e.g. `Apple tv+`) and request any content from there.
 
 1. Go to `http://your_ip:5055/`
 2. Choose `Jellyfin` as server and fill the following info with your ip and `Jellyfin` credentials.
 
-![jellyseerr_settings.png](images/jellyseerr_settings.png)
+![jellyseerr_settings.png](images/jellyseerr_settings.webp)
 
 3. Click `Sync Libraries`, select both `Movies` and `TV Shows`, and `Start Scan`.
 
 4. Configure the media server. Fill in the usual information; at the end it should look something like the screenshot below, with your own info.
 
-![jellyseerr.png](images/jellyseerr_servers.png)
+![jellyseerr.png](images/jellyseerr_servers.webp)
 
 Click continue and start exploring movies.
 
@@ -508,7 +508,7 @@ sudo tailscale set --exit-node=the_ip_choosen --exit-node-allow-lan-access
 
 After waiting 5 minutes you can use `curl ipinfo.io` to check where your public IP is:
 
-![mullvad_server.png](images/mullvad_server.png)
+![mullvad_server.png](images/mullvad_server.webp)
 
 ### 3.2 From clients and devices
 
@@ -516,7 +516,7 @@ You can use the VPN in up to 5 devices, and set your devices in different locati
 
 In the macOS Tailscale app it is very easy to change IP locations:
 
-![mullvad_client.png](images/mullvad_client.png)
+![mullvad_client.png](images/mullvad_client.webp)
 
 Since the server and devices connect internally via Tailscale IPs, it doesn't affect their connection if they use different exit nodes or VPN locations.
 

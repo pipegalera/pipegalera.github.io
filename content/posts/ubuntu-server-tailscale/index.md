@@ -10,7 +10,7 @@ comment = true
 
 In this post I’ll explain how I connect to my gaming pc via SSH with my laptop completely remotely (and securely).
 
-![](./images/remote_desktop.png)
+![](./images/remote_desktop.webp)
 _My MacBook Pro connected from the public library wifi to my home pc._
 
 No need for port routing, gateway router config, fail2ban...not even touching ssh/config!
@@ -148,7 +148,7 @@ This way it will boot on the menu and it’ll give 10 secs to select Ubuntu Serv
 
 ## 3. Connecting your laptop to your server with Tailscale
 
-![](./images/tailscale.jpg)
+![](./images/tailscale.webp)
 
 ### Setting up a Tailscale SSH
 
@@ -168,11 +168,11 @@ Run `sudo tailscale set --ssh` to set the ssh profile.
 
 3. In your Tailscale profile (https://login.tailscale.com/admin/machines) both machines should appear, with the tag `SSH` under your server info
 
-![](./images/tailscale_screenshot.png)
+![](./images/tailscale_screenshot.webp)
 
 Try typing `ssh root@{the server name}` from the terminal and check that the client connects:
 
-![](./images/connection.png)
+![](./images/connection.webp)
 
 After setting up Tailscale I could securely log in to my home pc from other networks.
 
@@ -187,7 +187,7 @@ Once the connection is created, to set up VSCode:
 
 ## 4. Automatic turn on remotely with a smart plug
 
-![](./images/tapo.png)
+![](./images/tapo.webp)
 
 This is the cherry on top of the cake.
 

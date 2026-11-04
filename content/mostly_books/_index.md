@@ -6,4 +6,5 @@ sort_by = "date"
 transparent = true
 template = "section.html"
 insert_anchor_links = "heading"
+in_search_index = false
 +++

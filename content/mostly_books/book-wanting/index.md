@@ -1,4 +1,5 @@
 +++
+in_search_index = false
 title= "Wanting, by Luke Burgis"
 description= "Why we want what we want."
 date = "2025-05-04"
@@ -28,11 +29,11 @@ By copying other humans.
 
 The idea of your own desires is a lie. Most people understand that their desires are influenced by advertisement and celebrities, but what I understood after reading the book is that I am not influenced - I am mirroring them.
 
-![the lie of dessire](./images/desires_lie.png)
+![the lie of dessire](./images/desires_lie.webp)
 
 As a human, there is no other way for me to understand what is worth wanting and pursuing than looking at others. In Girard lingo, we look at "desire models".
 
-![the truth of desire](./images/desires_truth.png)
+![the truth of desire](./images/desires_truth.webp)
 
 We may want to escape this model and have "unique desires", but it is the way we are.
 
@@ -50,7 +51,7 @@ There are no good or bad models by simply being *celebristan* (high status) or *
 
 Note that even celebrities have people they admire and look up to, and desire things they don't have from their own desire models. It reminds me to the old Kanye's song "Everying thing I am" from his album Graduation, in which [he opens up his insecurities about not being as great as his idols](https://genius.com/Kanye-west-everything-i-am-lyrics). Even 2008' Kanye, arguably peak high status at the time, has desire models.
 
-![piramid of needs](./images/desires_people.png)
+![piramid of needs](./images/desires_people.webp)
 
 
 ### High Status models
@@ -59,7 +60,7 @@ These models dictate what is greatly desirable. There is no competing behavior f
 
 > In Celebristan, there is always a barrier that separates the models from their imitators. They might be separated from us by time (because dead), space (because they live in a different country or aren’t on social media), or social status (a billionaire, rock star, or member of a privileged class).
 
-![high status desires](./images/desires_highstatus.png)
+![high status desires](./images/desires_highstatus.webp)
 
 LeBron James' mansion, touring around the world, trophy husband/wife, having a bestseller book... There is no possibility of competing with your actual peers for these and therefore they do not create any competitive behavior between peers, the distance from you to these desires is too long.
 
@@ -71,7 +72,7 @@ The classic pressure to "keeping up with the Joneses" comes from these models.
 
 > Most of us know by now that Facebook is more than just a passive way of updating friends; it’s a tool for forging identities, real and desired (are you really a family of outdoorsy hikers or is that vacation photo your first hike ever?). It provides an endless stream of models in the form of other people’s curated lives. That is the source of its seductive hold on us, as well as our ambivalent feelings about it. Facebook symbolizes the world’s entry into Freshmanistan, in which we spend most of our time looking down at our screens—which means simultaneously looking sideways at our neighbors.
 
-![social media desires](./images/desires_social_media.png)
+![social media desires](./images/desires_social_media.webp)
 
 Your neighbor's new kitchen renovation, promotion, new car. Making as much money or having as many Instagram followers as your friends.
 
@@ -79,7 +80,7 @@ Your neighbor's new kitchen renovation, promotion, new car. Making as much money
 
 Desires can make or break a fulfilling life because they are the main driver of actions and we cannot control them directly. They are all the messy, difficult to unpack, compound of wants after we have fulfilled basic needs.
 
-![piramid of needs](./images/desires_needs.png)
+![piramid of needs](./images/desires_needs.webp)
 
 ### 1. Desires define us by derivation
 
@@ -141,7 +142,7 @@ Mimetic desires based in other people's views.
 
 The things you want because they are modeled by the people you look up to. Quick to build and produce very powerful feelings of need. Ads, celebrities' lifestyles, high status material things.
 
-![thin desires](./images/thin_desires.png)
+![thin desires](./images/thin_desires.webp)
 
 You can identify them based on how you feel after you fulfill them, as they leave an empty feeling after some hours or you simply forget about it.
 
@@ -155,7 +156,7 @@ Desires rooted in your previous self.
 
 They have also been built by imitation in the past, but the difference is that they are tested by time. Time is the key differentiator here.
 
-![thick desires](./images/thick_desires.png)
+![thick desires](./images/thick_desires.webp)
 
 They are "thick" in the sense that they did not go away with the next current trend in fashion, or by meeting a new group of friends (new models), or by following new people. These desires did not easily get replaced by new ones after a short time. They are a part of what makes you, you.
 

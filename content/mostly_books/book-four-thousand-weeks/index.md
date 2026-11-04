@@ -1,4 +1,5 @@
 +++
+in_search_index = false
 title= "Four Thousand Weeks, by Oliver Burkeman"
 description= "Must productivity books miss the main point of 4000 Weeks: we will eventually die."
 date = "2023-10-10"

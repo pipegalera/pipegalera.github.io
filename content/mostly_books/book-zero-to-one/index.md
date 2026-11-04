@@ -1,5 +1,6 @@
 +++
 title = "Zero to One, by Peter Thiel"
+in_search_index = false
 description = "Classic Startup book."
 date = "2023-05-28"
 [taxonomies]

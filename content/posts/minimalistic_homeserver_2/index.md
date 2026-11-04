@@ -25,7 +25,7 @@ All the applications here use Tailscale for tunneling between devices. For examp
 
 ## 1. The connector: Tailscale
 
-![tailscale.png](images/tailscale.png)
+![tailscale.png](images/tailscale.webp)
 
 **Why do I need Tailscale?**
 
@@ -47,7 +47,7 @@ After the installation is completed, run `sudo tailscale up` and it will give yo
 
 Into your Tailscale profile ([https://login.tailscale.com/admin/machines](https://login.tailscale.com/admin/machines)) it should appear both machines (your _tailnet_):
 
-![tailscale_setup.png](images/tailscale_setup.png)
+![tailscale_setup.png](images/tailscale_setup.webp)
 
 - If the tag `ssh` does not appear, run: `sudo tailscale up --ssh`
 
@@ -69,7 +69,7 @@ To install any of the following applications, you can either use the Desktop str
 
 ## 2. Self-hosted Dropbox: NextCloud
 
-![nextcloud_0.png](images/nextcloud_0.png)
+![nextcloud_0.png](images/nextcloud_0.webp)
 
 I have to admit that calling Nextcloud a "self-hosted version of Dropbox" is a discredit to Nextcloud. I enjoy using Nextcloud much more than I ever did Dropbox - it works flawlessly.
 
@@ -110,7 +110,7 @@ Change:
 
 Run `id` in the terminal:
 
-![nextcloud_1.png](images/nextcloud_1.png)
+![nextcloud_1.png](images/nextcloud_1.webp)
 
 Normally it is 1000 by default. But if not, you should modify the docker-compose.yml `PUID` and `PGID`
 
@@ -128,11 +128,11 @@ Once the installation finishes, Nextcloud should be visible locally.
 
 Visit server Tailscale IP/name + Nextcloud port (e.g. `https://100.123.90.81:4040/` or `https://homeserver:4040/`) and set up a user. As the database, IMO SQLite is a great choice for homeservers.
 
-![nextcloud_2.png](images/nextcloud_2.png)
+![nextcloud_2.png](images/nextcloud_2.webp)
 
 From the client side (e.g. your phone or laptop), Nextcloud works like Dropbox. Download the app at their website: [https://nextcloud.com/install/](https://nextcloud.com/install/) and install it.
 
-![nextcloud_3.png](images/nextcloud_3.png)
+![nextcloud_3.png](images/nextcloud_3.webp)
 
 After installing the app, it will ask for the server ip (e.g. `https://homeserver:4040/`) and for permission to sync the server data.
 
@@ -142,7 +142,7 @@ It can take up to 5 min to recognize the IP if you just installed Nextcloud.
 
 {% end %}
 
-![nextcloud_4.png](images/nextcloud_4.png)
+![nextcloud_4.png](images/nextcloud_4.webp)
 
 Please notice that the app has many more functionalities that you can explore: office, calendar, notes, videocalls. I personally only use the Notes app on my Android phone, and Nextcloud on all my devices.
 
@@ -158,7 +158,7 @@ Simply use a Nextcloud folder (e.g. `Notes`) and all the notes will be synced ac
 
 ## 3. Self-hosted Google Photos: Immich
 
-![immich_0.png](images/immich_0.png)
+![immich_0.png](images/immich_0.webp)
 
 ### 3.1 Installation
 

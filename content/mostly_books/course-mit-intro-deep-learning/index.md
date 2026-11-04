@@ -1,13 +1,16 @@
 +++
 title = "Course Notes - MIT 6.S191, Introduction to Deep Learning"
+in_search_index = false
 description = "My personal notes of MIT 6.S19."
 date = "2021-06-08"
 [taxonomies]
 tags = ["courses", "machine learning", "deep learning", "python"]
+[extra]
+math = true
 +++
 
 
-![](./images/intro_banner.png)
+![](./images/intro_banner.webp)
 
 My personal notes of the MIT course [MIT 6.S191, Introduction to Deep Learning](http://introtodeeplearning.com/)
 
@@ -17,7 +20,7 @@ NOTE: Diagrams only look good in `light` mode.
 
 ### 1.1 Perceptron
 
-![](./images/L1_perceptron.png)
+![](./images/L1_perceptron.webp)
 
 If we denote $\widehat{y}$ as the output:
 
@@ -35,7 +38,7 @@ $$
 
 The purpose of activation functions is to introduce non-linearity into the network:
 
-![](./images/L1_linear.png)
+![](./images/L1_linear.webp)
 
 Linear activation functions produce linear decisions no matter the network size while non-linearities allow approximating arbitrarily complex functions.
 
@@ -43,11 +46,11 @@ Linear activation functions produce linear decisions no matter the network size 
 
 Taking the previous perceptron and simplifying the output to be $z$:
 
-![](./images/L1_image2.png)
+![](./images/L1_image2.webp)
 
 We can try with different weights, that would produce different outputs $z_1$ and $z_2$:
 
-![](./images/L1_image3.png)
+![](./images/L1_image3.webp)
 
 Neural Network is made stacking those different outputs. Notice that this is just a stack of dot products of the same features and different weights ($W^{(1)}$).
 
@@ -61,7 +64,7 @@ In this step the non-linear or transformation function g$ trigger the outcomes t
 
 - If the value is less than the threshold, the outcome is transformed to 0 (the label of $\widehat{y_2}$).
 
-![](./images/L1_network.png)
+![](./images/L1_network.webp)
 
 Neural Network application in Tensorflow:
 
@@ -96,7 +99,7 @@ $\widehat{y} = g(Z)W^{2}$
 
 Here is an example of how to calculate $\widehat{y}$ using the dot product for a made-up dataset:
 
-![](./images/L1_matrix.jpg)
+![](./images/L1_matrix.webp)
 
 The final output is 3 predictions (_real numbers_) for the 3 observations. Imagine that all the notations denoted with $w$ are constants chosen randomly. Then, every matrix product is also constants as the only variable that is an incognita are these weights.
 
@@ -167,7 +170,7 @@ By gradient descent. Gradient descent algorithm:
 
 In the second step, the algorithm computes the gradient by a process called backpropagation. **Backpropagation is just the efficient application of the chain rule** for finding the derivative of the loss function with respect to the neuron weights.
 
-![](./images/L1_backpropagation.png)
+![](./images/L1_backpropagation.webp)
 
 When training a neural net, the goal is to find neuron parameters (weights) that cause the output of the NN to best fit the data, right? The chain rule is the way the NN can "connect" the loss function and outputs with the weight parametrization.
 
@@ -181,7 +184,7 @@ When the Neural Network converged, it found a spot in the loss function that inc
 
 Note that it might be the case that the optimal weights are not optimal for the entire loss function space because they converged in a local minimum. In practice, finding the global minimum is very difficult as the algorithm is very prompt to get stuck in these local minimums along the way of convergence.
 
-![](./images/L1_gradient_landscape.png)
+![](./images/L1_gradient_landscape.webp)
 
 ### 1.8 Learning rates
 
@@ -224,7 +227,7 @@ A technique that **constrains the optimization problem** to discourage complex m
 
 Using Dropout the Neural Network doesn't rely on a pathway or very heavy weighting on certain features and overfitting, making the Neural Network more prompt to generalize to new data.
 
-![](./images/L1_dropout.png)
+![](./images/L1_dropout.webp)
 
 Dropout regularization in Tensorflow:
 
@@ -238,17 +241,17 @@ First, we monitor the process of minimizing the loss function of training and te
 
 When the loss function starts increasing in the test data (more difference between predicted and real outputs), stop the Neural Network.
 
-![](./images/L1_early_stopping.png)
+![](./images/L1_early_stopping.webp)
 
 ## Lecture 2 - Recurrent Neural Networks
 
 From a single perceptron, we can extend the number of inputs, neurons and yield multi-dimensional outputs:
 
-![](./images/L2_multi_output.png)
+![](./images/L2_multi_output.webp)
 
 But this multi perceptron, or Neural Network, doesn't have a sense of time or element sequence. Every input and output is a specific time step.
 
-![](./images/L2_sequence.png)
+![](./images/L2_sequence.webp)
 
 This lack of connection between time steps is problematic in predicting problems that involves time or sequences. In a sequence, the inputs are correlated with each other. They are not independent. For example, future sales in a given shop are correlated with previous sales, they are not independent events.
 
@@ -258,7 +261,7 @@ Expressing it in the above graph, the output of $\hat{y}_2$ not only depends on 
 
 To make use of the correlation of the inputs in sequence, the network would need to have a connection that allows to look forward. This connection is called internal memory or **cell state** $h_t$:
 
-![](./images/L2_multi_output.png)
+![](./images/L2_multi_output.webp)
 
 **The memory or cell state pass the current information in the step $t$ to the next step $t+1$**.
 
@@ -268,11 +271,11 @@ Recurrent Neural Networks are the result of incorporating the idea of using cell
 
 RNNs have a state $h_t$, that is updated at each time step as a sequence is processed. The recurrent relation applied at each and every time step is defined as:
 
-![](./images/L2_rec_rel.png)
+![](./images/L2_rec_rel.webp)
 
 The function is going to be parametrized by a set of weights that is leaned throughout training the model. **The same function and the very same parameters are applied every step of processing the sequence (every iteration of the model)**.
 
-![](./images/L2_rnn_ac.png)
+![](./images/L2_rnn_ac.webp)
 
 - $W_{xh}$ denotes the weight matrix optimized for that specific step of the sequence.
 
@@ -282,23 +285,23 @@ The function is going to be parametrized by a set of weights that is leaned thro
 
 In practice, you won't see the cell states weighting the outputs of the next step outputs, or multiple networks one after the other. The loop is made inside one single architecture. The RNN algorithm can be simplified as:
 
-![](./images/L2_rnn_eq.png)
+![](./images/L2_rnn_eq.webp)
 
 ### 2.3 Examples of RNN application
 
 Recurrent Neural Networks are usually used in text problems such as sentiment classification, text generation from an image, generation of image title or translation.
 
-![](./images/L2_cat_words.png)
+![](./images/L2_cat_words.webp)
 
 This is an example using **many** words **to predict the one** next word in the sentence. Depending on the problem, the number of inputs and outputs change, that modify the NN architecture:
 
-![](./images/L2_examples_rnn.png)
+![](./images/L2_examples_rnn.webp)
 
 ### 2.4 Making Neural Networks understand text: Embedding
 
 Neural Networks do not understand word language, or images, they only understand numbers. They require the words to be parsed as vectors or arrays of numbers:
 
-![](./images/L2_words.png)
+![](./images/L2_words.webp)
 
 **How are this vectors made?**
 
@@ -312,7 +315,7 @@ By using vectors and not single numbers, you can compare how close are vectors t
 
 **Embedding gather words together by similarity using the distance between vectors.**
 
-![](./images/L2_embedding.png)
+![](./images/L2_embedding.webp)
 
 ### 2.5 Model Design Criteria, or why RNN are good
 
@@ -320,15 +323,15 @@ Any recurrent model architecture must the following design criteria:
 
 1. Must handle variable-length sequences (RNN ✔️)
 
-![](./images/L2_length.png)
+![](./images/L2_length.webp)
 
 2. Must track long-term dependencies (RNN ✔️)
 
-![](./images/L2_long_dep.png)
+![](./images/L2_long_dep.webp)
 
 3. Must maintain information about order (RNN ✔️)
 
-![](./images/L2_order.png)
+![](./images/L2_order.webp)
 
 4. Must share parameters across the sequence (RNN ✔️)
 
@@ -344,7 +347,7 @@ First the words are transformed to vectors by embedding.
 
 From:
 
-![](./images/L2_LSTM_1.png)
+![](./images/L2_LSTM_1.webp)
 
 To:
 
@@ -369,7 +372,7 @@ With a basic Neural Network, the backpropagation errors goes trough a single fee
 
 Recurrent Network backpropagation needs a twist, as it contains multiple steps and a memory cell. In RNNs, **the errors are backpropagating from the overall loss through each time step**:
 
-![](./images/L2_BPTT.png)
+![](./images/L2_BPTT.webp)
 
 The key difference is that the gradients for $W$ at each time step are summed. A traditional NN doesn't share parameters across layers. Every input is different and have different weights $W$.
 
@@ -427,7 +430,7 @@ Why ReLu?
 
 Because when the cell or instance gets activated (weight 0 or more), by definition the derivative or gradient is 1.0 or more:
 
-![](./images/L2_activation_trick.png)
+![](./images/L2_activation_trick.webp)
 
 **2. Change weight initialization.**
 
@@ -450,7 +453,7 @@ model = Sequential([
 
 More complex RNNs such as **LSTM or GRU** can control the information that is passing through. Long Short Term Memory networks (**LSTM**) and Gated Recurrent Units (**GRU**) are special kinds of RNN, capable of learning long-term dependencies.
 
-![](./images/L2_activation_trick3.png)
+![](./images/L2_activation_trick3.webp)
 
 They can keep informed of long-term dependencies **using filters or gates**. In essence, these gates decide how much information to keep of the previous neuron state or values, and how much to drop. This makes the optimization problem or the Neural Network less prompt to vanishing or exploding gradient problems.
 
@@ -458,11 +461,11 @@ They can keep informed of long-term dependencies **using filters or gates**. In 
 
 In a simple RNN, the information goes though every step with the input of that time step ($x_t$), the previous step memory cell ($h_{t-1}$) and an output for every step ($y_t$).
 
-![](./images/L2_rnn_arq.png)
+![](./images/L2_rnn_arq.webp)
 
 The structure of a LSTM is more complex. **LSTM forces the matrix inputs in every step to go through gates**, or internal mechanism to keep long-term information.
 
-![](./images/L2_lstm_arq.png)
+![](./images/L2_lstm_arq.webp)
 
 **LSTM Gates system**
 
@@ -518,7 +521,7 @@ GRU’s has fewer tensor operations; therefore, they are a little speedier to tr
 
 We can train computers to understand the world of images, mapping where things are, what actions are taking place, and making them to predict and anticipate events in the world. For example, in this image, the computer can pick up that people are crossing the street, so the black car must be not moving.
 
-![](./images/L3_cars.png)
+![](./images/L3_cars.webp)
 
 **What computers _see_ ?**
 
@@ -526,13 +529,13 @@ Task that for us are trivial, for a computer is not. To a computer, the images a
 
 Taking the following image, we are able to see that is a Lincoln portrait but the computer sees a 1080x1080x3 vector of numbers.
 
-![](./images/L3_lincoln.png)
+![](./images/L3_lincoln.webp)
 
 The classification of an image by a computer is made by picking up clues, or features, from the image. If the particular features of the image are more present in Lincoln images, it will be classified as Lincoln.
 
 The algorithm, to perform this task well, should be able to differentiate between unique features and modifications of the same features. For example, it should classify as "Dog" a photo of dogs taken from different angles or a dog hidden in a tree.
 
-![](./images/L3_transformation_images.png)
+![](./images/L3_transformation_images.webp)
 
 The computer must be invariant of all those variations, as humans recognize the same image changing its viewpoint or scale.
 
@@ -561,13 +564,13 @@ We can think about a neural network architecture that takes different parts of t
 
 In a neural network with spatial structure each neuron takes a small pixel of the entire image and try to extract it's feature information. Only a small region of the image, a **patch**, affects a concrete neuron and not the entire image.
 
-![](./images/L3_patches.png)
+![](./images/L3_patches.webp)
 
 **The next neuron afterwards takes a shifted patch of pixels. The process is repeated for all the neurons until the entire image is taken as input by patches**.
 
 As you can see in the image below , some of the patched pixels took from the first neuron in the left overlap some of the pixels patched in the right neuron.
 
-![](./images/L3_patches_connected.png)
+![](./images/L3_patches_connected.webp)
 
 The overlapping of pixels preserves the spatial component of the image. Every patch is intended to reveal features characteristic of the image.
 
@@ -579,13 +582,13 @@ The neural network identify the features patches by weighting the pixels.
 
 Take the following image. The idea is that the neural network have to classify the right image as an X or not a X.
 
-![](./images/L3_xisx.png)
+![](./images/L3_xisx.webp)
 
 While for us humans is simple to see that is an X, the pixel arrays do not match. After all, computers cannot see images, only arrays of numbers that do not match.
 
 By the process of patching, the neural network takes images with different pixel position that share same features:
 
-![](./images/L3_xisxfeatures.png)
+![](./images/L3_xisxfeatures.webp)
 
 Multiple patches in the X images are similar, or equal.
 
@@ -593,7 +596,7 @@ Multiple patches in the X images are similar, or equal.
 
 By **the convolutional operation**. While the name seems scary, it is just multiplying each pixel value element-wise between the filter matrix (_real X patch_) and the patch of the input image, and adding the outputs together.
 
-![](./images/L3_convolutional_operation.png)
+![](./images/L3_convolutional_operation.webp)
 
 In other words, comparing the pixels between the _"proper X patch"_ and the input patch that "_might or might not be an X patch_", in an a numerical way.
 
@@ -613,7 +616,7 @@ Three CNN core operations are:
 2. Apply a non-linear filter, often ReLU.
 3. Pooling: a downsampling operation that allows to scale down the size of each feature map.
 
-![](./images/L3_CNN.png)
+![](./images/L3_CNN.webp)
 
 **1. Convolution, or Convolutional Operations.**
 
@@ -645,7 +648,7 @@ ReLU is also computationally cheap in comparison with other non-linear functions
 
 Pooling is an operation to **reduce the dimensionality** of the inputs while still **preserving spatial invariants**. For example, a MaxPool2D takes a 4x4 patch matrix and convert it into a 2x2 patch by taking only the maximum value of each patch:
 
-![](./images/L3_maxpool.png)
+![](./images/L3_maxpool.webp)
 
 ### 3.6 Convolutional Neural Netowrka for Image Classification
 
@@ -661,7 +664,7 @@ For example, a CNN architecture can learn from a set of images of cars and then 
 
 **The second part of the CNN structure is using a second normal MPL to classify the label of the image**. After capturing the features of a car by convolutional operations and pooling, the lower-dimensional feature arrays feed this neural network to perform the classification.
 
-![](./images/L3_CNN_classification_prob.png)
+![](./images/L3_CNN_classification_prob.webp)
 
 **Why not using a second CNN structure or any other NN complex architecture?**
 
@@ -726,7 +729,7 @@ Deep Generative Modeling is part of **unsupervised learning: the models receive 
 
 Another way to define this goal is to **find ways to learn the underlying and hidden latent variables** in the data even when the generative model is only given the representation of the variables.
 
-![](./images/L4_images_generated.png)
+![](./images/L4_images_generated.webp)
 
 Deep generative models are very useful to create synthetic samples using the probability density function of the samples provided.
 
@@ -744,7 +747,7 @@ Rare events in tail distributions, such as people crossing the street in red, ac
 
 Autoencoding means **auto**matically **enconding** data. In Generative Modeling, the _Encoder_ learns to map from the data $x$ into a low-dimensional vector $z$:
 
-![](./images/L4_autoencoder.png "Autoencoders: background")
+![](./images/L4_autoencoder.webp "Autoencoders: background")
 
 **Autoencoding is a form of compression**. A smaller dimensionality of the latent space means that we can compress the data into smaller latent factors that keep the feature representation.
 
@@ -762,7 +765,7 @@ The model uses the features created in this latent space $z$ to construct a new 
 
 The model learns by comparing the difference between the new synthetic image and the original image in terms of pixels.
 
-![](./images/L4_autoencoder2.png "Autoencoders: mapping the latent space")
+![](./images/L4_autoencoder2.webp "Autoencoders: mapping the latent space")
 
 Therefore, can be trained to minimize the Mean Squared Error between the sample inputs $x$ and ouput synthetic samples $\hat{x}$.
 
@@ -772,7 +775,7 @@ In the previous image, the latent space $z$ acts as a "normal" layer in a Neural
 
 In contrast, **VAEs impose a variational or stochastic** twist to the architecture to generate smoother and different representations of the images:
 
-![](./images/L4_autoencoder3.png "Variational Autoencoders")
+![](./images/L4_autoencoder3.webp "Variational Autoencoders")
 
 For each variable, the VAE learns a mean and a variance associated with that latent variable. Instead of using the vector latent variables $z$ straight, the model uses the vector of means and a vector of variances to define the probability distributions for each of the latent variables.
 
@@ -782,7 +785,7 @@ The goal of this twist is to generate slightly different new images from the sam
 
 VAEs optimization process can be dividing into: **encoding and decoding**.
 
-![](./images/L4_autoencoder4.png "Variational Autoencoders Optimization")
+![](./images/L4_autoencoder4.webp "Variational Autoencoders Optimization")
 
 1. **Encoding**.
 
@@ -804,7 +807,7 @@ The optimization function must include a new term, the **VAE loss:**
 
 As in any other neural network, the regularization term avoids overfitting. In this neural network architecture overfitting would mean replicating the same exact images of $x$ into $\hat{x}$. We don't want the same images, we want different images that follows the latent varaibles of the original sample.
 
-![](./images/L4_autoencoder5.png "Variational Autoencoders Optimization: Loss function")
+![](./images/L4_autoencoder5.webp "Variational Autoencoders Optimization: Loss function")
 
 By adding this new parameter $D$ to the loss function, the Neural Network will try to reduce not only the errors extracting the latent variables (reconstruction loss) but also avoid overfitting the model so it doesn't create identical copies of the input images (regularization term).
 
@@ -830,7 +833,7 @@ The usual prior distribution choice is the **normal Gaussian distribution** (mea
 
 The new samples generated $\hat{x}$ follows the inferred distribution but also this fixed prior. The loss funtion optimize the inferred latent distribution and also penalize extreme cases outside the normal distribution (_weird or non-common elements in the images_)
 
-![](./images/L4_normaldis.png "Normal Gaussian distribution used to setting prior distribution")
+![](./images/L4_normaldis.webp "Normal Gaussian distribution used to setting prior distribution")
 
 We said that the regularization term _D_ is a function of the difference between the inferred latent distribution and a Gaussian prior distribution. This difference is called **KL-divergence**(Kullback-Leibler) or **relative entropy**.
 
@@ -849,11 +852,11 @@ The VAE regularization creates:
 
 Without regularization (a loss function that just tries to minimize the encoding loss), the model could group images that are similar in real life in different clusters because of the small variations. We want input images with close latent features to have very similar distributions that the model can use to create new ones.
 
-![](./images/L4_regularization.png "Not regularized vs regularized data points in latent and output space")
+![](./images/L4_regularization.webp "Not regularized vs regularized data points in latent and output space")
 
 The normal prior force the latent learned distribution to overlap. For example, if we want to create faces with VAEs the fixed distribution forces images of faces to place the eyes, mouth, and ears within the same regions.
 
-![](./images/L4_regularization2.png "Regularized data points in latent and output space clustered in close distributions")
+![](./images/L4_regularization2.webp "Regularized data points in latent and output space clustered in close distributions")
 
 ### 4.8 VAE Backpropagation: Re-parametrization
 
@@ -861,11 +864,11 @@ Backpropagation in Neural Networks requires deterministic nodes and layers (cons
 
 But remember that **VAs impose a variational or stochastic** twist in the forward propagation to generate new images and therefore you cannot backpropagate a sampling layer.
 
-![](./images/L4_backpropagation.png "Backpropagation on $z$ original form")
+![](./images/L4_backpropagation.webp "Backpropagation on $z$ original form")
 
 Well, you actually can. The hidden latent space $z$ variation is not stochastic itself, it includes a random constant $\varepsilon$. Therefore, $z$ can be _reparametrized_, as $\varepsilon$ is just a constant that follows a normal distribution.
 
-![](./images/L4_backpropagation2.png "Backpropagation on $z$ reparametrized form")
+![](./images/L4_backpropagation2.webp "Backpropagation on $z$ reparametrized form")
 
 Notice that $z$ goes from being a stochastic node (left) to being a deterministic one (rigth). Again, this is because $z$ can be derived taking $\varepsilon$ as a random constant that follows a normal distribution. The function loss can be minimized since the chain rule can be applied to optimize the weigths of the encoding loss $q_{\phi}$.
 
@@ -881,13 +884,13 @@ There are no encoding loss, the new features extracted comes from noise. Therefo
 
 Here in the next image, the Generator Network $G$ learns from a normal Gaussian distribution $z$ and creates new samples $X_{fake}$ that follows this distribution.
 
-![](./images/L4_generator.png "Generator Network producing a feature latent space out of noise")
+![](./images/L4_generator.webp "Generator Network producing a feature latent space out of noise")
 
 2. **Discriminator Network**
 
 This network takes the fake features from the Generator Network and real features from real images data. With both inputs, **the Discriminator task is to identify the fake features from the real ones**.
 
-![](./images/L4_gan.png "Generative Adversarial Network structure")
+![](./images/L4_gan.webp "Generative Adversarial Network structure")
 
 _G_ tries to synthesize fake instances that fool _D_, and _D_ tries to identify these from real ones.
 
@@ -925,7 +928,7 @@ In Reinforced Learning the data is not a matrix of features and set of targets (
 
 The algorithm **learns from the consequences of some action in a certain state**. If the action contributes to a reward function, then is encourage and if it doesn't the action is avoided. The **goal** of the algorithm is to maximize the total reward of the agent over time.
 
-![](./images/L5_classes.png)
+![](./images/L5_classes.webp)
 
 The **key concepts** to understand the mechanics of Reinforced Learning are:
 
@@ -934,12 +937,12 @@ The **key concepts** to understand the mechanics of Reinforced Learning are:
 - **Environment**: Where the agent takes action.
 - **Action space A**: the set of possible actions an agent can make in the environment.
 
-![](./images/L5_actions.png)
+![](./images/L5_actions.webp)
 
 - **Observations**: who the environment reacts to the agent's actions.
 - **State**: a situation which the agent perceives.
 
-![](./images/L5_observations.png)
+![](./images/L5_observations.webp)
 
 - **Reward**: feedback that measures the success or failure of the agent's action.
 
@@ -985,13 +988,13 @@ Imagine the following Deep Neural Network in which the state is an Atari videoga
 
 The **first solution** that comes to mind is making a Neural Network that iterates over **all the possible state-action pairs** and takes the one that maximizes the expected reward returns.
 
-![](./images/L5_state_actions.png)
+![](./images/L5_state_actions.webp)
 
 However, even for this simple environment **the amount of actions $a$ would be enormous**. It would need to calculate the rewards over the time of the entire game, every time it chooses right or left. Every time, for every move $t$, calculating the optimal action. This method to find a strategy is highly inefficient and computationally very expensive.
 
 **A more efficient way to input only the state and let the Neural Network give all the possible set of Q-functions for each action**. Using this method, the Neural Network does not have to compare over Q-functions, it returns all of them for every possible action.
 
-![](./images/L5_dqn.png)
+![](./images/L5_dqn.webp)
 
 Notice that we don't feed the state, only actions, so the possibilities do not grow exponentially.
 
@@ -1007,7 +1010,7 @@ The Network predicts state-action pairs $Q(s,a_{n})$ that closes the Q-target as
 
 Going back to the **Atari example**:
 
-![](./images/L5_atari_2.png)
+![](./images/L5_atari_2.webp)
 
 For a given state $s_t$ the ball is coming towards the slider. The Neural Network creates 3 Q-functions: one for the slider going left, one for the slider staying, and one for the slider going right.
 
@@ -1031,7 +1034,7 @@ Until now, we were taking the state as fixed and looking for the best set of act
 
 The difference is subtle but important. To illustrate we go back to the **Atari example**:
 
-![](./images/L5_atari_3.png)
+![](./images/L5_atari_3.webp)
 
 The Neural Network does not compare actions, it compares the probability of the actions being the correct and sample from that. In this Atari example, going left has a 90% probability of reaching the optimal policy. Therefore, the algorithm choose $a_1$ (slider left) 90% of the time, $a_2$ (center) 10% of the time and $a_3$ (right) 0% of the time. The probabilities sum to 1. This is called **Policy gradient**, as it directly optimizes the policy without calculating the rewards.
 
@@ -1041,7 +1044,7 @@ With policy learning, the models can handle continuous spaces. We can calculate 
 
 In the following image, the highest probability action is going to the -1 meters/second in a continuous probability space with many other rates:
 
-![](./images/L5_atari_4.png)
+![](./images/L5_atari_4.webp)
 
 From this probability, the optimal policy derived is going -0.8 meters/second, taking into account the variance.
 
@@ -1079,22 +1082,22 @@ The rise and hype of Deep Learning led to the general public to see Machine Lear
 
 Deep Neural Networks are extremely good at finding a pattern **in the existing data**. A recent paper by Google Brain/Deepmind researchers[^1] shows that a neural network can be 100% accurate fed **by random label images**:
 
-![](./images/L6_understanding.png)
-![](./images/L6_understanding_1.png)
+![](./images/L6_understanding.webp)
+![](./images/L6_understanding_1.webp)
 
 A model is as good as the data you feed it. If you have trained a model with a banana image and a tree image labeled as "dog", every time that the model sees **those exact images** it will classify them as the label you have used. The problem comes when it sees other bananas or tree images. The accuracy could be 100% in the training set and close-to-random accuracy in the test set:
 
-![](./images/L6_understanding_2.png)
+![](./images/L6_understanding_2.webp)
 
 Random labeling led to random accuracy in the test data. The model overfitted the specific images to the specific label and has **no generalization power** to predict new unseen data. **Without generalization, any neural network is worthless.** A Neural Network can approximate any seen distribution, but how do we know what and how it is going to predict in unseen data?
 
-![](./images/L6_approximation.png)
+![](./images/L6_approximation.webp)
 
 ### 7.1 Limitations: Uncertainty
 
 Part of the new frontiers in AI tries to solve **the problem of uncertainty**. Or how to make models that infer the right choice when it faces data that it has not being trained to interact with. For example, this is especially important in the field of autonomous vehicles, in which a change in the construction of a road can lead to terrible results:
 
-![](./images/L6_uncertainty.png)
+![](./images/L6_uncertainty.webp)
 
 Autonomous cars should be able to identify this **uncertainty** or unseen state of the road and not crash the car, even if the car is being trained to go in that direction.
 
@@ -1102,7 +1105,7 @@ Let's take the classical toy model of **classifying an image of a dog vs cat**. 
 
 By definition, **the model gives just the probability of dog and cat**. It cannot output the probability of random data or the confidence in that prediction.
 
-![](./images/L6_horse.png)
+![](./images/L6_horse.webp)
 
 We need an uncertainty metric to assess the noise inherent to the data (_aleatoric uncertainty_) and to **assess the network's confidence** in its predictions (_epistemic uncertainty_).
 
@@ -1113,7 +1116,7 @@ New research[^2] using _adversarial attacks_ tries to introduce perturbations in
 The network can model a higher-order probability distribution over the individual likelihood parameters. Taking the cat/dog model example, this means that a network trained with photos of cats and dogs and fed with a horse image can output
 cat probability of 0 and a dog probability of 0.
 
-![](./images/L6_deep_regression.png)
+![](./images/L6_deep_regression.webp)
 
 Evidential regression simultaneously learns a continuous target along with aleatoric
 uncertainty from the data and epistemic uncertainty from the model.
@@ -1126,7 +1129,7 @@ Automated Machine Learning (AutoML) is a growing field of AI[^3] that uses auto-
 
 The **concept** of this method is simple to understand. It is a system **has a _controller network_ and a _child network_**. The controller samples an initial architecture and the child uses that architecture in a dataset. For every architecture sample, the child network gets an accuracy value that is used to update the controller.
 
-![](./images/L6_autoML.png)
+![](./images/L6_autoML.webp)
 
 The better the architecture and parameters proposed by the controller is, the better the results of the child network, and the more the controller knows is getting good architecture proposals.
 
@@ -1134,7 +1137,7 @@ This last step is key. **How the controller learns?**
 
 The controller is a Recurrent Neural Network, with _N_ layers corresponding to different architectures and parameters to choose from. One layer represents a combination of model/parameters to try.
 
-![](./images/L6_autoML_1.png)
+![](./images/L6_autoML_1.webp)
 
 1. The controller samples these different networks with a parametrization.
 2. The controller feed variations to the child network.
@@ -1144,7 +1147,7 @@ The controller is a Recurrent Neural Network, with _N_ layers corresponding to d
 
 While AutoML can be seen as a shortcut, **this system can produce state-of-the-art results**[^3] in image recognition, getting better results and being more efficient than human-created network architectures:
 
-![](./images/L6_autoML_2.png)
+![](./images/L6_autoML_2.webp)
 
 _NASNet_ stands for _Neural Architecture Search Network_
 
