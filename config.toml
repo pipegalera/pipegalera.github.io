@@ -17,7 +17,6 @@ highlight_code = true
 lazy_async_image = true
 
 [extra]
-analytics = true
 use_cdn = false
 dynamic_note = false
 favicon = "icons/favicons/favicon-32x32.png"
